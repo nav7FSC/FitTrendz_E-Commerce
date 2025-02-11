@@ -25,7 +25,7 @@ FitTrendz is an advanced e-commerce clothing platform designed to provide a seam
 ## Technologies Used
 - **Frontend:** HTML, CSS, JavaScript, and React
 - **Backend:** Node.js and Express.js
-- **Database:** MongoDB for storing user data and product information
+- **Database:** PostgreSQL/MySQL and NoSQL
 - **Hosting:** AWS for secure and scalable deployment
 - **Payment Gateway:** Stripe for secure online transactions
 
