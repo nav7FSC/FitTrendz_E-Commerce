@@ -29,6 +29,10 @@ export default function Navbar(){
             <img src={personicon} className="person-icon"/>
             <p>Sign in</p>
             </Link>
+            
+            <Link to="/signup-page" className="Sign-up-Container">
+              <p>Sign Up</p>
+            </Link>
         </nav>
         </>
     )

@@ -9,6 +9,7 @@ import Men from './pages/mens-page'
 import SignIn from './pages/sign-in'
 import Checkout from './pages/check-out'
 import About from './pages/about'
+import SignUpPage from './pages/signup-page';
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
         <Route path = "/mens-page" index element = {<Men />} />
         <Route path = "/sign-in" index element = {<SignIn />} />
         <Route path = "/check-out" index element = {<Checkout />} />
+        <Route path ="/signup-page" element={<SignUpPage />} />
       </Routes>
       
       
