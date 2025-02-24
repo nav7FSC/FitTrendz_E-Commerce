@@ -58,7 +58,7 @@ export default function SignUpPage() {
       Sign up with Google
     </div>
     <p className="signup-footer">
-      Already have an account? <a href="/login">Login</a>
+      Already have an account? <a href="/sign-in">Login</a>
     </p>
   </div>
 </div>
