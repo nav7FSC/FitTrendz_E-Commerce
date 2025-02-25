@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;900&display=swap');
+
+.nav {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 300px;
+    font-weight: 600;
+    padding-bottom: 40px;
+    
+    
+}
+.Sign-in-Container{
+    display: flex;
+    align-items: center;
+}
+.Check-Out-container{
+    display: flex;
+    align-items: center;
+    
+}
+.person-icon{
+    width: 35px;
+}
+.search-container{
+    display: flex;
+    align-items: center;
+}
+.searchicon, .cart-icon{
+    width: 50px;
+}
+.top-nav{
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 240px;
+}
+.Fit-Trendz-Title{
+    font-size: 60px;
+}
+
+.nav a, .top-nav a {
+    text-decoration: none; 
+    color: black; 
+}
+
+
+.nav a:hover, .top-nav a:hover {
+    color: gray;
+}
+
