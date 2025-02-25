@@ -33,11 +33,11 @@ app.post('/api/auth/login', (req, res) => {
     const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: '1h' }); // TODO make this actually secure
 
     res.json({token});
-    console.log(res) // TODO remove logging or implement better logging tools
+    //console.log(res) // TODO remove logging or implement better logging tools
 });
 
 app.post('/api/auth/register', async (req, res) => {
-    const { first_name, last_name, email, password, created_at, updated_at } = req.body; // TODO add phone number and address to regular registration or only on purchase?
+    const { first_name, last_name, email, password } = req.body; // TODO add phone number and address to regular registration or only on purchase?
     const hashedPassword = bcrypt.hashSync(password, 10);
     console.log(req.body)
 
@@ -55,7 +55,7 @@ app.post('/api/auth/register', async (req, res) => {
         ) VALUES
         (
             ?, ?, ?, ?, 
-            ?, ?, ?, datetime(), datetime()
+            ?, datetime(), datetime(), ?, ?
         )
         `
         );
@@ -66,9 +66,8 @@ app.post('/api/auth/register', async (req, res) => {
                 email, 
                 hashedPassword,
                 "customer",
-                created_at,
-                updated_at,
-                
+                null,
+                null
             );
         } catch (error) {
             console.log(error)
