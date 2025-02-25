@@ -1,5 +1,3 @@
-import { useState } from 'react'
-//import './App.css'
 import {Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
 import Women from './pages/womens-page'
@@ -8,10 +6,9 @@ import SignIn from './pages/sign-in'
 import Checkout from './pages/check-out'
 import About from './pages/about'
 import SignUpPage from './pages/signup-page';
+import "./index.css";
 
 function App() {
-  
-
   return (
     <div>
       
@@ -24,12 +21,13 @@ function App() {
         <Route path = "/sign-in" index element = {<SignIn />} />
         <Route path = "/check-out" index element = {<Checkout />} />
         <Route path ="/signup-page" element={<SignUpPage />} />
-      </Routes>
-      
-      
-      
+      </Routes> 
+    
+
     </div>
   )
+
+
 }
 
-export default App
+export default App;
