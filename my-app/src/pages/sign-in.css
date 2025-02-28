@@ -39,3 +39,17 @@
     flex-direction: column;
     align-items: center;
   }
+  /* Input validation styles */
+.input-error {
+  border-color: red;
+  background-color: #f8d7da;
+  color: black;
+  outline: 2px solid red;
+}
+
+.input-success {
+  border-color: green;
+  background-color: #d4edda;
+  color: black;
+  outline: 2px solid green;
+}
