@@ -1,32 +1,37 @@
 import "./Signup-page.css";
 import { useState, useEffect } from "react";
+import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import googleIcon from "./google-icon.png";
 import axios from "axios";
 
 export default function SignUpPage() {
+  return (
+    <GoogleOAuthProvider clientId="278251322388-ao785r87jmeesbsuloqimmg8il6ctrj9.apps.googleusercontent.com">
+      <SignUpComponent />
+    </GoogleOAuthProvider>
+  );
+}
+
+function SignUpComponent() {
   const [formData, setFormData] = useState({ first_name: "", last_name: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(null);
 
   const validate = (name, value) => {
     let error = "";
-
     if (name === "first_name" || name === "last_name") {
       if (!value) error = `${name.replace("_", " ")} is required`;
       else if (!/^[A-Za-z\s]+$/.test(value)) error = `${name.replace("_", " ")} can only contain letters and spaces`;
     }
-
     if (name === "email") {
       if (!value) error = "Email is required";
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Invalid email format";
     }
-
     if (name === "password") {
       if (!value) error = "Password is required";
       else if (value.length < 6) error = "Password must be at least 6 characters";
       else if (!/(?=.*[A-Z])(?=.*\d)/.test(value)) error = "Password must contain at least one uppercase letter and one number";
     }
-
     setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
   };
 
@@ -50,7 +55,6 @@ export default function SignUpPage() {
       .post("http://localhost:3000/api/auth/register", formData)
       .then((response) => {
         console.log(response);
-        console.log(response.data);
         setSuccess("User Created");
       })
       .catch((error) => {
@@ -64,6 +68,34 @@ export default function SignUpPage() {
       alert(success);
     }
   }, [success]);
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        const userInfo = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        });
+
+        console.log("Google User Info:", userInfo.data);
+
+        axios.post("http://localhost:3000/api/auth/google-login", userInfo.data)
+          .then((response) => {
+            console.log("Google sign-in success:", response.data);
+            setSuccess("Google sign-in successful!");
+          })
+          .catch((error) => {
+            console.error("Google sign-in failed:", error);
+            setSuccess("Google sign-in failed.");
+          });
+      } catch (error) {
+        console.error("Error fetching Google user info:", error);
+      }
+    },
+    onError: () => {
+      console.error("Google login failed.");
+      setSuccess("Google sign-in failed.");
+    },
+  });
 
   return (
     <div className="signup-container">
@@ -118,9 +150,11 @@ export default function SignUpPage() {
           />
           {errors.password && <p className="error">{errors.password}</p>}
 
-          <button className="signup-button" onClick={handleSubmit}>Sign Up</button>
+          <button type="button" className="signup-button" onClick={handleSubmit}>
+            Sign Up
+          </button>
         </form>
-        <div className="google-signup">
+        <div className="google-signup" onClick={() => googleLogin()}>
           <img src={googleIcon} alt="Google" />
           Sign up with Google
         </div>
