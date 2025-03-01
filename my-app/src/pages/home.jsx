@@ -5,7 +5,7 @@ import ImageSlider from "../components/ImageSlider";
 import male from "../assets/malemodel1.webp";
 import women from "../assets/girlmodel1.webp";
 
-import "./Home.css";
+import "./pageStyling.css";
 
 export default function Home() {
     return (

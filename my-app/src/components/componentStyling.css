@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;900&display=swap');
+
+
+.footer {
+    font-family: 'Outfit', sans-serif;
+    background-color: #222;
+    color: white;
+    padding: 40px 0;
+    margin-top: 40px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.col {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 8px 0;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+ul li:hover {
+    opacity: 1;
+}
+.rights{
+    display: flex;
+    justify-content:left;
+    flex-wrap: wrap;
+}
+.slider{
+    position: relative;
+    height: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    max-width: 90vw;
+    object-fit: contain;
+}
+.rightArrow{
+    position: absolute;
+    top: 50%;
+    right: 32px;
+    font-size: 32px;
+    font-size: 3rem;
+    color: black;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+.backArrow{
+    position: absolute;
+    top: 50%;
+    left: 32px;
+    font-size: 32px;
+    font-size: 3rem;
+    color: black;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+.slide {
+    opacity: 0;
+    transition-duration: 1s ease;
+}
+.slide-current{
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.08);
+}
+
+.Sign-in-Container{
+    display: flex;
+    align-items: center;
+}
+.Check-Out-container{
+    display: flex;
+    align-items: center;
+    
+}
+.person-icon{
+    width: 35px;
+}
+.search-container{
+    display: flex;
+    align-items: center;
+}
+.searchicon, .cart-icon{
+    width: 50px;
+}
