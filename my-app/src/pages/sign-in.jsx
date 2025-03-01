@@ -1,6 +1,8 @@
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
-import "./sign-in.css";
+import "./pageStyling.css";
+import Footer from "../components/footer";
+
 import axios from "axios";
 
 export default function SignInPage() {
@@ -75,35 +77,39 @@ export default function SignInPage() {
       <Navbar />
       <div className="signin-container">
         <h1>LOGIN</h1>
-        <form className="signin-form">
-          <input
-            type="text"
-            placeholder="Email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={formData.email}
-            name="email"
-            className={touched.email ? (errors.email ? "input-error" : "input-success") : ""}
-          />
-          <span className="error-message">{touched.email && errors.email}</span>
-
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={formData.password}
-            name="password"
-            className={touched.password ? (errors.password ? "input-error" : "input-success") : ""}
-          />
-          <span className="error-message">{touched.password && errors.password}</span>
-
-          <button onClick={handleSubmit}>Login</button>
-          <p>
-            Don't have an account? <a href="/signup-page">Sign-Up</a>
-          </p>
-        </form>
+        <div className="signin-card"> {/* Added a card around the form */}
+          <form className="signin-form">
+            <input
+              type="text"
+              placeholder="Email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={formData.email}
+              name="email"
+              className={touched.email ? (errors.email ? "input-error" : "input-success") : ""}
+            />
+            <span className="error-message">{touched.email && errors.email}</span>
+  
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={formData.password}
+              name="password"
+              className={touched.password ? (errors.password ? "input-error" : "input-success") : ""}
+            />
+            <span className="error-message">{touched.password && errors.password}</span>
+  
+            <button onClick={handleSubmit}>Login</button>
+            <p>
+              Don't have an account? <a href="/signup-page">Sign-Up</a>
+            </p>
+          </form>
+        </div>
       </div>
+  <Footer />
     </>
   );
+  
 }

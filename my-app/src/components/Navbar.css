@@ -1,46 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;900&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: fixed; /* Keeps navbar at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000; /* Ensures it stays above other elements */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Adds slight shadow */
+}
+
+.top-nav {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 5vw 4px; /* Reduced bottom padding */
+    max-width: 100%;
+    margin-bottom: 0; /* Ensure no extra spacing */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.searchicon, .cart-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
 .nav {
     font-family: 'Outfit', sans-serif;
     font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 300px;
+    padding: 4px 5vw 8px; /* Reduced top padding */
     font-weight: 600;
-    padding-bottom: 40px;
-    
-    
+    max-width: 100%;
 }
-.Sign-in-Container{
-    display: flex;
-    align-items: center;
-}
-.Check-Out-container{
-    display: flex;
-    align-items: center;
-    
-}
-.person-icon{
-    width: 35px;
-}
-.search-container{
-    display: flex;
-    align-items: center;
-}
-.searchicon, .cart-icon{
-    width: 50px;
-}
-.top-nav{
-    font-size: 30px;
-    font-weight: 600;
-    font-family: 'Outfit', sans-serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 240px;
-}
-.Fit-Trendz-Title{
+
+.Fit-Trendz-Title {
     font-size: 60px;
 }
 
@@ -49,8 +60,27 @@
     color: black; 
 }
 
-
 .nav a:hover, .top-nav a:hover {
     color: gray;
 }
 
+/* Fix for Sign-in/Sign-up Section */
+.Sign-in-Container {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Adds spacing between icon and text */
+    white-space: nowrap; /* Prevents text from breaking */
+    padding: 5px 10px; /* Adds padding for better spacing */
+    min-width: 130px; /* Ensures enough space for the text */
+}
+
+.person-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain; /* Prevents distortion */
+}
+
+.Sign-in-Container p {
+    font-size: 18px;
+    margin: 0; /* Removes unwanted margins */
+}

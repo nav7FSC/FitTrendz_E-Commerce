@@ -3,7 +3,7 @@ import sale from '../assets/sale.webp'
 import sale3 from '../assets/sale3.webp'
 import rightArrow from '../assets/rightArrow.png'
 import backArrow from '../assets/backArrow.png'
-import './imageSlider.css'
+import './componentStyling.css'
 
 import React, {useState} from 'react'
 

@@ -1,7 +1,10 @@
-import "./Signup-page.css";
+import "./pageStyling.css";
+import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import googleIcon from "./google-icon.png";
+import Footer from "../components/footer";
+
 import axios from "axios";
 
 export default function SignUpPage() {
@@ -98,10 +101,12 @@ function SignUpComponent() {
   });
 
   return (
+    <div>
+      <Navbar />
+    
     <div className="signup-container">
-      <div className="signup-header">
-        <h1>Fit Trendz</h1>
-      </div>
+      
+      
       <div className="signup-card">
         <h2 className="signup-title">Sign Up</h2>
         <p className="signup-subtitle">Enter your details to create an account.</p>
@@ -162,6 +167,8 @@ function SignUpComponent() {
           Already have an account? <a href="/sign-in">Login</a>
         </p>
       </div>
+    </div>
+    <Footer />
     </div>
   );
 }
