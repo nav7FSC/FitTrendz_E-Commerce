@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;900&display=swap');
 body{
-  padding-top: 100px;
+  padding-top: 80px;
   
     background-color: rgb(250, 250, 250);
     display: flex;
@@ -10,8 +10,15 @@ body{
     min-height: 100vh; /* Ensures full height centering */
     text-align: center; /* Centers inline text */
     width: 100%; /* Ensures full width usage */
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;  /* Prevents horizontal scrolling */
+   
+    
 
 }
+
+
 
   .signin-form{
     display: flex;
@@ -73,26 +80,47 @@ body{
     width: 400px;
     margin-right: 20px;
 }
-.malesection{
-    margin-left: 200px;
-    margin-right: 150px;
+.malesection,
+.womensection {
     font-family: 'Outfit', sans-serif;
     display: flex;
     align-items: center;
+    justify-content: center; /* Centers content */
     padding-top: 20px;
-    font-size: 100px;
-    margin-top: 40px;
+    font-size: 70px; /* Adjusted for better responsiveness */
+    margin: 40px auto; /* Auto centers it dynamically */
+    max-width: 90%; /* Prevents it from being too wide */
+    text-align: center;
+     /* Ensures better responsiveness */
 }
-.womensection{
-   margin-left: 200px;
-   margin-right: 200px;
-   font-family: 'Outfit', sans-serif;
-    display: flex;
-    align-items: center;
-    padding-top: 50px;
-    font-size: 100px;
-    margin-top: 40px;
+
+/* 🔹 Responsive Fix for Smaller Screens */
+@media (max-width: 1024px) {
+    .malesection,
+    .womensection {
+        font-size: 2.5rem;
+        max-width: 95%;
+    }
 }
+
+@media (max-width: 768px) {
+    .malesection,
+    .womensection {
+        font-size: 2rem;
+        padding-top: 10px;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .malesection,
+    .womensection {
+        font-size: 1.5rem;
+        padding-top: 5px;
+        margin: 10px auto;
+    }
+}
+
   
   /* Container */
   .signup-container {

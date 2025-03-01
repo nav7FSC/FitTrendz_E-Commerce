@@ -6,8 +6,15 @@
     background-color: #222;
     color: white;
     padding: 40px 0;
-    margin-top: 40px;
+    text-align: center;
+    width: 100vw;  /* Ensures it stretches fully across the viewport */
+    max-width: 100%; /* Prevents it from exceeding the screen width */
+    margin-top: auto;
 }
+
+
+
+
 
 .container {
     width: 80%;
