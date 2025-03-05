@@ -1,0 +1,64 @@
+/* Category Sidebar Styles */
+.sidebar-title {
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Container for the radio buttons */
+.sidebar-label-container {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-family: 'Outfit', sans-serif;
+    color: #555;
+}
+
+/* Hide the default radio button */
+.sidebar-label-container input[type="radio"] {
+    display: none;
+}
+
+/* Custom radio button */
+.sidebar-label-container .checkmark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    padding-left: 30px;
+}
+
+/* Create the circular radio button */
+.sidebar-label-container .checkmark::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    background: transparent;
+}
+
+/* When the radio is checked, fill the button */
+.sidebar-label-container input[type="radio"]:checked + .checkmark::before {
+    background: #555;
+    border-color: #555;
+}
+
+/* Hover effect */
+.sidebar-label-container:hover .checkmark::before {
+    border-color: #222;
+}
+
+/* Spacing and alignment */
+.sidebar-label-container .checkmark {
+    padding-left: 25px;
+    color: #222;
+}

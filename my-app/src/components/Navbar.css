@@ -7,7 +7,7 @@
 }
 
 .navbar {
-    position: fixed; /* Keeps navbar at the top */
+    position: sticky; /* Keeps navbar at the top */
     top: 0;
     left: 0;
     width: 100%;

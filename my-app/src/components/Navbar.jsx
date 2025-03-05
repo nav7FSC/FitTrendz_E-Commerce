@@ -23,8 +23,8 @@ export default function Navbar(){
 
         {/* Main Navigation */}
         <nav className="nav">
-            <Link to="/womens-page" className="Women">Women</Link>
-            <Link to="/mens-page" className="Men">Men</Link>
+            <Link to="/catalog" className="Women">Women</Link>
+            <Link to="/catalog" className="Men">Men</Link>
             <Link to="/" className="Fit-Trendz-Title">Fit Trendz</Link>
             <Link to="/about" className="about">About</Link>
 
