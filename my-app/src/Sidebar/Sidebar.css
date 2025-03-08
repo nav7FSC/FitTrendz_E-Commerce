@@ -1,4 +1,6 @@
 .sidebar {
+    margin-top: 10px;
+    border-top: 10rem;
     width: 15%;
     position: fixed;
     height: 100%;
