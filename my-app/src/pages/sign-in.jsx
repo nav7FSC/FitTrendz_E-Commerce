@@ -2,6 +2,8 @@ import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 import "./pageStyling.css";
 import Footer from "../components/footer";
+import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
+import googleIcon from "./google-icon.png";
 
 import axios from "axios";
 
@@ -76,9 +78,9 @@ export default function SignInPage() {
     <>
       <Navbar />
       <div className="signin-container">
-        <h1>LOGIN</h1>
         <div className="signin-card"> {/* Added a card around the form */}
           <form className="signin-form">
+          <h2>Login</h2>
             <input
               type="text"
               placeholder="Email"
@@ -100,11 +102,24 @@ export default function SignInPage() {
               className={touched.password ? (errors.password ? "input-error" : "input-success") : ""}
             />
             <span className="error-message">{touched.password && errors.password}</span>
-  
+            
+            <div className="remember-forgot">
+              <label className="remember-me">
+                <input type="checkbox" />Remember me
+              </label>
+              <a href="/forgot-password">Forgot password?</a>
+            </div>
+
             <button onClick={handleSubmit}>Login</button>
+            <div className="google-signup" onClick={() => googleLogin()}>
+                <img src={googleIcon} alt="Google" />
+                    Sign in with Google
+            </div>
+            <div className="signin-footer">
             <p>
               Don't have an account? <a href="/signup-page">Sign-Up</a>
             </p>
+            </div>
           </form>
         </div>
       </div>

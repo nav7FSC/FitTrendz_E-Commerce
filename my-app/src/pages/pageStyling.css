@@ -18,17 +18,38 @@ body{
 
 }
 
-
-
-  .signin-form{
+.signin-container{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: min(400px, 90vw);
+    min-height: 75vh;
+    width: 100%;
+}
+
+  .signin-card{
+    background-color: #fff;
+    width: 400px;
     padding: 40px;
     border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
+
+  .signin-form h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .signin-form{
+    display: flex;
+    flex-direction: column;
+  }
+
  .signin-form input{
     width: 100%;
     padding: 10px;
@@ -36,16 +57,62 @@ body{
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  .signin-form button{
-    width: 100%;
-    padding: 10px;
+
+  .remember-forgot{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin: 10px 0;
+    color: #777;
+    width: 100%;
+  }
+
+  .remember-me{
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 5px;
+  }
+
+  .remember-forgot a{
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .remember-forgot a:hover{
+    color:#000;
+    text-decoration: underline;
+  }
+
+  .signin-footer{
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
+  }
+
+  .signin-footer a{
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .signin-footer a:hover{
+    text-decoration: underline;
+    color: #000;
+  }
+
+  .signin-form button{
+    background-color: #000;
+    color: #fff;
+    padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: #000000;
-    color: #fff;
-    font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
+    width: 100%;
+    max-width: 400px;
   }
   .signin-form button:hover{
     background-color: #333;
@@ -125,15 +192,14 @@ body{
   /* Container */
   .signup-container {
     font-family: Arial, sans-serif;
-  
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
   }
   
   /* Logo */
@@ -203,9 +269,8 @@ body{
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
-      width: 100%;
-      max-width: 400px;
-  
+    width: 100%;
+    max-width: 400px;
   }
   
   .signup-button:hover {
@@ -248,6 +313,7 @@ body{
   
   .signup-footer a:hover {
     text-decoration: underline;
+    color: #000;
   }
   
   /* Input validation styles */
