@@ -1,21 +1,21 @@
 import { AiFillStar } from "react-icons/ai";
 import { FaShoppingBag } from "react-icons/fa";
 
-export default function card() {
+export default function card({img, title, star, reviews, prevPrice, newPrice}) {
   return (
     <div>
       <section className="card">
-                  <img src="https://m.media-amazon.com/images/I/71E7c09iTdL._AC_SX342_.jpg" alt = "Jacket" className='card-img'>
+                  <img src={img} alt = {title} className='card-img'>
                   </img>
                   <div className='card-details'>
-                      <h3 className='card-title'>Mens Jacket</h3>
+                      <h3 className='card-title'>{title} </h3>
                       <section className='card-reviews'>
-                          <AiFillStar className='ratings-star' /> <AiFillStar className='ratings-star'/> <AiFillStar className='ratings-star'/> <AiFillStar className='ratings-star'/>
-                          <span className='total-reviews'>4</span>
+                          {star}{star}{star}{star}
+                          <span className='total-reviews'>{reviews}</span>
                       </section>
                       <section className='card-price'>
                           <div className='price'>
-                              <del>$300</del> 200
+                              <del>{prevPrice}</del> {newPrice}
                           </div>
       
                           <div className='bag'>

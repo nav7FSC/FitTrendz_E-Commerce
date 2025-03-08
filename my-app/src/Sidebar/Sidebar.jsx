@@ -4,7 +4,8 @@ import Price from './Price/Price'
 import Colors from './Colors/Colors'
 import { FaShoppingCart } from "react-icons/fa";
 
-export default function Sidebar() {
+export default function Sidebar({handleChange}) {
+  console.log(handleChange);
   return (
     <div>
       <section className="sidebar">
@@ -12,9 +13,9 @@ export default function Sidebar() {
            <h1><FaShoppingCart /></h1> 
         </div>
 
-        <Category />
-        <Price />
-        <Colors />
+        <Category handleChange ={handleChange} />
+        <Price handleChange ={handleChange} />
+        <Colors handleChange ={handleChange} />
 
       </section>
     </div>
