@@ -15,9 +15,9 @@ export default function Navbar(){
                 <p>Search</p>
             </div>
             
-            <Link to="/check-out" className="Check-Out-container">
-                <img src={shoppingcart} className="cart-icon" alt="Shopping Cart"/>
-                <p>Check Out</p>
+            <Link to="/cart" className="Check-Out-container">
+                <img src={shoppingcart} className="cart-icon" alt="Shopping Cart" />
+                <p>View Cart</p>
             </Link>
         </nav>
 
