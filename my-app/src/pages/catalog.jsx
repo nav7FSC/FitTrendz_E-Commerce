@@ -6,9 +6,13 @@ import Products from '../products/products'
 import Recommended from '../Recommended/Recommended'
 import Sidebar from '../Sidebar/Sidebar'
 import Card from "../components/card"
+import {fetchAllProducts} from '../services/apiRequests'
 
 
-import products from '../db/data'
+// import products from '../db/data'
+
+const products = await fetchAllProducts()
+console.log(products)
 
 export default function catalog() {
 
@@ -61,13 +65,13 @@ function filteredData(products, selected) {
       }
     );
   }
-
-  return filteredProducts.map(({ img, title, star, reviews, prevPrice, newPrice }) => (
+  return filteredProducts.map(({image, title, rating, reviews, prevPrice, newPrice}) => 
+    (
     <Card
       key={Math.random()}
-      img={img}
+      img={image}
       title={title}
-      star={star}
+      star={rating}
       reviews={reviews}
       prevPrice={prevPrice}
       newPrice={newPrice}
@@ -75,7 +79,7 @@ function filteredData(products, selected) {
   ));
 }
 
-
+    
     const result = filteredData(products,selectedCategory)
 
   return (

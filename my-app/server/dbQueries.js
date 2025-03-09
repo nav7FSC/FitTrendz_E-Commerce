@@ -1,5 +1,5 @@
 /**This file contains useful examples of sqlite commands */
-
+import {data} from '../src/db/data.js'
 import Database from 'better-sqlite3';
 
 const db = new Database('database.sqlite');
@@ -20,6 +20,84 @@ const create_users_table = db.prepare(`CREATE TABLE IF NOT EXISTS users (
   )`);
 
 create_users_table.run() // runs the prepared create statement
+
+// Creates a table according to the provide schema if it doesn't already exist
+const create_product_table = db.prepare(`CREATE TABLE IF NOT EXISTS product (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    image TEXT,
+    title TEXT NOT NULL,
+    rating REAL NOT NULL,
+    reviews TEXT NOT NULL,
+    prevPrice REAL NOT NULL,
+    newPrice REAL NOT NULL,
+    style TEXT NOT NULL,
+    color TEXT NOT NULL,
+    category TEXT NOT NULL,
+    gender TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  )`);
+
+  //create_product_table.run() 
+
+const drop_product_table = db.prepare(`DROP TABLE product`)
+drop_product_table.run()
+create_product_table.run() // runs the prepared create statement
+insert_test_products_from_existing_list()
+
+  function insert_test_products(image, title, rating, reviews, prevPrice, newPrice, company, color, category, gender) {
+    const insert_test_user_stmt = db.prepare(`INSERT INTO product 
+        (
+            image, 
+            title, 
+            rating, 
+            reviews, 
+            prevPrice, 
+            newPrice, 
+            style, 
+            color,
+            category,
+            gender,
+            created_at, 
+            updated_at
+        ) VALUES
+        (
+            ?, 
+            ?, 
+            ?, 
+            ?, 
+            ?, 
+            ?, 
+            ?,
+            ?, 
+            ?,
+            ?,
+            datetime(), 
+            datetime()
+        )
+        `)
+    // runs the insert with the provided strings. The id is auto incremented as defined above
+    insert_test_user_stmt.run(
+        image, 
+        title, 
+        rating, 
+        reviews, 
+        prevPrice, 
+        newPrice, 
+        company, 
+        color,
+        category,
+        gender,
+    )
+}
+// TODO temp script to insert products from matt's existing test list in db/data.jsx
+function insert_test_products_from_existing_list() {
+    data.forEach(element => {
+        insert_test_products(...Object.values(element))
+    });
+}
+
+
 
 // perpares a statement that will accept ? number of inputs and set datetime as the last two
 function insert_test_user() {
@@ -67,4 +145,5 @@ function add_columns() {
     add_column_stmt2.run()
 }
 
-delete_user("jack")
+// delete_user("jack")
+// insert_test_products_from_existing_list()

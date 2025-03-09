@@ -1,14 +1,15 @@
 import express from 'express';
-import Database from 'better-sqlite3';
+import {getUserByEmail, getAllProducts, getDb} from './dbInterface.js';
 import bcrypt from 'bcrypt';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
+import { all } from 'axios';
 
 const app = express();
-const db = new Database('./database.sqlite', { verbose: console.log });
+const db = getDb();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors()); // TODO only for development
 
 // TODO use an actual secret key and move to env vars or something
 const SECRET_KEY = "secret_key"; 
@@ -16,7 +17,7 @@ const SECRET_KEY = "secret_key";
 app.post('/api/auth/login', (req, res) => {
     const { email, password } = req.body;
 
-    const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
+    const user = getUserByEmail(email);
 
     if (!user) {
         return res.status(401).json({ error: "Invalid email or password" });
@@ -88,6 +89,20 @@ app.get('/api/auth/me', async (req, res) => {
         res.status(400).json({ error: "Getting current user info failed." });
     }
 });
+
+//get all products
+app.get('/api/product/getAll', async (req, res) => {
+    console.log("Request for all products recieved")
+    try {
+        const allProducts = getAllProducts()
+        console.log(allProducts)
+        res.json({ success: "All products sucessfully retrieved", allProducts });
+    } catch (error) {
+        res.status(400).json({ error: "failed to get all products" });
+        console.log(error)
+    }
+});
+
 
 
 // Start Server
