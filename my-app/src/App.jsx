@@ -8,12 +8,12 @@ import About from './pages/about'
 import SignUpPage from './pages/signup-page';
 import Cart from "./pages/cart"; // Import Cart Page
 import "./index.css";
+import UserManagementPage from "./pages/userManagement";
 
 function App() {
   return (
     <div>
-      
-      
+
       <Routes>
         <Route path = "/" index element = {<Home />} />
         <Route path = "/about" index element = {<About />} />
@@ -23,12 +23,11 @@ function App() {
         <Route path = "/cart" index element = {<Cart />} />
         <Route path = "/check-out" index element = {<Checkout />} />
         <Route path ="/signup-page" element={<SignUpPage />} />
-      </Routes> 
-    
+        <Route path="/user-management" element={<UserManagementPage />} />
+      </Routes>
 
     </div>
   )
-
 
 }
 

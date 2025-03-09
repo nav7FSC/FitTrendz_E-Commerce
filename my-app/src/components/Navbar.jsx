@@ -7,14 +7,14 @@ import personicon from '../assets/person.png'
 export default function Navbar(){
     return(
         <div className='navbar'>
-        
+
         {/* Top Navigation */}
         <nav className="top-nav">
             <div className="search-container">
                 <img src={searchicon} className="searchicon" alt="Search Icon"/>
                 <p>Search</p>
             </div>
-            
+
             <Link to="/cart" className="Check-Out-container">
                 <img src={shoppingcart} className="cart-icon" alt="Shopping Cart" />
                 <p>View Cart</p>
@@ -24,9 +24,15 @@ export default function Navbar(){
         {/* Main Navigation */}
         <nav className="nav">
             <Link to="/catalog" className="Women">Women</Link>
+
             <Link to="/catalog" className="Men">Men</Link>
-            <Link to="/" className="Fit-Trendz-Title">Fit Trendz</Link>
+
             <Link to="/about" className="about">About</Link>
+
+            <Link to="/" className="Fit-Trendz-Title">Fit Trendz</Link>
+
+            {/* New User Management Link */}
+            <Link to="/user-management" className="user-management">User Management</Link>
 
             <Link to="/sign-in" className="Sign-in-Container">
                 <img src={personicon} className="person-icon" alt="User Icon"/>
