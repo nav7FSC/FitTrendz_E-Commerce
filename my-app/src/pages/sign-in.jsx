@@ -4,10 +4,18 @@ import "./pageStyling.css";
 import Footer from "../components/footer";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import googleIcon from "./google-icon.png";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function SignInPage() {
+  return (
+    <GoogleOAuthProvider clientId="278251322388-ao785r87jmeesbsuloqimmg8il6ctrj9.apps.googleusercontent.com">
+      <SignInComponent />
+    </GoogleOAuthProvider>
+  );
+}
+
+function SignInComponent() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({ email: false, password: false });
@@ -18,8 +26,6 @@ export default function SignInPage() {
       .post("http://localhost:3000/api/auth/login", formData)
       .then((response) => {
         console.log(response);
-        console.log(response.data);
-        console.log(response.data.token);
         setUser(response.data.token);
       })
       .catch((error) => {
@@ -29,27 +35,23 @@ export default function SignInPage() {
 
   const validate = (name, value) => {
     let tempErrors = { ...errors };
-
     if (name === "email") {
       if (!value) tempErrors.email = "Email is required";
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
         tempErrors.email = "Email is incorrect";
       else delete tempErrors.email;
     }
-
     if (name === "password") {
       if (!value) tempErrors.password = "Password is required";
       else if (value.length < 6) tempErrors.password = "Password is incorrect";
       else delete tempErrors.password;
     }
-
     setErrors(tempErrors);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
     if (touched[name]) {
       validate(name, value);
     }
@@ -74,13 +76,42 @@ export default function SignInPage() {
     }
   }, [user]);
 
+  // Google Sign-In
+  const googleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        const userInfo = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        });
+
+        console.log("Google User Info:", userInfo.data);
+
+        axios.post("http://localhost:3000/api/auth/google-login", userInfo.data)
+          .then((response) => {
+            console.log("Google sign-in success:", response.data);
+            alert("Google sign-in successful!");
+          })
+          .catch((error) => {
+            console.error("Google sign-in failed:", error);
+            alert("Google sign-in failed.");
+          });
+      } catch (error) {
+        console.error("Error fetching Google user info:", error);
+      }
+    },
+    onError: () => {
+      console.error("Google login failed.");
+      alert("Google sign-in failed.");
+    },
+  });
+
   return (
     <>
       <Navbar />
       <div className="signin-container">
-        <div className="signin-card"> {/* Added a card around the form */}
+        <div className="signin-card">
           <form className="signin-form">
-          <h2>Login</h2>
+            <h2>Login</h2>
             <input
               type="text"
               placeholder="Email"
@@ -91,7 +122,7 @@ export default function SignInPage() {
               className={touched.email ? (errors.email ? "input-error" : "input-success") : ""}
             />
             <span className="error-message">{touched.email && errors.email}</span>
-  
+
             <input
               type="password"
               placeholder="Password"
@@ -102,7 +133,7 @@ export default function SignInPage() {
               className={touched.password ? (errors.password ? "input-error" : "input-success") : ""}
             />
             <span className="error-message">{touched.password && errors.password}</span>
-            
+
             <div className="remember-forgot">
               <label className="remember-me">
                 <input type="checkbox" />Remember me
@@ -111,20 +142,20 @@ export default function SignInPage() {
             </div>
 
             <button onClick={handleSubmit}>Login</button>
+
+            {/* Google Login Button */}
             <div className="google-signup" onClick={() => googleLogin()}>
-                <img src={googleIcon} alt="Google" />
-                    Sign in with Google
+              <img src={googleIcon} alt="Google" />
+              Sign in with Google
             </div>
+
             <div className="signin-footer">
-            <p>
-              Don't have an account? <a href="/signup-page">Sign-Up</a>
-            </p>
+              <p>Don't have an account? <Link to="/signup-page"><strong>Sign-Up</strong></Link></p>
             </div>
           </form>
         </div>
       </div>
-  <Footer />
+      <Footer />
     </>
   );
-  
 }

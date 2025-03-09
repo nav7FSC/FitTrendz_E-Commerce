@@ -1,8 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;900&display=swap');
+
+/* Global Styles */
+:root {
+  --primary-color: #000;
+  --secondary-color: #333;
+  --background-color: rgb(250, 250, 250);
+  --error-color: #ff4d4d;
+  --success-color: #4caf50;
+  --text-color: #777;
+}
+
 body{
   
-  
-    background-color: rgb(250, 250, 250);
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,8 +22,8 @@ body{
     width: 100%; /* Ensures full width usage */
     height: 100%;
     margin: 0;
-    overflow-x: hidden;  /* Prevents horizontal scrolling */
-   
+    overflow-x: hidden;  /* Prevents horizontal scrolling */ 
+    font-family: 'Outfit', sans-serif;
     
 
 }
@@ -504,6 +514,81 @@ body{
   background: #333;
 }
 
+.continue-shopping-btn {
+  width: 100%;
+  padding: 12px;
+  background: #ddd;
+  color: black;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.continue-shopping-btn:hover {
+  background: #bbb;
+}
+
+/* Wishlist Page */
+.wishlist-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.wishlist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background: #f8f8f8;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+/* Spacing for buttons */
+.wishlist-buttons {
+  display: flex;
+  gap: 10px; /* Adds spacing between buttons */
+}
+
+/* Buttons */
+.wishlist-move-btn, .wishlist-remove-btn {
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.wishlist-move-btn {
+  background: black;
+  color: white;
+}
+
+.wishlist-move-btn:hover {
+  background: #333;
+}
+
+.wishlist-remove-btn {
+  background: red;
+  color: white;
+}
+
+.wishlist-remove-btn:hover {
+  background: darkred;
+}
+
+/* Continue Shopping Button */
 .continue-shopping-btn {
   width: 100%;
   padding: 12px;
