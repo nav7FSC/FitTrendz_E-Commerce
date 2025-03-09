@@ -6,7 +6,8 @@ import SignIn from './pages/sign-in'
 import Checkout from './pages/check-out'
 import About from './pages/about'
 import SignUpPage from './pages/signup-page';
-import Cart from "./pages/cart"; // Import Cart Page
+import Cart from "./pages/cart"
+import Wishlist from './pages/wishlist'
 import "./index.css";
 import UserManagementPage from "./pages/userManagement";
 
@@ -22,7 +23,8 @@ function App() {
         <Route path = "/sign-in" index element = {<SignIn />} />
         <Route path = "/cart" index element = {<Cart />} />
         <Route path = "/check-out" index element = {<Checkout />} />
-        <Route path ="/signup-page" element={<SignUpPage />} />
+        <Route path = "/signup-page" index element = {<SignUpPage />} />
+        <Route path ="/wishlist" element={<Wishlist />} />
         <Route path="/user-management" element={<UserManagementPage />} />
       </Routes>
 

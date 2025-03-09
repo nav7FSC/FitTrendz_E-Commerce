@@ -11,11 +11,16 @@
     top: 0;
     left: 0;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
     background-color: white;
     z-index: 1000; /* Ensures it stays above other elements */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Adds slight shadow */
 }
 
+/* Top Navigation */
 .top-nav {
     font-size: 20px;
     font-weight: 600;
@@ -26,8 +31,10 @@
     padding: 8px 5vw 4px; /* Reduced bottom padding */
     max-width: 100%;
     margin-bottom: 0; /* Ensure no extra spacing */
+    width: 100%;
 }
 
+/* Align Search and Cart */
 .search-container {
     display: flex;
     align-items: center;
@@ -41,23 +48,33 @@
 }
 
 .nav {
-    font-family: 'Outfit', sans-serif;
-    font-size: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 4px 5vw 8px; /* Reduced top padding */
-    font-weight: 600;
-    max-width: 100%;
+    justify-content: space-evenly;
+    padding: 15px 5vw;
+    width: 100%;
 }
 
+
 .Fit-Trendz-Title {
-    font-size: 60px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.5rem;  /* Increase font size */
+    font-weight: 900;  /* Make it extra bold */
+    text-transform: uppercase;  /* Keep text all caps */
+    letter-spacing: 2px; /* Add spacing for better readability */
+    height: 100px; /* Increase height */
+    line-height: 100px; /* Ensure text stays vertically centered */
+    padding: 10px 20px; /* Add padding for better spacing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav a, .top-nav a {
     text-decoration: none; 
-    color: black; 
+    color: black;
+    font-weight: 500;
+    padding: 10px 15px;
 }
 
 .nav a:hover, .top-nav a:hover {
