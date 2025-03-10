@@ -31,10 +31,12 @@ FitTrendz is an advanced e-commerce clothing platform designed to provide a seam
 
 ## Getting Started
 To get started with FitTrendz, follow these steps:
+
 1. Clone the repository: `git clone https://github.com/nav7FSC/FitTrendz_E-Commerce.git`
 2. Navigate to the project directory: `cd FitTrendz_E-Commerce`
-3. Install dependencies: `npm install` 
-4. Run the application: `npm start`
+3. Navigate to the application folder: `cd my-app`
+4. Install dependencies: `npm install`
+5. Run the application: `npm start`
 
 ## Contributing
 We welcome contributions to improve FitTrendz! If you'd like to contribute:
