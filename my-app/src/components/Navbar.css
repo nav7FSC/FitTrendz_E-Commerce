@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 0;
+    padding: 4px 0; /* Further reduced padding */
     background-color: white;
     z-index: 1000; /* Ensures it stays above other elements */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Adds slight shadow */
@@ -22,13 +22,13 @@
 
 /* Top Navigation */
 .top-nav {
-    font-size: 20px;
+    font-size: 18px; /* Slightly reduced font size */
     font-weight: 600;
     font-family: 'Outfit', sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 5vw 4px; /* Reduced bottom padding */
+    padding: 5px 5vw 2px; /* Further reduced padding */
     max-width: 100%;
     margin-bottom: 0; /* Ensure no extra spacing */
     width: 100%;
@@ -38,12 +38,12 @@
 .search-container {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px; /* Slightly reduced spacing */
 }
 
 .searchicon, .cart-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px; /* Slightly reduced icon size */
+    height: 22px;
     object-fit: contain;
 }
 
@@ -51,30 +51,29 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 15px 5vw;
+    padding: 6px 5vw; /* Further reduced padding */
     width: 100%;
 }
 
-
 .Fit-Trendz-Title {
     font-family: 'Outfit', sans-serif;
-    font-size: 3.5rem;  /* Increase font size */
-    font-weight: 900;  /* Make it extra bold */
-    text-transform: uppercase;  /* Keep text all caps */
-    letter-spacing: 2px; /* Add spacing for better readability */
-    height: 100px; /* Increase height */
-    line-height: 100px; /* Ensure text stays vertically centered */
-    padding: 10px 20px; /* Add padding for better spacing */
+    font-size: 2.8rem; /* Reduced font size */
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    height: 55px; /* Further decreased height */
+    line-height: 55px; /* Adjust line height */
+    padding: 4px 10px; /* Adjusted padding */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .nav a, .top-nav a {
-    text-decoration: none; 
+    text-decoration: none;
     color: black;
     font-weight: 500;
-    padding: 10px 15px;
+    padding: 6px 10px; /* Further reduced padding */
 }
 
 .nav a:hover, .top-nav a:hover {
@@ -85,19 +84,19 @@
 .Sign-in-Container {
     display: flex;
     align-items: center;
-    gap: 8px; /* Adds spacing between icon and text */
-    white-space: nowrap; /* Prevents text from breaking */
-    padding: 5px 10px; /* Adds padding for better spacing */
-    min-width: 130px; /* Ensures enough space for the text */
+    gap: 6px; /* Reduced spacing */
+    white-space: nowrap;
+    padding: 4px 8px; /* Adjusted padding */
+    min-width: 120px; /* Slightly reduced width */
 }
 
 .person-icon {
-    width: 30px;
-    height: 30px;
-    object-fit: contain; /* Prevents distortion */
+    width: 26px; /* Slightly smaller icon */
+    height: 26px;
+    object-fit: contain;
 }
 
 .Sign-in-Container p {
-    font-size: 18px;
-    margin: 0; /* Removes unwanted margins */
+    font-size: 16px; /* Reduced font size */
+    margin: 0;
 }
