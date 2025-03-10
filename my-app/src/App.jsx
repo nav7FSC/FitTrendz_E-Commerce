@@ -1,3 +1,4 @@
+import "./index.css";
 import {Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
 import WomenCatalog from './pages/catalog'
@@ -8,8 +9,8 @@ import About from './pages/about'
 import SignUpPage from './pages/signup-page';
 import Cart from "./pages/cart"
 import Wishlist from './pages/wishlist'
-import "./index.css";
 import UserManagementPage from "./pages/userManagement";
+import ForgotPassword from "./pages/forgotpassword";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <Route path = "/check-out" index element = {<Checkout />} />
         <Route path = "/signup-page" index element = {<SignUpPage />} />
         <Route path ="/wishlist" element={<Wishlist />} />
-        <Route path="/user-management" element={<UserManagementPage />} />
+        <Route path ="/user-management" element={<UserManagementPage />} />
+        <Route path ="/forgotpassword" index element={<ForgotPassword />} />
       </Routes>
 
     </div>
