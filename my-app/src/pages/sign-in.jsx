@@ -1,6 +1,6 @@
+import "./pageStyling.css";
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
-import "./pageStyling.css";
 import Footer from "../components/footer";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import googleIcon from "./google-icon.png";
@@ -138,7 +138,7 @@ function SignInComponent() {
               <label className="remember-me">
                 <input type="checkbox" />Remember me
               </label>
-              <a href="/forgot-password">Forgot password?</a>
+              <a href="/forgotpassword">Forgot password?</a>
             </div>
 
             <button onClick={handleSubmit}>Login</button>
