@@ -15,23 +15,23 @@ export default function SignInPage() {
   );
 }
 
+export const authenticate = (formData) => {
+  axios
+    .post("http://localhost:3000/api/auth/login", formData)
+    .then((response) => {
+      console.log(response);
+      setUser(response.data.token);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 function SignInComponent() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({ email: false, password: false });
   const [user, setUser] = useState(null);
-
-  const authenticate = (formData) => {
-    axios
-      .post("http://localhost:3000/api/auth/login", formData)
-      .then((response) => {
-        console.log(response);
-        setUser(response.data.token);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
 
   const validate = (name, value) => {
     let tempErrors = { ...errors };

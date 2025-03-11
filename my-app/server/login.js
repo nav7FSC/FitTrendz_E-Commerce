@@ -37,6 +37,27 @@ app.post('/api/auth/login', (req, res) => {
     //console.log(res) // TODO remove logging or implement better logging tools
 });
 
+// TODO update to add profile picture
+app.post('/api/auth/update', async (req, res) => {
+    const { email, password } = req.body
+    console.log(req)
+    console.log(req.body)
+    console.log("Headers:", req.headers);
+    console.log("Body:", req.body);
+    const user = getUserByEmail(email);
+    console.log(user)
+    if (!user) {
+        return res.status(401).json({ error: "Invalid email or password" });
+    }
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    const updatePassword = db.prepare(`UPDATE users SET password = ?`)
+    try {
+        updatePassword.run(hashedPassword)
+    } catch (error) {
+        res.status(400).json({error: "Update password failed."})
+    }
+})
+
 app.post('/api/auth/register', async (req, res) => {
     const { first_name, last_name, email, password } = req.body; // TODO add phone number and address to regular registration or only on purchase?
     const hashedPassword = bcrypt.hashSync(password, 10);

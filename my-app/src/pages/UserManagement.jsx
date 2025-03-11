@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
+import { authenticate } from "./sign-in";
 
 export default function UserManagementPage() {
     const [userData, setUserData] = useState({
@@ -18,12 +19,12 @@ export default function UserManagementPage() {
         password: "",
     }); // For email and password confirmation
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:3000/api/user")
-            .then((response) => setUserData(response.data))
-            .catch((error) => console.error("Error fetching user data:", error));
-    }, []);
+    // useEffect(() => {
+    //     axios
+    //         .get("http://localhost:3000/api/user")
+    //         .then((response) => setUserData(response.data))
+    //         .catch((error) => console.error("Error fetching user data:", error));
+    // }, []);
 
     const validate = (name, value) => {
         let error = "";
@@ -63,7 +64,7 @@ export default function UserManagementPage() {
 
         // Here, make a request to the server to verify the user's email and password
         axios
-            .post("http://localhost:3000/api/user/verify", confirmData)
+            .post("http://localhost:3000/api/auth/login", confirmData)
             .then(() => {
                 setIsAuthenticated(true);
                 setSuccess("Identity confirmed. You can now edit your profile.");
@@ -80,12 +81,17 @@ export default function UserManagementPage() {
         const formData = new FormData();
         formData.append("email", userData.email);
         formData.append("password", userData.password);
-        if (selectedFile) {
-            formData.append("profilePicture", selectedFile);
-        }
-
+        // if (selectedFile) {
+        //     formData.append("profilePicture", selectedFile);
+        // }
+        console.log(Object.fromEntries(formData.entries()));
         axios
-            .post("http://localhost:3000/api/user/update", formData)
+            .post("http://localhost:3000/api/auth/update", {
+                email: userData.email,
+                password: userData.password
+            }, {
+                headers: {"Content-Type": "application/json"}
+            })
             .then(() => setSuccess("Profile updated successfully!"))
             .catch(() => setSuccess("Failed to update profile."));
     };
