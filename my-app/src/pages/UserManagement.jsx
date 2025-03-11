@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
-import { authenticate } from "./sign-in";
 
 export default function UserManagementPage() {
     const [userData, setUserData] = useState({
