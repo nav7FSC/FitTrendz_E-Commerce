@@ -9,10 +9,7 @@ export default function Navbar() {
         <div className='navbar'>
             {/* Top Navigation */}
             <nav className="top-nav">
-                <div className="search-container">
-                    <img src={searchicon} className="searchicon" alt="Search Icon" />
-                    <p>Search</p>
-                </div>
+                
 
                 {/* View Cart + Sign in Underneath */}
                 <div className="sign-in-cart-container">
@@ -20,12 +17,12 @@ export default function Navbar() {
                         <img src={shoppingcart} className="cart-icon" alt="Shopping Cart" />
                         <p>View Cart</p>
                     </Link>
-
+                    </div>
                     <Link to="/sign-in" className="Sign-in-Container">
                         <img src={personicon} className="person-icon" alt="User Icon" />
                         <p>Sign in / Sign up</p>
                     </Link>
-                </div>
+                
             </nav>
 
             {/* Main Navigation */}
