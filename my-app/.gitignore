@@ -25,3 +25,4 @@ dist-ssr
 
 database.sqlite-shm
 database.sqlite-wal
+.env
