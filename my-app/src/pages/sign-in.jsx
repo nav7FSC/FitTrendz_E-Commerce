@@ -4,8 +4,12 @@ import { useState, useEffect } from "react";
 import Footer from "../components/footer";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import googleIcon from "./google-icon.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import api from "../services/axiosInstance"
+
+// TODO add protectedRoute from react router so people can't access restricted pages
+// TODO implement log out button so the JWT cookie is deleted
 
 export default function SignInPage() {
   return (
@@ -15,12 +19,11 @@ export default function SignInPage() {
   );
 }
 
-export const authenticate = (formData) => {
-  axios
-    .post("http://localhost:3000/api/auth/login", formData)
+export const authenticate = async (formData) => {
+  await api
+    .post("http://localhost:3000/api/auth/login", formData, {withCredentials: true})
     .then((response) => {
       console.log(response);
-      setUser(response.data.token);
     })
     .catch((error) => {
       console.error(error);
@@ -31,7 +34,6 @@ function SignInComponent() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({ email: false, password: false });
-  const [user, setUser] = useState(null);
 
   const validate = (name, value) => {
     let tempErrors = { ...errors };
@@ -70,11 +72,6 @@ function SignInComponent() {
     }
   };
 
-  useEffect(() => {
-    if (user !== null) {
-      alert(user);
-    }
-  }, [user]);
 
   // Google Sign-In
   const googleLogin = useGoogleLogin({

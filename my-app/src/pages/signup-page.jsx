@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import googleIcon from "./google-icon.png";
 import Footer from "../components/footer";
-
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import api from '../services/axiosInstance'
+
+//TODO remove the 2 strange sucess messages and replace with something better 
 
 export default function SignUpPage() {
   return (
@@ -16,6 +19,7 @@ export default function SignUpPage() {
 }
 
 function SignUpComponent() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ first_name: "", last_name: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(null);
@@ -50,11 +54,12 @@ function SignUpComponent() {
     if (isValid) {
       createUser(formData);
       alert("Sign-up successful!");
+      navigate('/sign-in')
     }
   };
 
-  const createUser = (formData) => {
-    axios
+  const createUser = async (formData) => {
+    await api
       .post("http://localhost:3000/api/auth/register", formData)
       .then((response) => {
         console.log(response);

@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { authenticate } from "./sign-in";
+import api from '../services/axiosInstance'
 
 export default function UserManagementPage() {
     const [userData, setUserData] = useState({
@@ -58,12 +59,12 @@ export default function UserManagementPage() {
         setSelectedFile(e.target.files[0]);
     };
 
-    const handleConfirmSubmit = (e) => {
+    const handleConfirmSubmit = async (e) => {
         e.preventDefault();
         if (Object.values(errors).some((error) => error)) return;
 
         // Here, make a request to the server to verify the user's email and password
-        axios
+        await api
             .post("http://localhost:3000/api/auth/login", confirmData)
             .then(() => {
                 setIsAuthenticated(true);
@@ -74,7 +75,7 @@ export default function UserManagementPage() {
             });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (Object.values(errors).some((error) => error)) return;
 
@@ -85,7 +86,7 @@ export default function UserManagementPage() {
         //     formData.append("profilePicture", selectedFile);
         // }
         console.log(Object.fromEntries(formData.entries()));
-        axios
+        await api
             .post("http://localhost:3000/api/auth/update", {
                 email: userData.email,
                 password: userData.password
