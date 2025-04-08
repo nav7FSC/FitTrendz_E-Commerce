@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/footer'
 import Products from '../products/products'
@@ -8,16 +8,29 @@ import Sidebar from '../Sidebar/Sidebar'
 import Card from "../components/card"
 import {fetchAllProducts} from '../services/apiRequests'
 
-
+//TODO Why are all items retrieved upon entering the site
 // import products from '../db/data'
 
-const products = await fetchAllProducts()
-console.log(products)
+//const products = await fetchAllProducts()
+//console.log(products)
 
 export default function catalog() {
-
   const[selectedCategory,setSelectedCategory] = useState(null);
   const [query, setQuery] = useState("");
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const data = await fetchAllProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      }
+    };
+
+    getProducts();
+  }, []);
 
  // ----------- Input Filter -----------
 //  

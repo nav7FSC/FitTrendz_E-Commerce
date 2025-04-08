@@ -5,13 +5,15 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser'
 import {SignJWT, jwtVerify} from 'jose'
 import dotenv from 'dotenv'
+import crypto from 'crypto'
+import {RefreshToken} from './dbInterface.js'
 
 dotenv.config()
 const app = express();
 const db = getDb();
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET)
 
-// TODO make tokens expire
+// TODO make tokens expire later
 
 app.use(express.json());
 app.use(cors({
@@ -37,20 +39,69 @@ app.post('/api/auth/login', async (req, res) => {
         return res.status(401).json({ error: "Invalid email or password" });
     }
 
-    const token = await buildJWT(user, JWT_SECRET) // TODO make this secure
+    const accessToken = await buildAcessJWT(user, JWT_SECRET)
+    const refreshToken = buildRefreshToken(user, req);
 
-    res.cookie('token', token, {
+
+    res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
         secure: false, // TODO set true when HTTPS is enabled
-        sameSite: 'lax'
+        sameSite: 'lax' // change when backend delivers the front? Maybe not if react is hosted elsewhere
     });
     console.log(`cookie header set: ${res.getHeader('Set-Cookie')}`)
-    console.log(`Token: ${token}`)
+    console.log(`Token: ${refreshToken}`)
 
     res.json({message: 'Login Successful'});
 });
 
-export default async function buildJWT(user, secret) {
+export function buildRefreshToken(user, req) {
+    console.log(req.cookies)
+    try {
+        let random_token = crypto.randomBytes(64).toString('hex');
+        const user_id = user.id;
+        const created_time = Date.now()
+        const expires_at = created_time + 30 * 60 * 1000
+        const ip = req.ip //TODO may need to change this to req.headers['x-forwarded-for] || req.ip if we move behind a proxie
+        const user_agent = req.headers['user-agent']
+        const is_revoked = 'False';
+        const old_token = req.cookies.refreshToken || null;
+
+
+        console.log(random_token)
+        console.log(user_id)
+        console.log(created_time)
+        console.log(expires_at)
+        console.log(ip)
+        console.log(user_agent)
+        console.log(is_revoked)
+        console.log(old_token)
+
+        const new_token = new RefreshToken(
+            random_token,
+            user_id,
+            created_time,
+            expires_at,
+            ip, 
+            user_agent,
+            is_revoked,
+            old_token
+        );
+        new_token.insert()
+        return random_token; 
+    } catch (err) {
+        if (err.code == "SQLITE_CONSTRAINT_PRIMARYKEY") {
+            return buildRefreshToken(user, req)
+        } else {
+            throw console.log(err)
+        }
+    }
+}
+
+function invalidateOldToken(token) {
+    
+}
+
+export async function buildAcessJWT(user, secret) {
     const signing_algorithm = "HS256";
     const token_type = "JWT";
 
@@ -62,7 +113,7 @@ export default async function buildJWT(user, secret) {
     const subject = user.id
     const issuer = "FitTrendz"
     const iat = Math.floor(Date.now() / 1000)
-    const exp = iat + 60 * 15
+    const exp = iat + 60 * 15 // expires in 15 minutes
 
     // private claims 
     const name = user.name
@@ -86,6 +137,7 @@ export default async function buildJWT(user, secret) {
 
     return jwt
 }
+
 //middleware
 async function requireAuth(req, res, next) {
     console.log("middleware reached")
