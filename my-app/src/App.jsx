@@ -11,6 +11,7 @@ import Cart from "./pages/cart"
 import Wishlist from './pages/wishlist'
 import UserManagementPage from "./pages/userManagement";
 import ForgotPassword from "./pages/forgotpassword";
+import ProductDetails from "./pages/productdetails";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
 
       <Routes>
         <Route path = "/" index element = {<Home />} />
+        <Route path="/product/:title" element={<ProductDetails />} />
         <Route path = "/about" index element = {<About />} />
         <Route path = "/catalog" index element = {<WomenCatalog />} />
         <Route path = "/catalog" index element = {<MenCatalog />} />
