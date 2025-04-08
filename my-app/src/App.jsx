@@ -12,6 +12,7 @@ import Wishlist from './pages/wishlist'
 import UserManagementPage from "./pages/userManagement";
 import ForgotPassword from "./pages/forgotpassword";
 import ProductDetails from "./pages/productdetails";
+import Quiz from "./pages/quiz.jsx";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path ="/wishlist" element={<Wishlist />} />
         <Route path ="/user-management" element={<UserManagementPage />} />
         <Route path ="/forgotpassword" index element={<ForgotPassword />} />
+        <Route path="/quiz" element={<Quiz />} />
       </Routes>
 
     </div>
