@@ -7,6 +7,7 @@ import googleIcon from "./google-icon.png";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import api from "../services/axiosInstance"
+import { useAuth } from "../components/AuthContext";
 
 // TODO add protectedRoute from react router so people can't access restricted pages
 // TODO implement log out button so the JWT cookie is deleted
@@ -19,18 +20,19 @@ export default function SignInPage() {
   );
 }
 
-export const authenticate = async (formData) => {
-  await api
-    .post("http://localhost:3000/api/auth/login", formData, {withCredentials: true})
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+// export const authenticate = async (formData) => {
+//   await api
+//     .post("http://localhost:3000/api/auth/login", formData, {withCredentials: true})
+//     .then((response) => {
+//       console.log(response);
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//     });
+// };
 
 function SignInComponent() {
+  const { login } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({ email: false, password: false });
@@ -68,7 +70,7 @@ function SignInComponent() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
-      authenticate(formData);
+      login(formData);
     }
   };
 

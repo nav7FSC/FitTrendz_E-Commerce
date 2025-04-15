@@ -10,7 +10,7 @@ api.interceptors.response.use(
     error => {
         const currentPath = window.location.pathname;
 
-        if (isUnauthorized && currentPath !== '/login') {
+        if (currentPath !== '/login') {
           window.location.href = '/login';
         }
       return Promise.reject(error);

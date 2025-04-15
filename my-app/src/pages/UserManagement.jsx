@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
-import { authenticate } from "./sign-in";
+// import { authenticate } from "./sign-in";
 import api from '../services/axiosInstance'
+import { useAuth } from "../components/AuthContext";
+import { Link, Navigate, useLocation } from "react-router-dom";
+
 
 export default function UserManagementPage() {
+    const { accessToken } = useAuth();
     const [userData, setUserData] = useState({
         email: "",
         password: "",
@@ -19,6 +23,16 @@ export default function UserManagementPage() {
         email: "",
         password: "",
     }); // For email and password confirmation
+
+    useEffect(() => {
+        if (accessToken) {
+            setIsAuthenticated(true);
+        }
+    }, [accessToken]);
+
+    if (!accessToken) {
+        return <Navigate to="/sign-in"/>;
+    }
 
     // useEffect(() => {
     //     axios

@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true
-})); // TODO only for development change backend to deliver frontend
+})); // TODO only for development change backend to deliver frontend or use CDN?
 app.use(cookieParser())
 
 // add validation and sanatize for the email and password
@@ -40,66 +40,22 @@ app.post('/api/auth/login', async (req, res) => {
     }
 
     const accessToken = await buildAcessJWT(user, JWT_SECRET)
-    const refreshToken = buildRefreshToken(user, req);
+    console.log("JWT: ", accessToken)
+    const refreshToken = RefreshToken.buildRefreshToken(user, req);
+    RefreshToken.invlidateOldToken(refreshToken.replaced_by_token);
 
-
-    res.cookie('refreshToken', refreshToken, {
+    res.cookie('refreshToken', refreshToken.token, {
         httpOnly: true,
         secure: false, // TODO set true when HTTPS is enabled
-        sameSite: 'lax' // change when backend delivers the front? Maybe not if react is hosted elsewhere
+        sameSite: 'lax', // change when backend delivers the front? Maybe not if react is hosted elsewhere
+        maxAge:  60 * 60 * 1000 // 1 hour until browser removes it
     });
     console.log(`cookie header set: ${res.getHeader('Set-Cookie')}`)
     console.log(`Token: ${refreshToken}`)
 
-    res.json({message: 'Login Successful'});
+    res.json({message: 'Login Successful', accessToken: accessToken});
 });
 
-export function buildRefreshToken(user, req) {
-    console.log(req.cookies)
-    try {
-        let random_token = crypto.randomBytes(64).toString('hex');
-        const user_id = user.id;
-        const created_time = Date.now()
-        const expires_at = created_time + 30 * 60 * 1000
-        const ip = req.ip //TODO may need to change this to req.headers['x-forwarded-for] || req.ip if we move behind a proxie
-        const user_agent = req.headers['user-agent']
-        const is_revoked = 'False';
-        const old_token = req.cookies.refreshToken || null;
-
-
-        console.log(random_token)
-        console.log(user_id)
-        console.log(created_time)
-        console.log(expires_at)
-        console.log(ip)
-        console.log(user_agent)
-        console.log(is_revoked)
-        console.log(old_token)
-
-        const new_token = new RefreshToken(
-            random_token,
-            user_id,
-            created_time,
-            expires_at,
-            ip, 
-            user_agent,
-            is_revoked,
-            old_token
-        );
-        new_token.insert()
-        return random_token; 
-    } catch (err) {
-        if (err.code == "SQLITE_CONSTRAINT_PRIMARYKEY") {
-            return buildRefreshToken(user, req)
-        } else {
-            throw console.log(err)
-        }
-    }
-}
-
-function invalidateOldToken(token) {
-    
-}
 
 export async function buildAcessJWT(user, secret) {
     const signing_algorithm = "HS256";
@@ -142,9 +98,10 @@ export async function buildAcessJWT(user, secret) {
 async function requireAuth(req, res, next) {
     console.log("middleware reached")
     console.log(`cookies:`, req.cookies);
-    const token = req.cookies.token;
+    const token = req.cookies.refreshToken;
 
     if (!token) return res.status(401).json({ error: 'Unauthorized' });
+
     console.log("token not undefined")
     console.log(token)
     try {
