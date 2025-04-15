@@ -11,9 +11,7 @@ export default function Catalog() {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [query, setQuery] = useState("");
-
-  const [products, setProducts] = useState([]);
-
+  
   useEffect(() => {
     const getProducts = async () => {
       try {
