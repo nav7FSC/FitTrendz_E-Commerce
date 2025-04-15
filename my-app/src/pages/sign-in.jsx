@@ -23,17 +23,6 @@ export default function SignInPage() {
   );
 }
 
-// export const authenticate = async (formData) => {
-//   await api
-//     .post("http://localhost:3000/api/auth/login", formData, {withCredentials: true})
-//     .then((response) => {
-//       console.log(response);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-// };
-
 function SignInComponent() {
   const navigate = useNavigate();
   const { login } = useAuth();

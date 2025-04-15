@@ -2,68 +2,41 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
+import { useCart } from "../context/CartContext";
 import "./pageStyling.css";
 
 export default function Cart() {
-  const navigate = useNavigate(); // Enables navigation
-
-  // Sample cart items (Can be replaced with state management/store)
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      title: "Product A",
-      price: 50,
-      quantity: 1,
-      img: "https://via.placeholder.com/100",
-    },
-    {
-      id: 2,
-      title: "Product B",
-      price: 75,
-      quantity: 1,
-      img: "https://via.placeholder.com/100",
-    },
-  ]);
+  const navigate = useNavigate();
+  const { cartItems, updateQuantity, removeFromCart } = useCart();
 
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
 
-  // Function to update quantity
   const handleQuantityChange = (id, type) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              quantity: type === "increase" ? item.quantity + 1 : Math.max(1, item.quantity - 1),
-            }
-          : item
-      )
-    );
+    updateQuantity(id, type);
   };
 
-  // Function to remove an item from the cart
   const handleRemoveItem = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
+    removeFromCart(id);
   };
 
-  // Function to apply a promo code
   const applyPromoCode = () => {
     if (promoCode === "SAVE10") {
-      setDiscount(10); // 10% discount
+      setDiscount(10);
     } else {
       setDiscount(0);
     }
   };
 
-  // Calculate subtotal, tax, and total
-  const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  const tax = subtotal * 0.08; // 8% tax
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const tax = subtotal * 0.08;
   const total = subtotal - (subtotal * discount) / 100 + tax;
 
-  // Redirect to checkout
   const handleCheckout = () => {
-    navigate("/check-out"); // Redirects to Checkout Page
+    navigate("/check-out");
   };
 
   return (
@@ -80,6 +53,7 @@ export default function Cart() {
                   <img src={item.img} alt={item.title} className="cart-img" />
                   <div className="cart-details">
                     <h3>{item.title}</h3>
+                    <p>Size: {item.size}</p>
                     <p>${item.price.toFixed(2)}</p>
                     <div className="quantity-control">
                       <button onClick={() => handleQuantityChange(item.id, "decrease")}>-</button>
@@ -94,7 +68,6 @@ export default function Cart() {
               ))}
             </div>
 
-            {/* Order Summary Section */}
             <div className="cart-summary">
               <h3>Order Summary</h3>
               <p>Subtotal: ${subtotal.toFixed(2)}</p>
@@ -102,7 +75,6 @@ export default function Cart() {
               {discount > 0 && <p>Discount: -{discount}%</p>}
               <p><strong>Total: ${total.toFixed(2)}</strong></p>
 
-              {/* Promo Code Section */}
               <div className="promo-section">
                 <input
                   type="text"
@@ -113,7 +85,6 @@ export default function Cart() {
                 <button onClick={applyPromoCode}>Apply</button>
               </div>
 
-              {/* Buttons for Checkout and Continue Shopping */}
               <button className="checkout-btn" onClick={handleCheckout}>
                 Proceed to Checkout
               </button>

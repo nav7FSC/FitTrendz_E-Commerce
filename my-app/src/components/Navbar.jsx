@@ -40,7 +40,10 @@ export default function Navbar() {
                 <Link to="/about">About</Link>
                 <Link to="/" className="Fit-Trendz-Title">
                     <span>Fit Trendz</span>
-                </Link>   
+                </Link>
+                <Link to="/quiz" className="size-quiz-button">
+                    Size Quiz
+                </Link>
                 <Link to="/wishlist">Wishlist</Link>
                 <Link to="/user-management">User Management</Link>
             </nav>
