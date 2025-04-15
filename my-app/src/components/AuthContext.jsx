@@ -1,10 +1,22 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../services/axiosInstance"
 
+let accessTokenCache = null;
+
+export const setAccessTokenGlobal = (token) => {
+  accessTokenCache = token;
+};
+
+export const getAccessToken = () => accessTokenCache;
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [accessToken, setAccessToken] = useState(null);
+
+    useEffect(() => {
+      setAccessTokenGlobal(accessToken);
+    }, [accessToken]);
 
     const login = async (credentials) => {
         const res = await api.post("/auth/login", credentials, { withCredentials: true });

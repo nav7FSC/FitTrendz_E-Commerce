@@ -11,7 +11,7 @@ import { Link, Navigate, useLocation } from "react-router-dom";
 export default function UserManagementPage() {
     const { accessToken } = useAuth();
     const [userData, setUserData] = useState({
-        email: "",
+        // email: "",
         password: "",
         profilePicture: "",
     });
@@ -20,7 +20,7 @@ export default function UserManagementPage() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false); // For identity confirmation
     const [confirmData, setConfirmData] = useState({
-        email: "",
+        // email: "",
         password: "",
     }); // For email and password confirmation
 
@@ -44,10 +44,10 @@ export default function UserManagementPage() {
     const validate = (name, value) => {
         let error = "";
         // Validate confirm identity section (email and password)
-        if (name === "email") {
-            if (!value) error = "Email is required";
-            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Invalid email format";
-        }
+        // if (name === "email") {
+        //     if (!value) error = "Email is required";
+        //     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Invalid email format";
+        // }
 
         if (name === "password") {
             if (!value) error = "Password is required";
@@ -94,7 +94,7 @@ export default function UserManagementPage() {
         if (Object.values(errors).some((error) => error)) return;
 
         const formData = new FormData();
-        formData.append("email", userData.email);
+        // formData.append("email", userData.email);
         formData.append("password", userData.password);
         // if (selectedFile) {
         //     formData.append("profilePicture", selectedFile);
@@ -102,7 +102,7 @@ export default function UserManagementPage() {
         console.log(Object.fromEntries(formData.entries()));
         await api
             .post("http://localhost:3000/api/auth/update", {
-                email: userData.email,
+                // email: userData.email,
                 password: userData.password
             }, {
                 headers: {"Content-Type": "application/json"}
@@ -182,7 +182,7 @@ export default function UserManagementPage() {
                 {/* Step 1: Identity Confirmation */}
                 {!isAuthenticated ? (
                     <form style={styles.form} onSubmit={handleConfirmSubmit}>
-                        <label style={styles.label}>Email</label>
+                        {/* <label style={styles.label}>Email</label>
                         <input
                             type="email"
                             name="email"
@@ -192,8 +192,8 @@ export default function UserManagementPage() {
                                 ...styles.input,
                                 ...(errors.email ? styles.inputError : errors.email === "" ? styles.inputSuccess : {}),
                             }}
-                        />
-                        {errors.email && <p style={styles.error}>{errors.email}</p>}
+                        /> */}
+                        {/* {errors.email && <p style={styles.error}>{errors.email}</p>} */}
 
                         <label style={styles.label}>Password</label>
                         <input
@@ -215,7 +215,7 @@ export default function UserManagementPage() {
                 ) : (
                     /* Step 2: Edit Profile (after identity confirmation) */
                     <form style={styles.form} onSubmit={handleSubmit}>
-                        <label style={styles.label}>Email</label>
+                        {/* <label style={styles.label}>Email</label>
                         <input
                             type="email"
                             name="email"
@@ -226,7 +226,7 @@ export default function UserManagementPage() {
                                 ...(errors.email ? styles.inputError : errors.email === "" ? styles.inputSuccess : {}),
                             }}
                         />
-                        {errors.email && <p style={styles.error}>{errors.email}</p>}
+                        {errors.email && <p style={styles.error}>{errors.email}</p>} */}
 
                         <label style={styles.label}>New Password (Optional)</label>
                         <input

@@ -8,9 +8,12 @@ import { Link, Navigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import api from "../services/axiosInstance"
 import { useAuth } from "../components/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 
 // TODO add protectedRoute from react router so people can't access restricted pages
 // TODO implement log out button so the JWT cookie is deleted
+// TODO add error messages on invalid login
 
 export default function SignInPage() {
   return (
@@ -32,6 +35,7 @@ export default function SignInPage() {
 // };
 
 function SignInComponent() {
+  const navigate = useNavigate();
   const { login } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
@@ -67,10 +71,11 @@ function SignInComponent() {
     validate(name, value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
-      login(formData);
+      await login(formData);
+      navigate("/");
     }
   };
 
