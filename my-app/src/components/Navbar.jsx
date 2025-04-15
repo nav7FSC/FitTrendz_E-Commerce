@@ -5,11 +5,12 @@ import shoppingcart from '../assets/shopping-cart-icon.png'
 import personicon from '../assets/person.png'
 import { useEffect, useState } from 'react'
 import api from '../services/axiosInstance'
+import {useAuth} from './AuthContext'
 
 // TODO implement signout on front and backend
 
 export default function Navbar() {
-
+    const {isAuthenticated} = useAuth()
     return (
         <div className='navbar'>
             {/* Top Navigation */}
@@ -26,10 +27,17 @@ export default function Navbar() {
                         <p>View Cart</p>
                     </Link>
                 
+                {isAuthenticated ? (
                     <Link to="/sign-in" className="Sign-in-Container">
-                        <img src={personicon} className="person-icon" alt="User Icon" />
-                        <p>Sign in / Sign up</p>
+                    <img src={personicon} className="person-icon" alt="User Icon" />
+                    <p>Sign in</p>
                     </Link>
+                ) : (
+                    <Link to="/sign-out" className="Sign-out-Container">
+                        <img src={personicon} className="person-icon" alt="User Icon" />
+                        <p>Sign out</p>
+                    </Link>
+                )}
                 </div>
             </nav>
 
