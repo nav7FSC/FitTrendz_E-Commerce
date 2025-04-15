@@ -53,17 +53,16 @@ function SignUpComponent() {
     const isValid = Object.values(errors).every((error) => !error) && Object.values(formData).every((value) => value !== "");
     if (isValid) {
       createUser(formData);
-      alert("Sign-up successful!");
-      navigate('/sign-in')
     }
   };
 
   const createUser = async (formData) => {
     await api
-      .post("http://localhost:3000/api/auth/register", formData)
+      .post("/auth/register", formData)
       .then((response) => {
         console.log(response);
         setSuccess("User Created");
+        navigate('/sign-in')
       })
       .catch((error) => {
         setSuccess("Failed to Create");
