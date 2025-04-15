@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 import {SignJWT, jwtVerify} from 'jose'
 import dotenv from 'dotenv'
 import crypto from 'crypto'
-import {RefreshToken} from './dbInterface.js'
+import {RefreshToken} from './RefreshToken.js'
 
 dotenv.config()
 const app = express();
