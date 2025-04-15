@@ -96,9 +96,10 @@ export async function buildAcessJWT(user, secret) {
 
 //middleware
 async function requireAuth(req, res, next) {
-    console.log("middleware reached")
-    console.log(`cookies:`, req.cookies);
-    const token = req.cookies.refreshToken;
+    console.log("require auth middleware reached")
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // remove "Bearer"
+    console.log(`auth token ${token}`);
 
     if (!token) return res.status(401).json({ error: 'Unauthorized' });
 
@@ -118,13 +119,13 @@ async function requireAuth(req, res, next) {
 
 // TODO update to add profile picture
 app.post('/api/auth/update', requireAuth, async (req, res) => {
-    const { email, password } = req.body
-    console.log(req)
-    console.log(req.body)
-    console.log("Headers:", req.headers);
-    console.log("Body:", req.body);
-    const user = getUserByEmail(email);
-    console.log(user)
+    const { password } = req.body
+    // console.log(req)
+    // console.log(req.body)
+    // console.log("Headers:", req.headers);
+    // console.log("Body:", req.body);
+    const user = req.user;
+    console.log(`user: ${user}`);
     if (!user) {
         return res.status(401).json({ error: "Invalid email or password" });
     }
