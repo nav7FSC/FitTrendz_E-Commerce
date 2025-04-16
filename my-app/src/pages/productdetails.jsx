@@ -7,7 +7,6 @@ import Footer from "../components/footer";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 
-
 export default function ProductDetails() {
   const { title } = useParams();
   const product = data.find((item) => item.title === decodeURIComponent(title));
@@ -22,56 +21,69 @@ export default function ProductDetails() {
 
   const { addToCart } = useCart();
 
-const handleAddToCart = () => {
-  if (!selectedSize) {
-    alert("Please select a size before adding to cart.");
-    return;
-  }
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      alert("Please select a size before adding to cart.");
+      return;
+    }
 
-  addToCart(product, selectedSize);
-  alert(`✅ ${product.title} (Size ${selectedSize}) added to cart!`);
-  navigate("/cart");
-};
+    addToCart(product, selectedSize);
+    alert(`✅ ${product.title} (Size ${selectedSize}) added to cart!`);
+    navigate("/cart");
+  };
 
-const { addToWishlist } = useWishlist();
+  const { addToWishlist } = useWishlist();
 
-const handleWishlist = () => {
-  setWishlisted(true);
-  addToWishlist({
-    ...product,
-    id: product.title, // use title as unique ID
-    price: parseFloat(product.newPrice.replace("$", "")),
-    img: product.img,
-  });
-  alert(`❤️ ${product.title} added to wishlist!`);
-};
-
+  const handleWishlist = () => {
+    setWishlisted(true);
+    addToWishlist({
+      ...product,
+      id: product.title, // use title as unique ID
+      price: parseFloat(product.newPrice.replace("$", "")),
+      img: product.img,
+    });
+    alert(`❤️ ${product.title} added to wishlist!`);
+  };
 
   if (!product) {
-    return <div className="product-details"><h2>Product not found.</h2></div>;
+    return (
+      <div className="product-details">
+        <h2>Product not found.</h2>
+      </div>
+    );
   }
 
   return (
     <>
-      <Navbar />
-
       <div className="product-details">
         <div className="image-section">
           <img src={product.img} alt={product.title} />
         </div>
         <div className="info-section">
           <h1>{product.title}</h1>
-          <p><strong>Rating:</strong> {product.rating} {product.reviews}</p>
-          <p><strong>Category:</strong> {product.category}</p>
-          <p><strong>Gender:</strong> {product.gender}</p>
-          <p><strong>Color:</strong> {product.color}</p>
-          <p><strong>Style:</strong> {product.style}</p>
+          <p>
+            <strong>Rating:</strong> {product.rating} {product.reviews}
+          </p>
+          <p>
+            <strong>Category:</strong> {product.category}
+          </p>
+          <p>
+            <strong>Gender:</strong> {product.gender}
+          </p>
+          <p>
+            <strong>Color:</strong> {product.color}
+          </p>
+          <p>
+            <strong>Style:</strong> {product.style}
+          </p>
           <p className="price">
             <span className="prev">{product.prevPrice}</span>
             <span className="new">{product.newPrice}</span>
           </p>
 
-          <label htmlFor="size-select"><strong>Select Size:</strong></label>
+          <label htmlFor="size-select">
+            <strong>Select Size:</strong>
+          </label>
           <select
             id="size-select"
             value={selectedSize}
@@ -100,8 +112,6 @@ const handleWishlist = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

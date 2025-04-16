@@ -3,121 +3,132 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 
 export default function Quiz() {
-    const [step, setStep] = useState(0);
-    const [answers, setAnswers] = useState({
-        gender: "",
-        height: "",
-        weight: "",
-        chest: "",
-        waist: "",
-        hips: ""
-    });
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState({
+    gender: "",
+    height: "",
+    weight: "",
+    chest: "",
+    waist: "",
+    hips: "",
+  });
 
-    const handleChange = (e) => {
-        setAnswers({ ...answers, [e.target.name]: e.target.value });
-    };
+  const handleChange = (e) => {
+    setAnswers({ ...answers, [e.target.name]: e.target.value });
+  };
 
-    const next = () => setStep(step + 1);
-    const back = () => setStep(step - 1);
+  const next = () => setStep(step + 1);
+  const back = () => setStep(step - 1);
 
-    const getSize = () => {
-        const { gender, chest, waist, hips } = answers;
-        const c = parseInt(chest);
-        const w = parseInt(waist);
-        const h = parseInt(hips);
+  const getSize = () => {
+    const { gender, chest, waist, hips } = answers;
+    const c = parseInt(chest);
+    const w = parseInt(waist);
+    const h = parseInt(hips);
 
-        if (gender === "female") {
-            if (c <= 33 && w <= 26 && h <= 36) return "Small (S)";
-            if (c <= 36 && w <= 29 && h <= 39) return "Medium (M)";
-            if (c <= 39 && w <= 32 && h <= 42) return "Large (L)";
-            return "Extra Large (XL)";
-        } else {
-            if (c <= 36 && w <= 30) return "Small (S)";
-            if (c <= 40 && w <= 34) return "Medium (M)";
-            if (c <= 44 && w <= 38) return "Large (L)";
-            return "Extra Large (XL)";
-        }
-    };
+    if (gender === "female") {
+      if (c <= 33 && w <= 26 && h <= 36) return "Small (S)";
+      if (c <= 36 && w <= 29 && h <= 39) return "Medium (M)";
+      if (c <= 39 && w <= 32 && h <= 42) return "Large (L)";
+      return "Extra Large (XL)";
+    } else {
+      if (c <= 36 && w <= 30) return "Small (S)";
+      if (c <= 40 && w <= 34) return "Medium (M)";
+      if (c <= 44 && w <= 38) return "Large (L)";
+      return "Extra Large (XL)";
+    }
+  };
 
-    const questions = [
-        {
-            label: "What's your gender?",
-            name: "gender",
-            type: "select",
-            options: ["male", "female"]
-        },
-        {
-            label: "What's your height (inches)?",
-            name: "height",
-            type: "number"
-        },
-        {
-            label: "What's your weight (lbs)?",
-            name: "weight",
-            type: "number"
-        },
-        {
-            label: "What's your chest measurement (inches)?",
-            name: "chest",
-            type: "number"
-        },
-        {
-            label: "What's your waist measurement (inches)?",
-            name: "waist",
-            type: "number"
-        },
-        {
-            label: "What's your hips measurement (inches)?",
-            name: "hips",
-            type: "number"
-        }
-    ];
+  const questions = [
+    {
+      label: "What's your gender?",
+      name: "gender",
+      type: "select",
+      options: ["male", "female"],
+    },
+    {
+      label: "What's your height (inches)?",
+      name: "height",
+      type: "number",
+    },
+    {
+      label: "What's your weight (lbs)?",
+      name: "weight",
+      type: "number",
+    },
+    {
+      label: "What's your chest measurement (inches)?",
+      name: "chest",
+      type: "number",
+    },
+    {
+      label: "What's your waist measurement (inches)?",
+      name: "waist",
+      type: "number",
+    },
+    {
+      label: "What's your hips measurement (inches)?",
+      name: "hips",
+      type: "number",
+    },
+  ];
 
-    const currentQuestion = questions[step];
+  const currentQuestion = questions[step];
 
-    return (
-        <>
-            <Navbar />
-            <div className="quiz-container">
-                <h2 className="quiz-title">Find Your Perfect Fit</h2>
-                {step < questions.length ? (
-                    <>
-                        <p>{currentQuestion.label}</p>
-                        {currentQuestion.type === "select" ? (
-                            <select
-                                name={currentQuestion.name}
-                                value={answers[currentQuestion.name]}
-                                onChange={handleChange}
-                                className="quiz-input"
-                            >
-                                <option value="">Select</option>
-                                {currentQuestion.options.map((opt) => (
-                                    <option key={opt} value={opt}>{opt}</option>
-                                ))}
-                            </select>
-                        ) : (
-                            <input
-                                type={currentQuestion.type}
-                                name={currentQuestion.name}
-                                value={answers[currentQuestion.name]}
-                                onChange={handleChange}
-                                className="quiz-input"
-                            />
-                        )}
-                        <div style={{ marginTop: "20px" }}>
-                            {step > 0 && <button onClick={back} className="quiz-button" style={{ marginRight: "10px" }}>Back</button>}
-                            <button onClick={next} className="quiz-button">Next</button>
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <h3>Your Recommended Size:</h3>
-                        <p className="quiz-result">{getSize()}</p>
-                    </>
-                )}
+  return (
+    <>
+      <div className="quiz-container">
+        <h2 className="quiz-title">Find Your Perfect Fit</h2>
+        {step < questions.length ? (
+          <>
+            <p>{currentQuestion.label}</p>
+            {currentQuestion.type === "select" ? (
+              <select
+                name={currentQuestion.name}
+                value={answers[currentQuestion.name]}
+                onChange={handleChange}
+                className="quiz-input"
+              >
+                <option value="">Select</option>
+                {currentQuestion.options.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <input
+                type={currentQuestion.type}
+                name={currentQuestion.name}
+                value={answers[currentQuestion.name]}
+                onChange={handleChange}
+                className="quiz-input"
+              />
+            )}
+            <div style={{ marginTop: "20px" }}>
+              {step > 0 && (
+                <button
+                  onClick={back}
+                  className="quiz-button"
+                  style={{ marginRight: "10px" }}
+                >
+                  Back
+                </button>
+              )}
+              <button onClick={next} className="quiz-button">
+                Next
+              </button>
             </div>
-            <Footer />
-            <style>{`
+          </>
+        ) : (
+          <>
+            <h3>Your Recommended Size:</h3>
+            <p className="quiz-result">{getSize()}</p>
+          </>
+        )}
+      </div>
+
+      <style>{`
                 .quiz-container {
                     max-width: 600px;
                     margin: 0 auto;
@@ -176,6 +187,6 @@ export default function Quiz() {
                     to { opacity: 1; transform: translateY(0); }
                 }
             `}</style>
-        </>
-    );
+    </>
+  );
 }

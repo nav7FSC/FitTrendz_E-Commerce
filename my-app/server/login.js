@@ -116,6 +116,20 @@ async function requireAuth(req, res, next) {
       }
 }
 
+app.post('/api/auth/logout', async (req, res) => {
+    const refreshTokenID = req.cookies.refreshToken;
+    const refreshToken = RefreshToken.get(refreshTokenID);
+    if (refreshToken) {
+        refreshToken.revoke()
+    }
+
+    res.clearCookie("refreshToken",{
+        httpOnly: true,
+        secure: false, // TODO set true when HTTPS is enabled
+        sameSite: 'lax', // change when backend delivers the front? Maybe not if react is hosted elsewhere
+    })
+    return res.status(200).json({message:"Logged out"})
+})
 
 // TODO update to add profile picture
 app.post('/api/auth/update', requireAuth, async (req, res) => {

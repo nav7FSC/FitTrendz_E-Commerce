@@ -107,7 +107,7 @@ function insert_test_products(image, title, rating, reviews, prevPrice, newPrice
         gender,
     )
 }
-// TODO temp script to insert products from matt's existing test list in db/data.jsx
+// temp script to insert products from matt's existing test list in db/data.jsx
 function insert_test_products_from_existing_list() {
     data.forEach(element => {
         insert_test_products(...Object.values(element))

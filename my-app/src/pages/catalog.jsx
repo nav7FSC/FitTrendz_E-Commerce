@@ -86,7 +86,6 @@ export default function Catalog() {
 
   return (
     <div>
-      <Navbar />
       <Sidebar
         handleChange={handleChange}
         query={query}
@@ -94,7 +93,6 @@ export default function Catalog() {
       />
       <Recommended handleClick={handleClick} />
       <Products result={result} />
-      <Footer />
     </div>
   );
 }

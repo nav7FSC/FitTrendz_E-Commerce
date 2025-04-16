@@ -41,7 +41,7 @@ export default function About() {
 
     return (
         <>
-            <Navbar />
+            
             <div style={styles.container}>
                 <h1 style={styles.title}>About FitTrendz</h1>
                 <p style={{ ...styles.text, ...styles.paragraphHover }}>
@@ -58,7 +58,7 @@ export default function About() {
                     Because when your clothes fit right, everything feels right.
                 </p>
             </div>
-            <Footer />
+            
         </>
     );
 }

@@ -10,7 +10,9 @@ import {useAuth} from './AuthContext'
 // TODO implement signout on front and backend
 
 export default function Navbar() {
-    const {isAuthenticated} = useAuth()
+    const {accessToken} = useAuth()
+
+
     return (
         <div className='navbar'>
             {/* Top Navigation */}
@@ -27,7 +29,7 @@ export default function Navbar() {
                         <p>View Cart</p>
                     </Link>
                 
-                {isAuthenticated ? (
+                {!accessToken ? (
                     <Link to="/sign-in" className="Sign-in-Container">
                     <img src={personicon} className="person-icon" alt="User Icon" />
                     <p>Sign in</p>

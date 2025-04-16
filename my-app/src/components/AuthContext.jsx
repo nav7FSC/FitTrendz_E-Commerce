@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useMemo } from "react";
 import api from "../services/axiosInstance"
 
 let accessTokenCache = null;
@@ -13,6 +13,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [accessToken, setAccessToken] = useState(null);
+    //const isAuthenticated = !!accessToken;
 
     useEffect(() => {
       setAccessTokenGlobal(accessToken);
@@ -26,13 +27,22 @@ export const AuthProvider = ({ children }) => {
       };
 
       const logout = async () => {
-        await api.post("/auth/logout", {}, { withCredentials: true });
-        setAccessToken(null);
-        console.log(`Logout successful!`)
+        try{
+          await api.post("/auth/logout", {}, { withCredentials: true });
+          setAccessToken(null);
+          console.log(`Logout successful!`)
+        } catch (e) {
+          console.error("Logout failed", e)
+        }
       };
-
+      const value = useMemo(() => ({
+        accessToken,
+        setAccessToken,
+        login,
+        logout,
+      }), [accessToken]);
       return (
-        <AuthContext.Provider value={{ accessToken, setAccessToken, login, logout }}>
+        <AuthContext.Provider value={value}>
           {children}
         </AuthContext.Provider>
       );
