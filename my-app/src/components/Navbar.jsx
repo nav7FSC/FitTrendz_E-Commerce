@@ -3,8 +3,16 @@ import { Link } from "react-router-dom"
 import searchicon from '../assets/search-icon.png'
 import shoppingcart from '../assets/shopping-cart-icon.png'
 import personicon from '../assets/person.png'
+import { useEffect, useState } from 'react'
+import api from '../services/axiosInstance'
+import {useAuth} from './AuthContext'
+
+// TODO implement signout on front and backend
 
 export default function Navbar() {
+    const {accessToken} = useAuth()
+
+
     return (
         <div className='navbar'>
             {/* Top Navigation */}
@@ -20,11 +28,18 @@ export default function Navbar() {
                         <img src={shoppingcart} className="cart-icon" alt="Shopping Cart" />
                         <p>View Cart</p>
                     </Link>
-
+                
+                {!accessToken ? (
                     <Link to="/sign-in" className="Sign-in-Container">
-                        <img src={personicon} className="person-icon" alt="User Icon" />
-                        <p>Sign in / Sign up</p>
+                    <img src={personicon} className="person-icon" alt="User Icon" />
+                    <p>Sign in</p>
                     </Link>
+                ) : (
+                    <Link to="/sign-out" className="Sign-out-Container">
+                        <img src={personicon} className="person-icon" alt="User Icon" />
+                        <p>Sign out</p>
+                    </Link>
+                )}
                 </div>
             </nav>
 

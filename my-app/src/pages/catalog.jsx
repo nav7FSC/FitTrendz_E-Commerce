@@ -11,13 +11,18 @@ export default function Catalog() {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [query, setQuery] = useState("");
-
+  
   useEffect(() => {
-    async function fetchData() {
-      const data = await fetchAllProducts();
-      setProducts(data);
-    }
-    fetchData();
+    const getProducts = async () => {
+      try {
+        const data = await fetchAllProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      }
+    };
+
+    getProducts();
   }, []);
 
   const handleInputChange = (event) => {
@@ -81,7 +86,6 @@ export default function Catalog() {
 
   return (
     <div>
-      <Navbar />
       <Sidebar
         handleChange={handleChange}
         query={query}
@@ -89,7 +93,6 @@ export default function Catalog() {
       />
       <Recommended handleClick={handleClick} />
       <Products result={result} />
-      <Footer />
     </div>
   );
 }

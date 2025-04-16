@@ -30,7 +30,7 @@ export default function Checkout() {
 
   return (
     <>
-      <Navbar />
+       
       <div className="checkout-container">
         <h2>Checkout</h2>
 
@@ -67,7 +67,7 @@ export default function Checkout() {
           <button type="submit" className="checkout-button">Place Order</button>
         </form>
       </div>
-      <Footer />
+       
     </>
   );
 }
