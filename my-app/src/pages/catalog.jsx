@@ -1,50 +1,49 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/footer';
 import Products from '../products/products';
 import Recommended from '../Recommended/Recommended';
 import Sidebar from '../Sidebar/Sidebar';
 import Card from "../components/card";
-import { fetchAllProducts } from '../services/apiRequests';
+import data from '../db/data'; // assuming you're using local data.js
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [query, setQuery] = useState("");
-  
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const data = await fetchAllProducts();
-        setProducts(data);
-      } catch (error) {
-        console.error('Failed to fetch products:', error);
-      }
-    };
 
-    getProducts();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const genderFilter = searchParams.get("gender");
+
+  useEffect(() => {
+    setProducts(data);
   }, []);
 
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
-  };
-
-  const handleChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
-
-  const handleClick = (event) => {
-    setSelectedCategory(event.target.value);
-  };
+  const handleInputChange = (event) => setQuery(event.target.value);
+  const handleChange = (event) => setSelectedCategory(event.target.value);
+  const handleClick = (event) => setSelectedCategory(event.target.value);
 
   function filteredData(products, selected, query) {
     let filteredProducts = products;
 
+    // 🔍 Gender Filter
+    if (genderFilter === "women") {
+      filteredProducts = filteredProducts.filter(
+        (product) => product.gender === "women" || product.gender === "unisex"
+      );
+    } else if (genderFilter === "men") {
+      filteredProducts = filteredProducts.filter(
+        (product) => product.gender === "men" || product.gender === "unisex"
+      );
+    }
+
+    // 🔍 Category, color, style, or price filter
     if (selected) {
       filteredProducts = filteredProducts.filter(
         ({ category, color, style, newPrice, title }) => {
           const price = parseFloat(newPrice.replace("$", ""));
-
           if (selected === "50") return price >= 0 && price <= 50;
           if (selected === "100") return price > 50 && price <= 100;
           if (selected === "150") return price > 100 && price <= 150;
@@ -60,18 +59,19 @@ export default function Catalog() {
       );
     }
 
-    // Input query filter
+    // 🔍 Search Filter
     if (query) {
       filteredProducts = filteredProducts.filter((product) =>
         product.title.toLowerCase().includes(query.toLowerCase())
       );
     }
 
+    // 🧱 Render Cards
     return filteredProducts.map(
-      ({ image, title, rating, reviews, prevPrice, newPrice }) => (
+      ({ img, title, rating, reviews, prevPrice, newPrice }) => (
         <Card
-          key={Math.random()}
-          img={image}
+          key={title}
+          img={img}
           title={title}
           star={rating}
           reviews={reviews}
