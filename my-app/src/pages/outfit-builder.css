@@ -1,0 +1,103 @@
+/* Page Layout: Side-by-side */
+.builder-wrapper {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  .clothing-column {
+    width: 55%;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 1px solid #eee;
+  }
+  
+  .drop-column {
+    width: 45%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .drop-zone.vertical-stack {
+    min-height: 450px;
+    width: 240px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .outfit-stack-img {
+    width: 160px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .clear-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .clear-button:hover {
+    background-color: darkred;
+  }
+  
+  /* Clothing Panels */
+  .category-title {
+    font-size: 1.1rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  .clothing-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 15px;
+  }
+  
+  .draggable-img {
+    width: 90px;
+    height: auto;
+    cursor: grab;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+  }
+  
+  .draggable-img:active {
+    cursor: grabbing;
+  }
+  .buy-outfit-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buy-outfit-button:hover {
+    background-color: #1e7e34;
+  }
+    

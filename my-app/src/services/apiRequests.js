@@ -1,9 +1,9 @@
-import axios from 'axios'
+import api from '../services/axiosInstance'
 
 const backend_URL = 'http://localhost:3000/api'
 
 export async function fetchAllProducts() {
-    return axios
+    return api
           .get(`${backend_URL}/product/getAll`)
           .then((response) => {
             console.log("All items retrieved from the backend.")

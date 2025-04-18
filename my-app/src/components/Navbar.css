@@ -22,27 +22,43 @@
 
 /* Top Navigation */
 .top-nav {
-    font-size: 18px; /* Slightly reduced font size */
+    font-size: 18px;
     font-weight: 600;
     font-family: 'Outfit', sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 5vw 2px; /* Further reduced padding */
-    max-width: 100%;
-    margin-bottom: 0; /* Ensure no extra spacing */
+    padding: 5px 5vw 2px;
     width: 100%;
 }
 
-/* Align Search and Cart */
-.search-container {
+/* Left side (View Cart) */
+.left-nav {
     display: flex;
     align-items: center;
-    gap: 6px; /* Slightly reduced spacing */
+    gap: 16px;
 }
 
-.searchicon, .cart-icon {
-    width: 22px; /* Slightly reduced icon size */
+/* Right side (Sign In/Out) */
+.right-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+}
+
+
+/* Push sign-in section to right */
+.sign-in-cart-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto; /* ✅ this pushes it all the way to the right */
+}
+
+/* Cart Icon */
+.cart-icon {
+    width: 22px;
     height: 22px;
     object-fit: contain;
 }
@@ -81,22 +97,22 @@
 }
 
 /* Fix for Sign-in/Sign-up Section */
-.Sign-in-Container {
+.Sign-in-Container, .Sign-out-Container {
     display: flex;
     align-items: center;
-    gap: 6px; /* Reduced spacing */
+    gap: 6px;
     white-space: nowrap;
-    padding: 4px 8px; /* Adjusted padding */
-    min-width: 120px; /* Slightly reduced width */
+    padding: 4px 8px;
+    min-width: 120px;
 }
 
 .person-icon {
-    width: 26px; /* Slightly smaller icon */
+    width: 26px;
     height: 26px;
     object-fit: contain;
 }
 
-.Sign-in-Container p {
-    font-size: 16px; /* Reduced font size */
+.Sign-in-Container p, .Sign-out-Container p {
+    font-size: 16px;
     margin: 0;
 }

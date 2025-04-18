@@ -41,7 +41,6 @@ export default function Cart() {
 
   return (
     <>
-      <Navbar />
       <div className="cart-container">
         <h2>Shopping Cart</h2>
 
@@ -97,7 +96,6 @@ export default function Cart() {
           <p>Your cart is empty. <a href="/catalog">Continue shopping</a></p>
         )}
       </div>
-      <Footer />
     </>
   );
 }

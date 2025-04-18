@@ -1,13 +1,18 @@
 import { AiFillStar } from "react-icons/ai";
 import { FaShoppingBag } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import './card.css'; 
+
 
 
 export default function Card({ img, title, star, reviews, prevPrice, newPrice }) {
   return (
     <Link to={`/product/${encodeURIComponent(title)}`} className="card-link">
       <section className="card">
-        <img src={img} alt={title} className="card-img" />
+      <section className="card-img">
+  <img src={img} alt={title} />
+</section>
+
         <div className="card-details">
           <h3 className="card-title">{title}</h3>
           <section className="card-reviews">

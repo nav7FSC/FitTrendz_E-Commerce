@@ -1,6 +1,6 @@
 export const data = [
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/61gQVDClZRL._AC_SX569_.jpg",
     title: "Men's Slim Fit Casual Shirt",
     rating: 4.0,
     reviews: "(320 reviews)",
@@ -12,7 +12,7 @@ export const data = [
     gender: "men"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/71cLAqOr0tL._AC_SX679_.jpg",
     title: "Women's High Waist Skinny Jeans",
     rating: 3.0,
     reviews: "(210 reviews)",
@@ -24,7 +24,7 @@ export const data = [
     gender: "women"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/71wp-f9m0-L._AC_SY741_.jpg",
     title: "Unisex Hoodie",
     rating: 2.0,
     reviews: "(500 reviews)",
@@ -36,7 +36,7 @@ export const data = [
     gender: "unisex"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/71BHSXSzqeL._AC_SY741_.jpg",
     title: "Men's Classic Chinos",
     rating: 5.0,
     reviews: "(190 reviews)",
@@ -48,7 +48,7 @@ export const data = [
     gender: "men"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/71QXvsxofpL._AC_UL320_.jpg",
     title: "Women's Summer Dress",
     rating: 5.0,
     reviews: "(275 reviews)",
@@ -60,7 +60,7 @@ export const data = [
     gender: "women"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/81Y6r7df7OL._AC_SX569_.jpg",
     title: "Men's Business Casual Shirt",
     rating: 5.0,
     reviews: "(275 reviews)",
@@ -72,7 +72,7 @@ export const data = [
     gender: "men"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/71htqyXvfSL._AC_SX679_.jpg",
     title: "Men's Stretch Jeans",
     rating: 5.0,
     reviews: "(315 reviews)",
@@ -84,7 +84,7 @@ export const data = [
     gender: "men"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/71rmcjnJiqL._AC_SX569_.jpg",
     title: "Casual Hoodie for Women",
     rating: 5.0,
     reviews: "(430 reviews)",
@@ -96,7 +96,7 @@ export const data = [
     gender: "women"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/61gamoidnBL._AC_SY741_.jpg",
     title: "Relaxed Fit Cargo Pants",
     rating: 5.0,
     reviews: "(200 reviews)",
@@ -108,7 +108,7 @@ export const data = [
     gender: "unisex"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/51gpWxyUseL._AC_SX679_.jpg",
     title: "Women's Evening Gown",
     rating: 5.0,
     reviews: "(300 reviews)",
@@ -120,7 +120,7 @@ export const data = [
     gender: "women"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/71n4aYYXM-L._AC_SY741_.jpg",
     title: "Men's Office Pants",
     rating: 5.0,
     reviews: "(270 reviews)",
@@ -132,7 +132,7 @@ export const data = [
     gender: "men"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/611DCpUuhfL._AC_SL1500_.jpg",
     title: "Comfy Lounge Hoodie",
     rating: 5.0,
     reviews: "(510 reviews)",
@@ -144,7 +144,7 @@ export const data = [
     gender: "unisex"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/61oW09i5MAL._AC_SX679_.jpg",
     title: "Casual Summer Dress",
     rating: 5.0,
     reviews: "(340 reviews)",
@@ -156,7 +156,7 @@ export const data = [
     gender: "women"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/91tc0Gl1eBL._AC_SX679_.jpg",
     title: "Men's Flannel Shirt",
     rating: 5.0,
     reviews: "(370 reviews)",
@@ -168,7 +168,7 @@ export const data = [
     gender: "men"
   },
   {
-    img: "https://m.media-amazon.com/images/I/71P5J5OuGqL._AC_SX569_.jpg",
+    img: "https://m.media-amazon.com/images/I/71+riO7d0NL._AC_SX679_.jpg",
     title: "Skinny Fit Jeans",
     rating: 5.0,
     reviews: "(490 reviews)",
@@ -177,6 +177,126 @@ export const data = [
     style: "Athletic",
     color: "black",
     category: "jeans",
+    gender: "women"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/81kAhEYvQwL._AC_UL320_.jpg",
+    title: "Men's Athletic Polo Shirt",
+    rating: 4.5,
+    reviews: "(250 reviews)",
+    prevPrice: "$50.00",
+    newPrice: "$35.00",
+    style: "Athletic",
+    color: "green",
+    category: "shirts",
+    gender: "men"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/81QDD1ULPzL._AC_UL320_.jpg",
+    title: "Women's Maxi Skirt",
+    rating: 4.0,
+    reviews: "(180 reviews)",
+    prevPrice: "$65.00",
+    newPrice: "$48.00",
+    style: "Comfort",
+    color: "floral",
+    category: "skirts",
+    gender: "women"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/81p-B7OS7VL._AC_UL320_.jpg",
+    title: "Unisex Denim Jacket",
+    rating: 4.8,
+    reviews: "(400 reviews)",
+    prevPrice: "$90.00",
+    newPrice: "$70.00",
+    style: "Other",
+    color: "blue",
+    category: "jackets",
+    gender: "unisex"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/71MpFHOznXL._AC_UL320_.jpg",
+    title: "Men's Slim Fit Blazer",
+    rating: 4.7,
+    reviews: "(220 reviews)",
+    prevPrice: "$120.00",
+    newPrice: "$95.00",
+    style: "Professional",
+    color: "navy",
+    category: "blazers",
+    gender: "men"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/61IqZD8hYDL._AC_UL320_.jpg",
+    title: "Women's Athletic Leggings",
+    rating: 4.6,
+    reviews: "(350 reviews)",
+    prevPrice: "$45.00",
+    newPrice: "$32.00",
+    style: "Athletic",
+    color: "black",
+    category: "leggings",
+    gender: "women"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/71IbGJbFcnL._AC_UL320_.jpg",
+    title: "Men's Crew Neck Sweater",
+    rating: 4.4,
+    reviews: "(290 reviews)",
+    prevPrice: "$70.00",
+    newPrice: "$50.00",
+    style: "Comfort",
+    color: "charcoal",
+    category: "sweaters",
+    gender: "men"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/815VJpmh7PL._AC_UL320_.jpg",
+    title: "Women's Knit Cardigan",
+    rating: 4.3,
+    reviews: "(260 reviews)",
+    prevPrice: "$60.00",
+    newPrice: "$42.00",
+    style: "Other",
+    color: "beige",
+    category: "cardigans",
+    gender: "women"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/71CFN6Cf9CL._AC_UL320_.jpg",
+    title: "Unisex Graphic T-Shirt",
+    rating: 4.2,
+    reviews: "(450 reviews)",
+    prevPrice: "$35.00",
+    newPrice: "$25.00",
+    style: "Comfort",
+    color: "white",
+    category: "t-shirts",
+    gender: "unisex"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/71CxHBIhkiL._AC_UL320_.jpg",
+    title: "Men's Leather Jacket",
+    rating: 4.9,
+    reviews: "(310 reviews)",
+    prevPrice: "$150.00",
+    newPrice: "$120.00",
+    style: "Other",
+    color: "black",
+    category: "jackets",
+    gender: "men"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/71c1emXTEXL._AC_UL320_.jpg",
+    title: "Women's Off-Shoulder Top",
+    rating: 4.1,
+    reviews: "(230 reviews)",
+    prevPrice: "$50.00",
+    newPrice: "$38.00",
+    style: "Athletic",
+    color: "pink",
+    category: "tops",
     gender: "women"
   }
 ];

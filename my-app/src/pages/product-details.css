@@ -122,6 +122,21 @@
         border-color: var(--error-color);
         cursor: not-allowed;
       }
+      .outfit-builder-link {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 16px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      
+      .outfit-builder-link:hover {
+        background-color: #0056b3;
+      }
+      
       
   }
   

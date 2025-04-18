@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import data from "../db/data";
 import "./product-details.css";
 import Navbar from "../components/Navbar";
@@ -7,54 +7,116 @@ import Footer from "../components/footer";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 
-
 export default function ProductDetails() {
   const { title } = useParams();
   const product = data.find((item) => item.title === decodeURIComponent(title));
-
   const [selectedSize, setSelectedSize] = useState("");
   const [wishlisted, setWishlisted] = useState(false);
   const navigate = useNavigate();
+  const { addToCart } = useCart();
+  const { addToWishlist } = useWishlist();
 
-  const handleSizeChange = (e) => {
-    setSelectedSize(e.target.value);
+  // === QUIZ STATE ===
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState({
+    gender: "",
+    height: "",
+    weight: "",
+    chest: "",
+    waist: "",
+    hips: "",
+  });
+
+  const handleChange = (e) => {
+    setAnswers({ ...answers, [e.target.name]: e.target.value });
   };
 
-  const { addToCart } = useCart();
+  const next = () => setStep(step + 1);
+  const back = () => setStep(step - 1);
 
-const handleAddToCart = () => {
-  if (!selectedSize) {
-    alert("Please select a size before adding to cart.");
-    return;
-  }
+  const getSize = () => {
+    const { gender, chest, waist, hips } = answers;
+    const c = parseInt(chest);
+    const w = parseInt(waist);
+    const h = parseInt(hips);
 
-  addToCart(product, selectedSize);
-  alert(`✅ ${product.title} (Size ${selectedSize}) added to cart!`);
-  navigate("/cart");
-};
+    if (gender === "female") {
+      if (c <= 33 && w <= 26 && h <= 36) return "S";
+      if (c <= 36 && w <= 29 && h <= 39) return "M";
+      if (c <= 39 && w <= 32 && h <= 42) return "L";
+      return "XL";
+    } else {
+      if (c <= 36 && w <= 30) return "S";
+      if (c <= 40 && w <= 34) return "M";
+      if (c <= 44 && w <= 38) return "L";
+      return "XL";
+    }
+  };
 
-const { addToWishlist } = useWishlist();
+  const handleUseSuggestedSize = () => {
+    setSelectedSize(getSize());
+  };
 
-const handleWishlist = () => {
-  setWishlisted(true);
-  addToWishlist({
-    ...product,
-    id: product.title, // use title as unique ID
-    price: parseFloat(product.newPrice.replace("$", "")),
-    img: product.img,
-  });
-  alert(`❤️ ${product.title} added to wishlist!`);
-};
+  const questions = [
+    {
+      label: "What's your gender?",
+      name: "gender",
+      type: "select",
+      options: ["male", "female"],
+    },
+    { label: "What's your height (inches)?", name: "height", type: "number" },
+    { label: "What's your weight (lbs)?", name: "weight", type: "number" },
+    {
+      label: "What's your chest measurement (inches)?",
+      name: "chest",
+      type: "number",
+    },
+    {
+      label: "What's your waist measurement (inches)?",
+      name: "waist",
+      type: "number",
+    },
+    {
+      label: "What's your hips measurement (inches)?",
+      name: "hips",
+      type: "number",
+    },
+  ];
+  const currentQuestion = questions[step];
 
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      alert("Please select a size before adding to cart.");
+      return;
+    }
+
+    addToCart(product, selectedSize);
+    alert(`✅ ${product.title} (Size ${selectedSize}) added to cart!`);
+    navigate("/cart");
+  };
+
+  const handleWishlist = () => {
+    setWishlisted(true);
+    addToWishlist({
+      ...product,
+      id: product.title,
+      price: parseFloat(product.newPrice.replace("$", "")),
+      img: product.img,
+    });
+    alert(`❤️ ${product.title} added to wishlist!`);
+  };
 
   if (!product) {
-    return <div className="product-details"><h2>Product not found.</h2></div>;
+    return (
+      <div className="product-details">
+        <h2>Product not found.</h2>
+      </div>
+    );
   }
 
   return (
     <>
-      <Navbar />
-
+      
       <div className="product-details">
         <div className="image-section">
           <img src={product.img} alt={product.title} />
@@ -75,7 +137,7 @@ const handleWishlist = () => {
           <select
             id="size-select"
             value={selectedSize}
-            onChange={handleSizeChange}
+            onChange={(e) => setSelectedSize(e.target.value)}
             className="size-dropdown"
           >
             <option value="">-- Choose a size --</option>
@@ -97,11 +159,66 @@ const handleWishlist = () => {
             >
               {wishlisted ? "Wishlisted ❤️" : "Add to Wishlist"}
             </button>
+            <button
+  className="outfit-builder-link"
+  onClick={() => navigate("/outfit-builder")}
+>
+  Build Outfit with This
+</button>
+
+          </div>
+
+          {/* 🧠 Sizing Quiz Here */}
+          <div className="quiz-container">
+            <h2 className="quiz-title">Not sure your size?</h2>
+            {step < questions.length ? (
+              <>
+                <p>{currentQuestion.label}</p>
+                {currentQuestion.type === "select" ? (
+                  <select
+                    name={currentQuestion.name}
+                    value={answers[currentQuestion.name]}
+                    onChange={handleChange}
+                    className="quiz-input"
+                  >
+                    <option value="">Select</option>
+                    {currentQuestion.options.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    type={currentQuestion.type}
+                    name={currentQuestion.name}
+                    value={answers[currentQuestion.name]}
+                    onChange={handleChange}
+                    className="quiz-input"
+                  />
+                )}
+                <div style={{ marginTop: "20px" }}>
+                  {step > 0 && (
+                    <button onClick={back} className="quiz-button" style={{ marginRight: "10px" }}>
+                      Back
+                    </button>
+                  )}
+                  <button onClick={next} className="quiz-button">Next</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <h3>Your Recommended Size:</h3>
+                <p className="quiz-result">{getSize()}</p>
+                <button onClick={handleUseSuggestedSize} className="quiz-button">
+                  Use This Size
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
-
-      <Footer />
+      
     </>
   );
 }

@@ -4,8 +4,15 @@ import { useState, useEffect } from "react";
 import Footer from "../components/footer";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import googleIcon from "./google-icon.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import api from "../services/axiosInstance";
+import { useAuth } from "../components/AuthContext";
+import { useNavigate } from "react-router-dom";
+
+// TODO add protectedRoute from react router so people can't access restricted pages
+// TODO implement log out button so the JWT cookie is deleted
+// TODO add error messages on invalid login
 
 export default function SignInPage() {
   return (
@@ -16,22 +23,11 @@ export default function SignInPage() {
 }
 
 function SignInComponent() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({ email: false, password: false });
-  const [user, setUser] = useState(null);
-
-  const authenticate = (formData) => {
-    axios
-      .post("http://localhost:3000/api/auth/login", formData)
-      .then((response) => {
-        console.log(response);
-        setUser(response.data.token);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
 
   const validate = (name, value) => {
     let tempErrors = { ...errors };
@@ -63,30 +59,29 @@ function SignInComponent() {
     validate(name, value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
-      authenticate(formData);
+      await login(formData);
+      navigate("/");
     }
   };
-
-  useEffect(() => {
-    if (user !== null) {
-      alert(user);
-    }
-  }, [user]);
 
   // Google Sign-In
   const googleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
-        const userInfo = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
-          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-        });
+        const userInfo = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+          }
+        );
 
         console.log("Google User Info:", userInfo.data);
 
-        axios.post("http://localhost:3000/api/auth/google-login", userInfo.data)
+        axios
+          .post("http://localhost:3000/api/auth/google-login", userInfo.data)
           .then((response) => {
             console.log("Google sign-in success:", response.data);
             alert("Google sign-in successful!");
@@ -107,7 +102,6 @@ function SignInComponent() {
 
   return (
     <>
-      <Navbar />
       <div className="signin-container">
         <div className="signin-card">
           <form className="signin-form">
@@ -119,9 +113,17 @@ function SignInComponent() {
               onBlur={handleBlur}
               value={formData.email}
               name="email"
-              className={touched.email ? (errors.email ? "input-error" : "input-success") : ""}
+              className={
+                touched.email
+                  ? errors.email
+                    ? "input-error"
+                    : "input-success"
+                  : ""
+              }
             />
-            <span className="error-message">{touched.email && errors.email}</span>
+            <span className="error-message">
+              {touched.email && errors.email}
+            </span>
 
             <input
               type="password"
@@ -130,13 +132,22 @@ function SignInComponent() {
               onBlur={handleBlur}
               value={formData.password}
               name="password"
-              className={touched.password ? (errors.password ? "input-error" : "input-success") : ""}
+              className={
+                touched.password
+                  ? errors.password
+                    ? "input-error"
+                    : "input-success"
+                  : ""
+              }
             />
-            <span className="error-message">{touched.password && errors.password}</span>
+            <span className="error-message">
+              {touched.password && errors.password}
+            </span>
 
             <div className="remember-forgot">
               <label className="remember-me">
-                <input type="checkbox" />Remember me
+                <input type="checkbox" />
+                Remember me
               </label>
               <a href="/forgotpassword">Forgot password?</a>
             </div>
@@ -150,12 +161,16 @@ function SignInComponent() {
             </div>
 
             <div className="signin-footer">
-              <p>Don't have an account? <Link to="/signup-page"><strong>Sign-Up</strong></Link></p>
+              <p>
+                Don't have an account?{" "}
+                <Link to="/signup-page">
+                  <strong>Sign-Up</strong>
+                </Link>
+              </p>
             </div>
           </form>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

@@ -21,7 +21,6 @@ export default function Wishlist() {
 
   return (
     <>
-      <Navbar />
       <div className="wishlist-container">
         <h2>My Wishlist</h2>
 
@@ -34,10 +33,16 @@ export default function Wishlist() {
                   <h3>{item.title}</h3>
                   <p>${item.price.toFixed(2)}</p>
                   <div className="wishlist-buttons">
-                    <button className="wishlist-move-btn" onClick={() => handleMoveToCart(item)}>
+                    <button
+                      className="wishlist-move-btn"
+                      onClick={() => handleMoveToCart(item)}
+                    >
                       Move to Cart
                     </button>
-                    <button className="wishlist-remove-btn" onClick={() => handleRemove(item.id)}>
+                    <button
+                      className="wishlist-remove-btn"
+                      onClick={() => handleRemove(item.id)}
+                    >
                       Remove
                     </button>
                   </div>
@@ -46,14 +51,18 @@ export default function Wishlist() {
             ))}
           </div>
         ) : (
-          <p>Your wishlist is empty. <a href="/catalog">Continue shopping</a></p>
+          <p>
+            Your wishlist is empty. <a href="/catalog">Continue shopping</a>
+          </p>
         )}
 
-        <button className="continue-shopping-btn" onClick={() => navigate("/catalog")}>
+        <button
+          className="continue-shopping-btn"
+          onClick={() => navigate("/catalog")}
+        >
           Continue Shopping
         </button>
       </div>
-      <Footer />
     </>
   );
 }

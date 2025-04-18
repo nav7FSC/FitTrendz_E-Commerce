@@ -39,6 +39,14 @@ body{
     min-height: 75vh;
     width: 100%;
 }
+.wishlist-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 20px;
+}
+
 
   .signin-card{
     background-color: #fff;
@@ -654,4 +662,24 @@ body{
 
 .forgotpassword-form button:hover{
   background-color: #333;
+}
+
+.signout-container{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 75vh;
+  width: 100%;
+}
+
+.signout-card{
+  background-color: #fff;
+  width: 400px;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
