@@ -159,6 +159,13 @@ export default function ProductDetails() {
             >
               {wishlisted ? "Wishlisted ❤️" : "Add to Wishlist"}
             </button>
+            <button
+  className="outfit-builder-link"
+  onClick={() => navigate("/outfit-builder")}
+>
+  Build Outfit with This
+</button>
+
           </div>
 
           {/* 🧠 Sizing Quiz Here */}

@@ -16,6 +16,7 @@ import ProductDetails from "./pages/productdetails";
 import Quiz from "./pages/quiz.jsx";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
+import OutfitBuilder from "./pages/OutfitBuilder";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path = "/catalog" index element = {<MenCatalog />} />
           <Route path = "/sign-in" index element = {<SignIn />} />
           <Route path = "/cart" index element = {<Cart />} />
+          <Route path="/outfit-builder" element={<OutfitBuilder />} />
           <Route path = "/check-out" index element = {<Checkout />} />
           <Route path = "/signup-page" index element = {<SignUpPage />} />
           <Route path ="/wishlist" element={<Wishlist />} />
