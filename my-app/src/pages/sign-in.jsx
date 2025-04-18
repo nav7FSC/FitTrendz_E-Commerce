@@ -28,6 +28,7 @@ function SignInComponent() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({ email: false, password: false });
+  const [loginError, setLoginError] = useState("");
 
   const validate = (name, value) => {
     let tempErrors = { ...errors };
@@ -62,8 +63,16 @@ function SignInComponent() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
-      await login(formData);
-      navigate("/");
+      try {
+        await login(formData);
+        navigate("/");
+      } catch (err) {
+        if (err.response && err.response.data && err.response.data.error) {
+          setLoginError(err.response.data.error);
+        } else {
+          setLoginError("An unexpected Error has occurred.")
+        }
+      }
     }
   };
 
@@ -153,7 +162,7 @@ function SignInComponent() {
             </div>
 
             <button onClick={handleSubmit}>Login</button>
-
+            {loginError && <div className="login-error-message">{loginError}</div>}
             {/* Google Login Button */}
             <div className="google-signup" onClick={() => googleLogin()}>
               <img src={googleIcon} alt="Google" />
