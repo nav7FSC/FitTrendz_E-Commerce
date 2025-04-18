@@ -1,0 +1,98 @@
+.card {
+    width: 300px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  /* 🖼️ Bigger image area */
+  .card-img {
+    width: 100%;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+  }
+  
+  .card-img img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  
+  /* 📝 Bigger content area */
+  .card-details {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  /* 📛 Bigger title */
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+    height: 2.8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  
+  /* ⭐ Slightly larger reviews */
+  .card-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .ratings-container {
+    display: flex;
+    gap: 3px;
+  }
+  
+  .ratings-star {
+    color: #ffc107;
+    font-size: 1.15rem;
+  }
+  
+  .total-reviews {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* 💲 Bigger price & icon */
+  .card-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-top: 4px;
+  }
+  
+  .price del {
+    margin-right: 8px;
+    color: #888;
+  }
+  
+  .bag-icon {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
