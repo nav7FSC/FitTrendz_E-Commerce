@@ -687,3 +687,38 @@ body{
 .login-error-message {
   color:#ff4d4d
 }
+
+.order-history-link {
+  margin-top: 20px;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.content-container {
+  padding: 40px;
+  min-height: 300px; /* or more depending on your layout */
+  text-align: center;
+}
+
+.order-history-container {
+  padding: 60px 20px;
+  min-height: 300px;
+  text-align: center;
+}
+
+.no-orders-message {
+  font-size: 18px;
+  color: var(--text-color);
+  margin-top: 20px;
+}
+
+.order-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.order-list li {
+  font-size: 16px;
+  margin: 10px 0;
+}

@@ -29,6 +29,8 @@ function SignInComponent() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({ email: false, password: false });
   const [loginError, setLoginError] = useState("");
+  const location = useLocation();
+  const redirectMessage = location.state?.message;
 
   const validate = (name, value) => {
     let tempErrors = { ...errors };
@@ -109,6 +111,12 @@ function SignInComponent() {
     },
   });
 
+  {redirectMessage && (
+    <p style={{ color: "var(--text-color)", backgroundColor: "#f0f0f0", padding: "10px", borderRadius: "5px", marginBottom: "20px" }}>
+      {redirectMessage}
+    </p>
+  )}
+  
   return (
     <>
       <div className="signin-container">
