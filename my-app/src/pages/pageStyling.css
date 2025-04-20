@@ -722,3 +722,30 @@ body{
   font-size: 16px;
   margin: 10px 0;
 }
+
+/* Cart Icon Badge */
+.cart-icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.Check-Out-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
