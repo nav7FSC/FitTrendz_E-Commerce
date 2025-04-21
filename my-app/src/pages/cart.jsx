@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 import { useCart } from "../context/CartContext";
 import "./pageStyling.css";
+import { AuthContext } from '../components/AuthContext';
 
 export default function Cart() {
+  const { accessToken } = useContext(AuthContext);
   const navigate = useNavigate();
   const { cartItems, updateQuantity, removeFromCart } = useCart();
 
@@ -37,6 +39,14 @@ export default function Cart() {
 
   const handleCheckout = () => {
     navigate("/check-out");
+  };
+
+  const goToOrderHistory = () => {
+    if (!accessToken) {
+      navigate("/login");
+    } else {
+      navigate("/order-history");
+    }
   };
 
   return (
@@ -91,6 +101,9 @@ export default function Cart() {
                 Continue Shopping
               </button>
             </div>
+            <p className="order-history-link" onClick={goToOrderHistory}>
+              View your <span style={{ textDecoration: "underline", cursor: "pointer", color: "#007bff" }}>order history</span>
+            </p>
           </>
         ) : (
           <p>Your cart is empty. <a href="/catalog">Continue shopping</a></p>

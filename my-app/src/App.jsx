@@ -18,7 +18,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import OutfitBuilder from "./pages/OutfitBuilder";
 import ResetPassword from './pages/resetpassword';
-
+import OrderHistory from './pages/OrderHistory';
 
 function App() {
   return (
@@ -31,6 +31,7 @@ function App() {
           <Route path = "/catalog" index element = {<WomenCatalog />} />
           <Route path = "/catalog" index element = {<MenCatalog />} />
           <Route path = "/sign-in" index element = {<SignIn />} />
+          <Route path="/login" element={<SignIn />} />
           <Route path = "/cart" index element = {<Cart />} />
           <Route path="/outfit-builder" element={<OutfitBuilder />} />
           <Route path = "/check-out" index element = {<Checkout />} />
@@ -41,6 +42,7 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/sign-out" element={<SignOutPage />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/order-history" element={<OrderHistory />} />
         </Routes>
       <Footer />
     </div>
