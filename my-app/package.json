@@ -23,6 +23,7 @@
     "express": "^4.21.2",
     "jose": "^6.0.10",
     "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.10.1",
     "react": "^19.0.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
