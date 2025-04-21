@@ -76,7 +76,7 @@ body{
     border-radius: 5px;
   }
 
-  .remember-forgot{
+  .show-forgot{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -85,7 +85,7 @@ body{
     width: 100%;
   }
 
-  .remember-me{
+  .show-me{
     flex-wrap: nowrap;
     display: flex;
     align-items: center;
@@ -93,13 +93,13 @@ body{
     gap: 5px;
   }
 
-  .remember-forgot a{
+  .show-forgot a{
     color: #000;
     font-weight: bold;
     text-decoration: none;
   }
 
-  .remember-forgot a:hover{
+  .show-forgot a:hover{
     color:#000;
     text-decoration: underline;
   }
@@ -633,14 +633,14 @@ body{
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.forgotpassword-form h2{
+.forgotpassword-card h2{
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 10px;
 }
 
-.forgotpassword-form input{
+.forgotpassword-card input{
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -648,7 +648,7 @@ body{
   border-radius: 5px;
 }
 
-.forgotpassword-form button{
+.forgotpassword-card button{
   background-color: #000;
   color: #fff;
   padding: 12px;
@@ -660,8 +660,80 @@ body{
   max-width: 400px;
 }
 
-.forgotpassword-form button:hover{
+.forgotpassword-card button:hover{
   background-color: #333;
+}
+
+.resetpassword-container {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  width: 100%;
+}
+
+.resetpassword-card{
+  background-color: #fff;
+  width: 400px;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.resetpassword-card h2{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.resetpassword-card input{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.resetpassword-card button{
+  background-color: #000;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+}
+
+.resetpassword-card button:hover{
+  background-color: #333;
+}
+
+.showpassword-container {
+  display: flex;
+  align-items: center;
+}
+
+.showpassword-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+.showpassword-label p {
+  color: #777;
+  white-space: nowrap;
+}
+
+.showpassword-label input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
 }
 
 .signout-container{

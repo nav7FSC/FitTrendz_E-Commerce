@@ -17,6 +17,8 @@ import Quiz from "./pages/quiz.jsx";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import OutfitBuilder from "./pages/OutfitBuilder";
+import ResetPassword from './pages/resetpassword';
+
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
           <Route path ="/forgotpassword" index element={<ForgotPassword />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/sign-out" element={<SignOutPage />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
         </Routes>
       <Footer />
     </div>

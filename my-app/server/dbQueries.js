@@ -155,6 +155,16 @@ function add_columns() {
     add_column_stmt2.run()
 }
 
+const create_password_resets_table = db.prepare(`
+    CREATE TABLE IF NOT EXISTS password_resets (
+      id            INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id       INTEGER NOT NULL,
+      reset_code    TEXT    NOT NULL,
+      expires_at    INTEGER NOT NULL,
+      FOREIGN KEY(user_id) REFERENCES users(id)
+    )`);
+  create_password_resets_table.run();
+
 
 //delete_token("67cdc073f3b9b70a488b9e2d593de80b7358640249318fb0f63ad3bf3189b56c896094957e14cb21214346939c65d7cb59b0496aafaa5c192f2be42258943c66")
 

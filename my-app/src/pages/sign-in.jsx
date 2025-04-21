@@ -29,6 +29,7 @@ function SignInComponent() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({ email: false, password: false });
   const [loginError, setLoginError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const validate = (name, value) => {
     let tempErrors = { ...errors };
@@ -114,7 +115,7 @@ function SignInComponent() {
       <div className="signin-container">
         <div className="signin-card">
           <form className="signin-form">
-            <h2>Login</h2>
+            <h2>Sign In</h2>
             <input
               type="text"
               placeholder="Email"
@@ -135,12 +136,12 @@ function SignInComponent() {
             </span>
 
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}  // ← dynamic type
               placeholder="Password"
+              name="password"
+              value={formData.password}
               onChange={handleChange}
               onBlur={handleBlur}
-              value={formData.password}
-              name="password"
               className={
                 touched.password
                   ? errors.password
@@ -153,15 +154,19 @@ function SignInComponent() {
               {touched.password && errors.password}
             </span>
 
-            <div className="remember-forgot">
-              <label className="remember-me">
-                <input type="checkbox" />
-                Remember me
+            <div className="show-forgot">
+              <label className="show-me">
+                <input 
+                type="checkbox"
+                checked={showPassword}
+                onChange={() => setShowPassword((prev) => !prev)} 
+                />
+                Show password
               </label>
               <a href="/forgotpassword">Forgot password?</a>
             </div>
 
-            <button onClick={handleSubmit}>Login</button>
+            <button onClick={handleSubmit}>Sign In</button>
             {loginError && <div className="login-error-message">{loginError}</div>}
             {/* Google Login Button */}
             <div className="google-signup" onClick={() => googleLogin()}>
