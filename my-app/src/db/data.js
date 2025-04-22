@@ -9,7 +9,8 @@ export const data = [
     style: "Comfort",
     color: "blue",
     category: "shirts",
-    gender: "men"
+    gender: "men",
+    id: "prod_S9i1j9su8npSCZ"
   },
   {
     img: "https://m.media-amazon.com/images/I/71cLAqOr0tL._AC_SX679_.jpg",

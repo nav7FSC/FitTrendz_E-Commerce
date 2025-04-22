@@ -7,12 +7,14 @@ import {SignJWT, jwtVerify} from 'jose'
 import dotenv from 'dotenv'
 import crypto from 'crypto'
 import {RefreshToken} from './RefreshToken.js'
+import Stripe from 'stripe'
+
 
 dotenv.config()
 const app = express();
 const db = getDb();
-const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET)
-
+const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
+const stripe = Stripe(process.env.STRIPE_SECRET);
 // TODO make tokens expire later
 
 app.use(express.json());
@@ -220,7 +222,21 @@ app.get('/api/product/getAll', async (req, res) => {
     }
 });
 
-
+app.post('/create-checkout-session', async (req, res) => {
+    const session  = await stripe.checkout.sessions.create({
+        line_items: [
+            {
+                price: 'price_1RFObWCkS2P2sDdJAoNbDKEa',
+                quantity: 1,
+            },
+        ],
+        mode: 'payment',
+        success_url: 'http://localhost:5173?success=true',
+        cancel_url: 'http://localhost:5173?canceled=true',
+    });
+    
+    res.json({url: session.url});
+});
 
 // Start Server
 app.listen(3000, () => {

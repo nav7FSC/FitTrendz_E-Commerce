@@ -4,11 +4,11 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 import { useCart } from "../context/CartContext";
 import "./pageStyling.css";
+import api from "../services/axiosInstance"
 
 export default function Cart() {
   const navigate = useNavigate();
   const { cartItems, updateQuantity, removeFromCart } = useCart();
-
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
 
@@ -35,8 +35,15 @@ export default function Cart() {
   const tax = subtotal * 0.08;
   const total = subtotal - (subtotal * discount) / 100 + tax;
 
-  const handleCheckout = () => {
-    navigate("/check-out");
+  const handleCheckout = async () => {
+    try {
+      const res = await api.post("http://localhost:3000/create-checkout-session", { withCredentials: true });
+  
+      window.location.href = res.data.url;
+    } catch (err) {
+      console.error("Checkout error:", err);
+      alert("Could not start checkout");
+    }
   };
 
   return (
