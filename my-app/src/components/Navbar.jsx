@@ -3,17 +3,22 @@ import { Link } from "react-router-dom"
 import shoppingcart from '../assets/shopping-cart-icon.png'
 import personicon from '../assets/person.png'
 import { useAuth } from './AuthContext'
+import { useCart } from '../context/CartContext'
 
 export default function Navbar() {
     const { accessToken } = useAuth()
+    const { cartItems } = useCart()
+
+    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
     return (
         <div className='navbar'>
             {/* Top Navigation */}
             <nav className="top-nav">
                 <div className="left-nav">
-                    <Link to="/cart" className="Check-Out-container">
+                    <Link to="/cart" className="Check-Out-container cart-icon-wrapper">
                         <img src={shoppingcart} className="cart-icon" alt="Shopping Cart" />
+                        {totalItems > 0 && <span className="cart-count-badge">{totalItems}</span>}
                         <p>View Cart</p>
                     </Link>
                 </div>

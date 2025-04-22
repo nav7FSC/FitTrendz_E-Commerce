@@ -28,6 +28,10 @@ function SignInComponent() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({ email: false, password: false });
+  const [loginError, setLoginError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const location = useLocation();
+  const redirectMessage = location.state?.message;
 
   const validate = (name, value) => {
     let tempErrors = { ...errors };
@@ -62,8 +66,16 @@ function SignInComponent() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
-      await login(formData);
-      navigate("/");
+      try {
+        await login(formData);
+        navigate("/");
+      } catch (err) {
+        if (err.response && err.response.data && err.response.data.error) {
+          setLoginError(err.response.data.error);
+        } else {
+          setLoginError("An unexpected Error has occurred.")
+        }
+      }
     }
   };
 
@@ -100,12 +112,18 @@ function SignInComponent() {
     },
   });
 
+  {redirectMessage && (
+    <p style={{ color: "var(--text-color)", backgroundColor: "#f0f0f0", padding: "10px", borderRadius: "5px", marginBottom: "20px" }}>
+      {redirectMessage}
+    </p>
+  )}
+  
   return (
     <>
       <div className="signin-container">
         <div className="signin-card">
           <form className="signin-form">
-            <h2>Login</h2>
+            <h2>Sign In</h2>
             <input
               type="text"
               placeholder="Email"
@@ -126,12 +144,12 @@ function SignInComponent() {
             </span>
 
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}  // ← dynamic type
               placeholder="Password"
+              name="password"
+              value={formData.password}
               onChange={handleChange}
               onBlur={handleBlur}
-              value={formData.password}
-              name="password"
               className={
                 touched.password
                   ? errors.password
@@ -144,16 +162,20 @@ function SignInComponent() {
               {touched.password && errors.password}
             </span>
 
-            <div className="remember-forgot">
-              <label className="remember-me">
-                <input type="checkbox" />
-                Remember me
+            <div className="show-forgot">
+              <label className="show-me">
+                <input 
+                type="checkbox"
+                checked={showPassword}
+                onChange={() => setShowPassword((prev) => !prev)} 
+                />
+                Show password
               </label>
               <a href="/forgotpassword">Forgot password?</a>
             </div>
 
-            <button onClick={handleSubmit}>Login</button>
-
+            <button onClick={handleSubmit}>Sign In</button>
+            {loginError && <div className="login-error-message">{loginError}</div>}
             {/* Google Login Button */}
             <div className="google-signup" onClick={() => googleLogin()}>
               <img src={googleIcon} alt="Google" />
