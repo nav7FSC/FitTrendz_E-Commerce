@@ -25,6 +25,9 @@ export default function Cart() {
   const applyPromoCode = () => {
     if (promoCode === "SAVE10") {
       setDiscount(10);
+    }
+    else if(promoCode === "SAVE15"){
+      setDiscount(15);
     } else {
       setDiscount(0);
     }
