@@ -1,0 +1,137 @@
+.spin-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .spin-popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .arrow {
+    font-size: 50px;
+    color: red;
+    text-align: center;
+    margin-bottom: -30px;
+  }
+  
+  .wheel {
+    width: 400px;
+    height: 400px;
+    border: 10px solid #333;
+    border-radius: 50%;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    background: white;
+  }
+  
+  .wheel-slice {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: #f0c;
+    transform-origin: 100% 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    transform: rotate(var(--rotate)) translate(0);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 100px; /* smaller left padding */
+    padding-bottom: 40px;; /* smaller top padding */
+    box-sizing: border-box;
+  }
+  
+  .wheel-slice span {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    transform: rotate(-20deg); /* soft tilt */
+    display: inline-block;
+    width: 80px;
+    word-wrap: break-word;
+  }
+  
+  
+  .wheel-slice:nth-child(1) { --rotate: 0deg;    background: #4CAF50; }
+  .wheel-slice:nth-child(2) { --rotate: 45deg;   background: #FF5722; }
+  .wheel-slice:nth-child(3) { --rotate: 90deg;   background: #FFC107; }
+  .wheel-slice:nth-child(4) { --rotate: 135deg;  background: #03A9F4; }
+  .wheel-slice:nth-child(5) { --rotate: 180deg;  background: #E91E63; }
+  .wheel-slice:nth-child(6) { --rotate: 225deg;  background: #00BCD4; }
+  .wheel-slice:nth-child(7) { --rotate: 270deg;  background: #9C27B0; }
+  .wheel-slice:nth-child(8) { --rotate: 315deg;  background: #FF9800; }
+  
+  .spin-button {
+    margin-top: 10px;
+    padding: 10px 25px;
+    font-size: 18px;
+    background: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .spin-button:hover {
+    background: #0077a7;
+  }
+  
+  .close-button {
+    margin-top: 10px;
+    padding: 10px 25px;
+    font-size: 16px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .congrats-popup {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background: #fff;
+    border: 3px solid #4CAF50;
+    padding: 30px;
+    text-align: center;
+    z-index: 99999;
+    border-radius: 15px;
+  }
+  /* Bounce animation */
+@keyframes bounce {
+    0%   { transform: scale(1); }
+    25%  { transform: scale(1.05); }
+    50%  { transform: scale(0.95); }
+    75%  { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Apply bounce */
+  .bounce {
+    animation: bounce 0.8s ease forwards;
+  }
+  
+  /* Title Styling */
+  .spin-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  
