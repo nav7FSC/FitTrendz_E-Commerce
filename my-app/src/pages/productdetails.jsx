@@ -91,6 +91,7 @@ export default function ProductDetails() {
     }
 
     addToCart(product, selectedSize);
+    console.log(`Product added to cart: ${JSON.stringify(product, null, 2)}`)
     alert(`✅ ${product.title} (Size ${selectedSize}) added to cart!`);
     navigate("/cart");
   };

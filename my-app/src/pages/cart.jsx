@@ -31,15 +31,20 @@ export default function Cart() {
   };
 
   const subtotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) => total + item.newPrice.replace("$", "") * item.quantity,
     0
   );
   const tax = subtotal * 0.08;
   const total = subtotal - (subtotal * discount) / 100 + tax;
 
   const handleCheckout = async () => {
+    console.log(`Items in cart: ${JSON.stringify(cartItems, null, 2)}`)
     try {
-      const res = await api.post("http://localhost:3000/create-checkout-session", { withCredentials: true });
+      const res = await api.post(
+        "http://localhost:3000/create-checkout-session", 
+        {products:cartItems},
+        { withCredentials: true }
+      );
   
       window.location.href = res.data.url;
     } catch (err) {
@@ -70,7 +75,7 @@ export default function Cart() {
                   <div className="cart-details">
                     <h3>{item.title}</h3>
                     <p>Size: {item.size}</p>
-                    <p>${item.price.toFixed(2)}</p>
+                    <p>{item.newPrice}</p>
                     <div className="quantity-control">
                       <button onClick={() => handleQuantityChange(item.id, "decrease")}>-</button>
                       <span>{item.quantity}</span>

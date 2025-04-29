@@ -400,13 +400,16 @@ app.post('/api/auth/forgot-password', async (req, res) => {
   });
 
 app.post('/create-checkout-session', async (req, res) => {
+    const products = req.body["products"];
+    console.log("Reached backend before creating cart session")
+    console.log(products) // has to be reduce to valid line_items parameters
+    const lineItemFormattedProducts = products.map(item => ({
+      price: item.price,
+      quantity: item.quantity
+    }))
+
     const session  = await stripe.checkout.sessions.create({
-        line_items: [
-            {
-                price: 'price_1RFObWCkS2P2sDdJAoNbDKEa',
-                quantity: 1,
-            },
-        ],
+        line_items: lineItemFormattedProducts,
         mode: 'payment',
         success_url: 'http://localhost:5173?success=true',
         cancel_url: 'http://localhost:5173?canceled=true',

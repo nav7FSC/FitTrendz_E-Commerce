@@ -10,7 +10,8 @@ export const data = [
     "color": "blue",
     "category": "shirts",
     "gender": "men",
-    "id": "prod_SCZN1ez0BA9NkF"
+    "id": "prod_SCZN1ez0BA9NkF",
+    "price": "price_1RIAF3CkS2P2sDdJ9fjqkCAM"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71cLAqOr0tL._AC_SX679_.jpg",
@@ -23,7 +24,8 @@ export const data = [
     "color": "black",
     "category": "jeans",
     "gender": "women",
-    "id": "prod_SCZNvaLkvZBEN7"
+    "id": "prod_SCZNvaLkvZBEN7",
+    "price": "price_1RIAF3CkS2P2sDdJ4MkLkDgb"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71wp-f9m0-L._AC_SY741_.jpg",
@@ -36,7 +38,8 @@ export const data = [
     "color": "gray",
     "category": "hoodies",
     "gender": "unisex",
-    "id": "prod_SCZNt8FrQO4otH"
+    "id": "prod_SCZNt8FrQO4otH",
+    "price": "price_1RIAF4CkS2P2sDdJdrFmhhDN"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71BHSXSzqeL._AC_SY741_.jpg",
@@ -49,7 +52,8 @@ export const data = [
     "color": "khaki",
     "category": "pants",
     "gender": "men",
-    "id": "prod_SCZNyvppN9rNhn"
+    "id": "prod_SCZNyvppN9rNhn",
+    "price": "price_1RIAF4CkS2P2sDdJDlzn1jjs"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71QXvsxofpL._AC_UL320_.jpg",
@@ -62,7 +66,8 @@ export const data = [
     "color": "red",
     "category": "dresses",
     "gender": "women",
-    "id": "prod_SCZNDjRoPsSHUf"
+    "id": "prod_SCZNDjRoPsSHUf",
+    "price": "price_1RIAF5CkS2P2sDdJRnHbtYBb"
   },
   {
     "img": "https://m.media-amazon.com/images/I/81Y6r7df7OL._AC_SX569_.jpg",
@@ -75,7 +80,8 @@ export const data = [
     "color": "white",
     "category": "shirts",
     "gender": "men",
-    "id": "prod_SCZNfH1q9twRqg"
+    "id": "prod_SCZNfH1q9twRqg",
+    "price": "price_1RIAF6CkS2P2sDdJTxA8d5xW"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71htqyXvfSL._AC_SX679_.jpg",
@@ -88,7 +94,8 @@ export const data = [
     "color": "blue",
     "category": "jeans",
     "gender": "men",
-    "id": "prod_SCZNrTX7zge6XS"
+    "id": "prod_SCZNrTX7zge6XS",
+    "price": "price_1RIAF6CkS2P2sDdJ8GrB5qF3"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71rmcjnJiqL._AC_SX569_.jpg",
@@ -101,7 +108,8 @@ export const data = [
     "color": "black",
     "category": "hoodies",
     "gender": "women",
-    "id": "prod_SCZNq00qlxRtDs"
+    "id": "prod_SCZNq00qlxRtDs",
+    "price": "price_1RIAF7CkS2P2sDdJekpRQqF5"
   },
   {
     "img": "https://m.media-amazon.com/images/I/61gamoidnBL._AC_SY741_.jpg",
@@ -114,7 +122,8 @@ export const data = [
     "color": "gray",
     "category": "pants",
     "gender": "unisex",
-    "id": "prod_SCZNjnFMJMa4qK"
+    "id": "prod_SCZNjnFMJMa4qK",
+    "price": "price_1RIAF7CkS2P2sDdJGeFMsvYR"
   },
   {
     "img": "https://m.media-amazon.com/images/I/51gpWxyUseL._AC_SX679_.jpg",
@@ -127,7 +136,8 @@ export const data = [
     "color": "navy",
     "category": "dresses",
     "gender": "women",
-    "id": "prod_SCZNFWWtsj3XmE"
+    "id": "prod_SCZNFWWtsj3XmE",
+    "price": "price_1RIAF8CkS2P2sDdJEs6iuNp8"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71n4aYYXM-L._AC_SY741_.jpg",
@@ -140,7 +150,8 @@ export const data = [
     "color": "black",
     "category": "pants",
     "gender": "men",
-    "id": "prod_SCZNG77qIjKvFw"
+    "id": "prod_SCZNG77qIjKvFw",
+    "price": "price_1RIAF8CkS2P2sDdJCim8Fb25"
   },
   {
     "img": "https://m.media-amazon.com/images/I/611DCpUuhfL._AC_SL1500_.jpg",
@@ -153,7 +164,8 @@ export const data = [
     "color": "gray",
     "category": "hoodies",
     "gender": "unisex",
-    "id": "prod_SCZNS5uCc5qNAP"
+    "id": "prod_SCZNS5uCc5qNAP",
+    "price": "price_1RIAF9CkS2P2sDdJ0yq06rbj"
   },
   {
     "img": "https://m.media-amazon.com/images/I/61oW09i5MAL._AC_SX679_.jpg",
@@ -166,7 +178,8 @@ export const data = [
     "color": "yellow",
     "category": "dresses",
     "gender": "women",
-    "id": "prod_SCZNOtW6XNMnE9"
+    "id": "prod_SCZNOtW6XNMnE9",
+    "price": "price_1RIAF9CkS2P2sDdJZXdjdi4e"
   },
   {
     "img": "https://m.media-amazon.com/images/I/91tc0Gl1eBL._AC_SX679_.jpg",
@@ -179,7 +192,8 @@ export const data = [
     "color": "red",
     "category": "shirts",
     "gender": "men",
-    "id": "prod_SCZNDaGwwn8kUk"
+    "id": "prod_SCZNDaGwwn8kUk",
+    "price": "price_1RIAFACkS2P2sDdJW5XOMPaJ"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71+riO7d0NL._AC_SX679_.jpg",
@@ -192,7 +206,8 @@ export const data = [
     "color": "black",
     "category": "jeans",
     "gender": "women",
-    "id": "prod_SCZNSHiQn4NDzj"
+    "id": "prod_SCZNSHiQn4NDzj",
+    "price": "price_1RIAFBCkS2P2sDdJ47Z4tfZ2"
   },
   {
     "img": "https://m.media-amazon.com/images/I/81kAhEYvQwL._AC_UL320_.jpg",
@@ -205,7 +220,8 @@ export const data = [
     "color": "green",
     "category": "shirts",
     "gender": "men",
-    "id": "prod_SCZNjKWXqW1G2N"
+    "id": "prod_SCZNjKWXqW1G2N",
+    "price": "price_1RIAFBCkS2P2sDdJ6DCRxteP"
   },
   {
     "img": "https://m.media-amazon.com/images/I/81QDD1ULPzL._AC_UL320_.jpg",
@@ -218,7 +234,8 @@ export const data = [
     "color": "floral",
     "category": "skirts",
     "gender": "women",
-    "id": "prod_SCZNB3uYbNsYt5"
+    "id": "prod_SCZNB3uYbNsYt5",
+    "price": "price_1RIAFCCkS2P2sDdJNvcIxnUi"
   },
   {
     "img": "https://m.media-amazon.com/images/I/81p-B7OS7VL._AC_UL320_.jpg",
@@ -231,7 +248,8 @@ export const data = [
     "color": "blue",
     "category": "jackets",
     "gender": "unisex",
-    "id": "prod_SCZN7n2YTloJna"
+    "id": "prod_SCZN7n2YTloJna",
+    "price": "price_1RIAFCCkS2P2sDdJWNy4ZLTX"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71MpFHOznXL._AC_UL320_.jpg",
@@ -244,7 +262,8 @@ export const data = [
     "color": "navy",
     "category": "blazers",
     "gender": "men",
-    "id": "prod_SCZNPZPRI4rx6N"
+    "id": "prod_SCZNPZPRI4rx6N",
+    "price": "price_1RIAFDCkS2P2sDdJkcm0Ts5s"
   },
   {
     "img": "https://m.media-amazon.com/images/I/61IqZD8hYDL._AC_UL320_.jpg",
@@ -257,7 +276,8 @@ export const data = [
     "color": "black",
     "category": "leggings",
     "gender": "women",
-    "id": "prod_SCZNLhkUHBTMD6"
+    "id": "prod_SCZNLhkUHBTMD6",
+    "price": "price_1RIAFDCkS2P2sDdJGpj49hbq"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71IbGJbFcnL._AC_UL320_.jpg",
@@ -270,7 +290,8 @@ export const data = [
     "color": "charcoal",
     "category": "sweaters",
     "gender": "men",
-    "id": "prod_SCZOKa4Qe6GkFU"
+    "id": "prod_SCZOKa4Qe6GkFU",
+    "price": "price_1RIAFECkS2P2sDdJkUvJWrap"
   },
   {
     "img": "https://m.media-amazon.com/images/I/815VJpmh7PL._AC_UL320_.jpg",
@@ -283,7 +304,8 @@ export const data = [
     "color": "beige",
     "category": "cardigans",
     "gender": "women",
-    "id": "prod_SCZOMY1KuVWubx"
+    "id": "prod_SCZOMY1KuVWubx",
+    "price": "price_1RIAFFCkS2P2sDdJa6D5i3kf"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71CFN6Cf9CL._AC_UL320_.jpg",
@@ -296,7 +318,8 @@ export const data = [
     "color": "white",
     "category": "t-shirts",
     "gender": "unisex",
-    "id": "prod_SCZOTz0spvkyI3"
+    "id": "prod_SCZOTz0spvkyI3",
+    "price": "price_1RIAFFCkS2P2sDdJSvpeMv7r"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71CxHBIhkiL._AC_UL320_.jpg",
@@ -309,7 +332,8 @@ export const data = [
     "color": "black",
     "category": "jackets",
     "gender": "men",
-    "id": "prod_SCZO8TuNRqcw6N"
+    "id": "prod_SCZO8TuNRqcw6N",
+    "price": "price_1RIAFGCkS2P2sDdJf75aQr1E"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71c1emXTEXL._AC_UL320_.jpg",
@@ -322,8 +346,10 @@ export const data = [
     "color": "pink",
     "category": "tops",
     "gender": "women",
-    "id": "prod_SCZOTEtiwHxZI8"
+    "id": "prod_SCZOTEtiwHxZI8",
+    "price": "price_1RIAFGCkS2P2sDdJJOndLr1A"
   }
 ];
 
+// TODO have newPrice set from stripe data and not stored here.
 export default data;
