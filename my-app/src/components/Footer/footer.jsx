@@ -1,3 +1,4 @@
+import { WEBSITE_NAME } from "../../data/constants";
 import CopyRights from "./CopyRights/CopyRights";
 import s from "./Footer.module.css";
 
@@ -7,12 +8,12 @@ export default function Footer() {
       <div className={s.container}>
         <div className={s.row}>
           <div className={s.col}>
-            <h3>Fit Trendz</h3>
+            <h3>{WEBSITE_NAME}</h3>
             <ul></ul>
           </div>
 
           <div className={s.col}>
-            <h4>Fit Trendz</h4>
+            <h4>{WEBSITE_NAME}</h4>
             <ul>
               <li>Home</li>
               <li>About</li>

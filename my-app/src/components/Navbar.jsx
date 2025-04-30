@@ -1,9 +1,10 @@
-import './navbar.css'
 import { Link } from "react-router-dom"
-import shoppingcart from '../assets/shopping-cart-icon.png'
 import personicon from '../assets/person.png'
-import { useAuth } from './AuthContext'
+import shoppingcart from '../assets/shopping-cart-icon.png'
 import { useCart } from '../context/CartContext'
+import { WEBSITE_NAME } from "../data/constants"
+import { useAuth } from './AuthContext'
+import './navbar.css'
 
 export default function Navbar() {
     const { accessToken } = useAuth()
@@ -43,7 +44,7 @@ export default function Navbar() {
                 <Link to="/catalog?gender=men">Men</Link>
                 <Link to="/about">About</Link>
                 <Link to="/" className="Fit-Trendz-Title">
-                    <span>Fit Trendz</span>
+                    <span>{WEBSITE_NAME}</span>
                 </Link>
                 <Link to="/wishlist">Wishlist</Link>
                 <Link to="/user-management">User Management</Link>
