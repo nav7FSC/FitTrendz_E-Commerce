@@ -1,17 +1,16 @@
-import "./Footer.css";
+import s from "./Footer.module.css";
 
-export default function footer() {
+export default function Footer() {
   return (
-    <div className="footer">
-      <div className="container">
-        <div className="row">
-          {/* column1 */}
-          <div className="col">
+    <div className={s.footer}>
+      <div className={s.container}>
+        <div className={s.row}>
+          <div className={s.col}>
             <h3>Fit Trendz</h3>
             <ul></ul>
           </div>
-          {/* column2 */}
-          <div className="col">
+
+          <div className={s.col}>
             <h4>Fit Trendz</h4>
             <ul>
               <li>Home</li>
@@ -20,8 +19,7 @@ export default function footer() {
             </ul>
           </div>
 
-          {/* column3 */}
-          <div className="col">
+          <div className={s.col}>
             <h4>Contact</h4>
             <ul>
               <li>Email</li>
@@ -31,19 +29,20 @@ export default function footer() {
             </ul>
           </div>
 
-          {/* column4 */}
-          <div className="col">
+          <div className={s.col}>
             <h3>Join Our News Letter</h3>
           </div>
         </div>
+
         <hr />
-        <div className="rights">
-          <p className="rights">
+
+        <div className={s.rights}>
+          <p className={s.rights}>
             &copy; {new Date().getFullYear()} FIT TRENDZ INC |
           </p>
-          <p className="rights"> All Rights Reserved | </p>
-          <p className="rights"> Terms Of Service </p>
-          <p className="rights"> | Privacy</p>
+          <p className={s.rights}> All Rights Reserved | </p>
+          <p className={s.rights}> Terms Of Service </p>
+          <p className={s.rights}> | Privacy</p>
         </div>
       </div>
     </div>

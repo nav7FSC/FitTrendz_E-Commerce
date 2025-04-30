@@ -4,21 +4,23 @@
   color: white;
   padding: 40px 0;
   text-align: center;
-  width: 100vw;  /* Ensures it stretches fully across the viewport */
-  max-width: 100%; /* Prevents it from exceeding the screen width */
+  width: 100vw;
+  /* Ensures it stretches fully across the viewport */
+  max-width: 100%;
+  /* Prevents it from exceeding the screen width */
   margin-top: auto;
 }
 
 .row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .col {
-    flex: 1;
-    min-width: 200px;
-    padding: 20px;
+  flex: 1;
+  min-width: 200px;
+  padding: 20px;
 }
 
 .container {
