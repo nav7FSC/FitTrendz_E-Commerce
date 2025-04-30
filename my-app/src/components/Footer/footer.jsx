@@ -1,3 +1,4 @@
+import CopyRights from "./CopyRights/CopyRights";
 import s from "./Footer.module.css";
 
 export default function Footer() {
@@ -36,14 +37,7 @@ export default function Footer() {
 
         <hr />
 
-        <div className={s.rights}>
-          <p className={s.rights}>
-            &copy; {new Date().getFullYear()} FIT TRENDZ INC |
-          </p>
-          <p className={s.rights}> All Rights Reserved | </p>
-          <p className={s.rights}> Terms Of Service </p>
-          <p className={s.rights}> | Privacy</p>
-        </div>
+        <CopyRights />
       </div>
     </div>
   );
