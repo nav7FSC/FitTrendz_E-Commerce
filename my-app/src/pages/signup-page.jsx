@@ -1,12 +1,10 @@
-import "./pageStyling.css";
-import Navbar from "../components/Navbar";
-import { useState, useEffect } from "react";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
-import googleIcon from "./google-icon.png";
-import Footer from "../components/footer";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/axiosInstance";
+import googleIcon from "./google-icon.png";
+import "./pageStyling.css";
 
 //TODO remove the 2 strange sucess messages and replace with something better
 

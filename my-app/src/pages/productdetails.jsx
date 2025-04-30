@@ -1,11 +1,9 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import data from "../db/data";
-import "./product-details.css";
-import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
+import data from "../db/data";
+import "./product-details.css";
 
 export default function ProductDetails() {
   const { title } = useParams();
@@ -116,24 +114,35 @@ export default function ProductDetails() {
 
   return (
     <>
-      
       <div className="product-details">
         <div className="image-section">
           <img src={product.img} alt={product.title} />
         </div>
         <div className="info-section">
           <h1>{product.title}</h1>
-          <p><strong>Rating:</strong> {product.rating} {product.reviews}</p>
-          <p><strong>Category:</strong> {product.category}</p>
-          <p><strong>Gender:</strong> {product.gender}</p>
-          <p><strong>Color:</strong> {product.color}</p>
-          <p><strong>Style:</strong> {product.style}</p>
+          <p>
+            <strong>Rating:</strong> {product.rating} {product.reviews}
+          </p>
+          <p>
+            <strong>Category:</strong> {product.category}
+          </p>
+          <p>
+            <strong>Gender:</strong> {product.gender}
+          </p>
+          <p>
+            <strong>Color:</strong> {product.color}
+          </p>
+          <p>
+            <strong>Style:</strong> {product.style}
+          </p>
           <p className="price">
             <span className="prev">{product.prevPrice}</span>
             <span className="new">{product.newPrice}</span>
           </p>
 
-          <label htmlFor="size-select"><strong>Select Size:</strong></label>
+          <label htmlFor="size-select">
+            <strong>Select Size:</strong>
+          </label>
           <select
             id="size-select"
             value={selectedSize}
@@ -160,12 +169,11 @@ export default function ProductDetails() {
               {wishlisted ? "Wishlisted ❤️" : "Add to Wishlist"}
             </button>
             <button
-  className="outfit-builder-link"
-  onClick={() => navigate("/outfit-builder")}
->
-  Build Outfit with This
-</button>
-
+              className="outfit-builder-link"
+              onClick={() => navigate("/outfit-builder")}
+            >
+              Build Outfit with This
+            </button>
           </div>
 
           {/* 🧠 Sizing Quiz Here */}
@@ -199,18 +207,27 @@ export default function ProductDetails() {
                 )}
                 <div style={{ marginTop: "20px" }}>
                   {step > 0 && (
-                    <button onClick={back} className="quiz-button" style={{ marginRight: "10px" }}>
+                    <button
+                      onClick={back}
+                      className="quiz-button"
+                      style={{ marginRight: "10px" }}
+                    >
                       Back
                     </button>
                   )}
-                  <button onClick={next} className="quiz-button">Next</button>
+                  <button onClick={next} className="quiz-button">
+                    Next
+                  </button>
                 </div>
               </>
             ) : (
               <>
                 <h3>Your Recommended Size:</h3>
                 <p className="quiz-result">{getSize()}</p>
-                <button onClick={handleUseSuggestedSize} className="quiz-button">
+                <button
+                  onClick={handleUseSuggestedSize}
+                  className="quiz-button"
+                >
                   Use This Size
                 </button>
               </>
@@ -218,7 +235,6 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
-      
     </>
   );
 }

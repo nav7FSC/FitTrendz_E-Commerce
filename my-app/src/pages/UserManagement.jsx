@@ -1,11 +1,8 @@
-import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import axios from "axios";
+import { useEffect, useState } from "react";
 // import { authenticate } from "./sign-in";
-import api from "../services/axiosInstance";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import api from "../services/axiosInstance";
 
 export default function UserManagementPage() {
   const { accessToken } = useAuth();

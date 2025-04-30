@@ -1,14 +1,10 @@
-import "./pageStyling.css";
-import Navbar from "../components/Navbar";
-import { useState, useEffect } from "react";
-import Footer from "../components/footer";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
-import googleIcon from "./google-icon.png";
-import { Link, Navigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import api from "../services/axiosInstance";
+import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
-import { useNavigate } from "react-router-dom";
+import googleIcon from "./google-icon.png";
+import "./pageStyling.css";
 
 // TODO add protectedRoute from react router so people can't access restricted pages
 // TODO implement log out button so the JWT cookie is deleted
@@ -73,7 +69,7 @@ function SignInComponent() {
         if (err.response && err.response.data && err.response.data.error) {
           setLoginError(err.response.data.error);
         } else {
-          setLoginError("An unexpected Error has occurred.")
+          setLoginError("An unexpected Error has occurred.");
         }
       }
     }
@@ -112,12 +108,22 @@ function SignInComponent() {
     },
   });
 
-  {redirectMessage && (
-    <p style={{ color: "var(--text-color)", backgroundColor: "#f0f0f0", padding: "10px", borderRadius: "5px", marginBottom: "20px" }}>
-      {redirectMessage}
-    </p>
-  )}
-  
+  {
+    redirectMessage && (
+      <p
+        style={{
+          color: "var(--text-color)",
+          backgroundColor: "#f0f0f0",
+          padding: "10px",
+          borderRadius: "5px",
+          marginBottom: "20px",
+        }}
+      >
+        {redirectMessage}
+      </p>
+    );
+  }
+
   return (
     <>
       <div className="signin-container">
@@ -144,7 +150,7 @@ function SignInComponent() {
             </span>
 
             <input
-              type={showPassword ? "text" : "password"}  // ← dynamic type
+              type={showPassword ? "text" : "password"} // ← dynamic type
               placeholder="Password"
               name="password"
               value={formData.password}
@@ -164,10 +170,10 @@ function SignInComponent() {
 
             <div className="show-forgot">
               <label className="show-me">
-                <input 
-                type="checkbox"
-                checked={showPassword}
-                onChange={() => setShowPassword((prev) => !prev)} 
+                <input
+                  type="checkbox"
+                  checked={showPassword}
+                  onChange={() => setShowPassword((prev) => !prev)}
                 />
                 Show password
               </label>
@@ -175,7 +181,9 @@ function SignInComponent() {
             </div>
 
             <button onClick={handleSubmit}>Sign In</button>
-            {loginError && <div className="login-error-message">{loginError}</div>}
+            {loginError && (
+              <div className="login-error-message">{loginError}</div>
+            )}
             {/* Google Login Button */}
             <div className="google-signup" onClick={() => googleLogin()}>
               <img src={googleIcon} alt="Google" />

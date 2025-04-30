@@ -1,9 +1,6 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
-import { useWishlist } from "../context/WishlistContext";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 import "./pageStyling.css";
 
 export default function Wishlist() {

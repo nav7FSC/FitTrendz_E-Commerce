@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import Footer from '../components/footer';
-import Products from '../products/products';
-import Recommended from '../Recommended/Recommended';
-import Sidebar from '../Sidebar/Sidebar';
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Card from "../components/card";
-import data from '../db/data'; // assuming you're using local data.js
-import SpinWheel from '../components/SpinWheel'; // Make sure you import it!
+import SpinWheel from "../components/SpinWheel"; // Make sure you import it!
+import data from "../db/data"; // assuming you're using local data.js
+import Products from "../products/products";
+import Recommended from "../Recommended/Recommended";
+import Sidebar from "../Sidebar/Sidebar";
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);
@@ -36,8 +34,8 @@ export default function Catalog() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [showWheel, hasSpun]);
 
   const handleInputChange = (event) => setQuery(event.target.value);
@@ -108,10 +106,13 @@ export default function Catalog() {
       />
       <Recommended handleClick={handleClick} />
       <Products result={result} />
-      <SpinWheel show={showWheel} onClose={() => {
-        setShowWheel(false);
-        setHasSpun(true);
-      }} />
+      <SpinWheel
+        show={showWheel}
+        onClose={() => {
+          setShowWheel(false);
+          setHasSpun(true);
+        }}
+      />
     </div>
   );
 }

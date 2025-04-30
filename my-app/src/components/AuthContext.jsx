@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, useEffect, useMemo } from "react";
-import api from "../services/axiosInstance"
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import api from "../services/axiosInstance";
 
 let accessTokenCache = null;
 
@@ -10,7 +10,7 @@ export const setAccessTokenGlobal = (token) => {
 export const getAccessToken = () => accessTokenCache;
 
 const AuthContext = createContext();
-
+ 
 export const AuthProvider = ({ children }) => {
     const [accessToken, setAccessToken] = useState(null);
     //const isAuthenticated = !!accessToken;

@@ -1,8 +1,6 @@
-import "./pageStyling.css";
-import { useAuth } from "../components/AuthContext";
-import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
 import { useEffect, useRef } from "react";
+import { useAuth } from "../components/AuthContext";
+import "./pageStyling.css";
 
 export default function SignOutPage() {
   const { logout, accessToken } = useAuth();

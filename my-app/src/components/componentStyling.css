@@ -1,82 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;900&display=swap');
 
-
-.footer {
-    font-family: 'Outfit', sans-serif;
-    background-color: #222;
-    color: white;
-    padding: 40px 0;
-    text-align: center;
-    width: 100vw;  /* Ensures it stretches fully across the viewport */
-    max-width: 100%; /* Prevents it from exceeding the screen width */
-    margin-top: auto;
-}
-
-
 .video {
     width: 95vw;
-    height: 360px;              /* Nice thin banner height */
-    object-fit: cover;          /* Fills the space, no black bars */
+    height: 360px;
+    /* Nice thin banner height */
+    object-fit: cover;
+    /* Fills the space, no black bars */
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     display: block;
 }
 
-
-
-
-
-  
-
-
-.container {
-    width: 80%;
-    margin: auto;
-}
-
-.row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.col {
-    flex: 1;
-    min-width: 200px;
-    padding: 20px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    margin: 8px 0;
-    font-size: 14px;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-}
-
-ul li:hover {
-    opacity: 1;
-}
-.rights{
-    display: flex;
-    justify-content:left;
-    flex-wrap: wrap;
-}
 .slider {
     position: relative;
-    margin-top: 80px;           /* Space from navbar if needed */
+    margin-top: 80px;
+    /* Space from navbar if needed */
     width: 100vw;
     max-width: 100%;
     display: flex;
-    justify-content: center;    /* Center horizontally */
+    justify-content: center;
+    /* Center horizontally */
 }
-
-
-
 
 .img {
     max-width: 100%;
@@ -86,7 +30,8 @@ ul li:hover {
     max-width: 90vw;
     object-fit: contain;
 }
-.rightArrow{
+
+.rightArrow {
     position: absolute;
     top: 50%;
     right: 32px;
@@ -97,7 +42,8 @@ ul li:hover {
     cursor: pointer;
     user-select: none;
 }
-.backArrow{
+
+.backArrow {
     position: absolute;
     top: 50%;
     left: 32px;
@@ -108,32 +54,39 @@ ul li:hover {
     cursor: pointer;
     user-select: none;
 }
+
 .slide {
     opacity: 0;
     transition-duration: 1s ease;
 }
-.slide-current{
+
+.slide-current {
     opacity: 1;
     transition-duration: 1s;
     transform: scale(1.08);
 }
 
-.Sign-in-Container{
+.Sign-in-Container {
     display: flex;
     align-items: center;
 }
-.Check-Out-container{
+
+.Check-Out-container {
     display: flex;
     align-items: center;
-    
+
 }
-.person-icon{
+
+.person-icon {
     width: 35px;
 }
-.search-container{
+
+.search-container {
     display: flex;
     align-items: center;
 }
-.searchicon, .cart-icon{
+
+.searchicon,
+.cart-icon {
     width: 50px;
 }

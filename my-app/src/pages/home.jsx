@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
-import ImageSlider from "../components/ImageSlider";
-import male from "../assets/malemodel1.webp";
 import women from "../assets/girlmodel1.webp";
+import male from "../assets/malemodel1.webp";
+import ImageSlider from "../components/ImageSlider";
 import "./pageStyling.css";
 
 export default function Home() {

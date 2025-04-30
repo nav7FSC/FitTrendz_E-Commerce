@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
 
 export default function Quiz() {
   const [step, setStep] = useState(0);

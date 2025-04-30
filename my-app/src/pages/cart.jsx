@@ -1,10 +1,8 @@
-import React, { useState, useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
+import { AuthContext } from "../components/AuthContext";
 import { useCart } from "../context/CartContext";
 import "./pageStyling.css";
-import { AuthContext } from '../components/AuthContext';
 
 export default function Cart() {
   const { accessToken } = useContext(AuthContext);
@@ -25,8 +23,7 @@ export default function Cart() {
   const applyPromoCode = () => {
     if (promoCode === "SAVE10") {
       setDiscount(10);
-    }
-    else if(promoCode === "SAVE15"){
+    } else if (promoCode === "SAVE15") {
       setDiscount(15);
     } else {
       setDiscount(0);
@@ -68,11 +65,26 @@ export default function Cart() {
                     <p>Size: {item.size}</p>
                     <p>${item.price.toFixed(2)}</p>
                     <div className="quantity-control">
-                      <button onClick={() => handleQuantityChange(item.id, "decrease")}>-</button>
+                      <button
+                        onClick={() =>
+                          handleQuantityChange(item.id, "decrease")
+                        }
+                      >
+                        -
+                      </button>
                       <span>{item.quantity}</span>
-                      <button onClick={() => handleQuantityChange(item.id, "increase")}>+</button>
+                      <button
+                        onClick={() =>
+                          handleQuantityChange(item.id, "increase")
+                        }
+                      >
+                        +
+                      </button>
                     </div>
-                    <button className="remove-btn" onClick={() => handleRemoveItem(item.id)}>
+                    <button
+                      className="remove-btn"
+                      onClick={() => handleRemoveItem(item.id)}
+                    >
                       Remove
                     </button>
                   </div>
@@ -85,7 +97,9 @@ export default function Cart() {
               <p>Subtotal: ${subtotal.toFixed(2)}</p>
               <p>Tax (8%): ${tax.toFixed(2)}</p>
               {discount > 0 && <p>Discount: -{discount}%</p>}
-              <p><strong>Total: ${total.toFixed(2)}</strong></p>
+              <p>
+                <strong>Total: ${total.toFixed(2)}</strong>
+              </p>
 
               <div className="promo-section">
                 <input
@@ -100,16 +114,30 @@ export default function Cart() {
               <button className="checkout-btn" onClick={handleCheckout}>
                 Proceed to Checkout
               </button>
-              <button className="continue-shopping-btn" onClick={() => navigate("/catalog")}>
+              <button
+                className="continue-shopping-btn"
+                onClick={() => navigate("/catalog")}
+              >
                 Continue Shopping
               </button>
             </div>
             <p className="order-history-link" onClick={goToOrderHistory}>
-              View your <span style={{ textDecoration: "underline", cursor: "pointer", color: "#007bff" }}>order history</span>
+              View your{" "}
+              <span
+                style={{
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                  color: "#007bff",
+                }}
+              >
+                order history
+              </span>
             </p>
           </>
         ) : (
-          <p>Your cart is empty. <a href="/catalog">Continue shopping</a></p>
+          <p>
+            Your cart is empty. <a href="/catalog">Continue shopping</a>
+          </p>
         )}
       </div>
     </>
