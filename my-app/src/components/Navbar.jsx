@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import personicon from '../assets/person.png'
-import shoppingcart from '../assets/shopping-cart-icon.png'
+import personicon from '../assets/person.webp'
+import shoppingcart from '../assets/shopping-cart-icon.webp'
 import { useCart } from '../context/CartContext'
 import { WEBSITE_NAME } from "../data/constants"
 import { useAuth } from './AuthContext'

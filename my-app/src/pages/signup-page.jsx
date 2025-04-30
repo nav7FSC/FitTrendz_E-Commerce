@@ -2,8 +2,8 @@ import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import googleIcon from "../assets/google-icon.webp";
 import api from "../services/axiosInstance";
-import googleIcon from "./google-icon.png";
 import "./pageStyling.css";
 
 //TODO remove the 2 strange sucess messages and replace with something better

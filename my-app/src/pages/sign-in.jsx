@@ -2,8 +2,8 @@ import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import googleIcon from "../assets/google-icon.webp";
 import { useAuth } from "../components/AuthContext";
-import googleIcon from "./google-icon.png";
 import "./pageStyling.css";
 
 // TODO add protectedRoute from react router so people can't access restricted pages

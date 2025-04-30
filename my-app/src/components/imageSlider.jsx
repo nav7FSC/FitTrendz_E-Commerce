@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import video1 from '../assets/video1.mp4';
 import video2 from '../assets/video2.mp4';
 import video3 from '../assets/video3.mp4';
-import rightArrow from '../assets/rightArrow.png';
-import backArrow from '../assets/backArrow.png';
+import rightArrow from '../assets/rightArrow.webp';
+import backArrow from '../assets/backArrow.webp';
 
 import './componentStyling.css';
 
