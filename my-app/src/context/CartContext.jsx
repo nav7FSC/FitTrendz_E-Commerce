@@ -23,10 +23,8 @@ export const CartProvider = ({ children }) => {
         ...prev,
         {
           ...product,
-          id: `${product.title}-${size}`,
           quantity: 1,
           size,
-          price: parseFloat(product.newPrice.replace("$", "")),
         },
       ]);
     }

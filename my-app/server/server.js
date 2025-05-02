@@ -7,13 +7,15 @@ import {SignJWT, jwtVerify} from 'jose'
 import dotenv from 'dotenv'
 import crypto from 'crypto'
 import {RefreshToken} from './RefreshToken.js'
+import Stripe from 'stripe'
+
 import nodemailer from 'nodemailer';
 
 dotenv.config()
 const app = express();
 const db = getDb();
-const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET)
-
+const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
+const stripe = Stripe(process.env.STRIPE_SECRET);
 // TODO make tokens expire later
 
 app.use(express.json());
@@ -309,7 +311,112 @@ app.post('/api/auth/forgot-password', async (req, res) => {
     }
   });
 
+app.post('/api/auth/forgot-password', async (req, res) => {
+    try {
+      const { email } = req.body;
+      const user = getUserByEmail(email);
+      if (!user) return res.status(404).json({ error: 'No user with that email.' });
+  
+      // 6‑digit code
+      const resetCode = Math.floor(100000 + Math.random() * 900000).toString();
+      const expiresAt = Date.now() + 60*60*1000; // 1 hour
 
+      db.prepare(`
+        CREATE TABLE IF NOT EXISTS password_resets (
+          id          INTEGER PRIMARY KEY AUTOINCREMENT,
+          user_id     INTEGER NOT NULL,
+          reset_code  TEXT    NOT NULL,
+          expires_at  INTEGER NOT NULL,
+          FOREIGN KEY(user_id) REFERENCES users(id)
+        )`).run();
+  
+
+      // save it
+      db.prepare(
+        'INSERT INTO password_resets (user_id, reset_code, expires_at) VALUES (?,?,?)'
+      ).run(user.id, resetCode, expiresAt);
+  
+      // send email
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT),
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS
+        }
+      });
+  
+      await transporter.sendMail({
+        from: `"FitTrendz Support" <${process.env.SMTP_USER}>`,
+        to: user.email,
+        subject: 'Your FitTrendz password reset code',
+        text: `Your reset code is ${resetCode}. It expires in one hour.`,
+      });
+  
+      res.json({ message: 'Reset code sent to your email.' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Unable to send reset code.' });
+    }
+  });
+
+  app.post('/api/auth/reset-password', async (req, res) => {
+    try {
+      const { email, code, newPassword } = req.body;
+      const user = getUserByEmail(email);
+      if (!user) return res.status(404).json({ error: 'User not found.' });
+
+      db.prepare(`
+        CREATE TABLE IF NOT EXISTS password_resets (
+          id          INTEGER PRIMARY KEY AUTOINCREMENT,
+          user_id     INTEGER NOT NULL,
+          reset_code  TEXT    NOT NULL,
+          expires_at  INTEGER NOT NULL,
+          FOREIGN KEY(user_id) REFERENCES users(id)
+        )`).run();
+  
+      const record = db.prepare(
+        'SELECT * FROM password_resets WHERE user_id = ? AND reset_code = ?'
+      ).get(user.id, code);
+  
+      if (!record || record.expires_at < Date.now()) {
+        return res.status(400).json({ error: 'Invalid or expired code.' });
+      }
+  
+      // hash & update
+      const hash = await bcrypt.hash(newPassword, 10);
+      db.prepare('UPDATE users SET password = ? WHERE id = ?')
+        .run(hash, user.id);
+  
+      // clean up
+      db.prepare('DELETE FROM password_resets WHERE id = ?')
+        .run(record.id);
+  
+      res.json({ message: 'Password has been reset.' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Password reset failed.' });
+    }
+  });
+
+app.post('/create-checkout-session', async (req, res) => {
+    const products = req.body["products"];
+    console.log("Reached backend before creating cart session")
+    console.log(products) // has to be reduce to valid line_items parameters
+    const lineItemFormattedProducts = products.map(item => ({
+      price: item.price,
+      quantity: item.quantity
+    }))
+
+    const session  = await stripe.checkout.sessions.create({
+        line_items: lineItemFormattedProducts,
+        mode: 'payment',
+        success_url: 'http://localhost:5173?success=true',
+        cancel_url: 'http://localhost:5173?canceled=true',
+    });
+    
+    res.json({url: session.url});
+});
 
 // Start Server
 app.listen(3000, () => {
