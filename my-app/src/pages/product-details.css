@@ -71,6 +71,52 @@
   .add-to-cart-btn:hover {
     background-color: var(--secondary-color);
   }
+  .recommended-section {
+    margin-top: 60px;
+    padding: 40px 20px;
+    background: linear-gradient(to right, #fdfbfb, #ebedee);
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recommended-section h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .recommended-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    padding-left: 10px;
+  }
+  
+  .recommended-grid::-webkit-scrollbar {
+    height: 10px;
+  }
+  
+  .recommended-grid::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 10px;
+  }
+  .recommended-section {
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  
   
   /* 🔹 Responsive */
   @media (max-width: 768px) {
@@ -136,7 +182,8 @@
       .outfit-builder-link:hover {
         background-color: #0056b3;
       }
-      
+          
+     
       
   }
   

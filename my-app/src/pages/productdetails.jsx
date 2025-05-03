@@ -1,11 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import data from "../db/data";
 import "./product-details.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
+import Card from "../components/card"; // NEW
 
 export default function ProductDetails() {
   const { title } = useParams();
@@ -16,7 +17,6 @@ export default function ProductDetails() {
   const { addToCart } = useCart();
   const { addToWishlist } = useWishlist();
 
-  // === QUIZ STATE ===
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({
     gender: "",
@@ -91,7 +91,6 @@ export default function ProductDetails() {
     }
 
     addToCart(product, selectedSize);
-    console.log(`Product added to cart: ${JSON.stringify(product, null, 2)}`)
     alert(`✅ ${product.title} (Size ${selectedSize}) added to cart!`);
     navigate("/cart");
   };
@@ -107,6 +106,12 @@ export default function ProductDetails() {
     alert(`❤️ ${product.title} added to wishlist!`);
   };
 
+  const getRecommended = (currentTitle, category) => {
+    return data
+      .filter((item) => item.title !== currentTitle && item.category === category)
+      .slice(0, 4);
+  };
+
   if (!product) {
     return (
       <div className="product-details">
@@ -117,7 +122,6 @@ export default function ProductDetails() {
 
   return (
     <>
-      
       <div className="product-details">
         <div className="image-section">
           <img src={product.img} alt={product.title} />
@@ -160,16 +164,11 @@ export default function ProductDetails() {
             >
               {wishlisted ? "Wishlisted ❤️" : "Add to Wishlist"}
             </button>
-            <button
-  className="outfit-builder-link"
-  onClick={() => navigate("/outfit-builder")}
->
-  Build Outfit with This
-</button>
-
+            <button className="outfit-builder-link" onClick={() => navigate("/outfit-builder")}>
+              Build Outfit with This
+            </button>
           </div>
 
-          {/* 🧠 Sizing Quiz Here */}
           <div className="quiz-container">
             <h2 className="quiz-title">Not sure your size?</h2>
             {step < questions.length ? (
@@ -219,7 +218,24 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
-      
+
+      {/* Recommended Products Section */}
+      <div className="recommended-section">
+        <h2>You May Also Like</h2>
+        <div className="recommended-grid">
+          {getRecommended(product.title, product.category).map((item) => (
+            <Card
+              key={item.title}
+              img={item.img}
+              title={item.title}
+              star={item.rating}
+              reviews={item.reviews}
+              prevPrice={item.prevPrice}
+              newPrice={item.newPrice}
+            />
+          ))}
+        </div>
+      </div>
     </>
   );
 }
