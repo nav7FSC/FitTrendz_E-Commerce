@@ -24,7 +24,7 @@ export default function SignInPage() {
 
 function SignInComponent() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, setAccessToken } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({ email: false, password: false });
@@ -93,10 +93,13 @@ function SignInComponent() {
         console.log("Google User Info:", userInfo.data);
 
         axios
-          .post("http://localhost:3000/api/auth/google-login", userInfo.data)
+          .post("http://localhost:3000/api/auth/google-login", userInfo.data, { withCredentials: true })
           .then((response) => {
+            const access_token = response.data["accessToken"]
+            setAccessToken(access_token)
             console.log("Google sign-in success:", response.data);
             alert("Google sign-in successful!");
+            navigate("/");
           })
           .catch((error) => {
             console.error("Google sign-in failed:", error);

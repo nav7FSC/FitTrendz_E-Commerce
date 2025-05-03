@@ -11,7 +11,7 @@ export class RefreshToken {
     user_agent = null;
     is_revoked = null;
     replaced_by_token = null;
-    db = null
+    db = null;
 
     constructor(
         token, 
