@@ -31,7 +31,8 @@ export default function Wishlist() {
                 <img src={item.img} alt={item.title} className="wishlist-img" />
                 <div className="wishlist-details">
                   <h3>{item.title}</h3>
-                  <p>${item.price.toFixed(2)}</p>
+                    <p>Size: {item.size}</p>
+                    <p>{item.newPrice}</p>
                   <div className="wishlist-buttons">
                     <button
                       className="wishlist-move-btn"
