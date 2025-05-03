@@ -1,291 +1,339 @@
 export const data = [
   {
-    img: "https://c.media-amazon.com/images/I/71y0jPPHNzL._AC_UL320_.jpg",
-    title: "Crewneck Cotton Sweatshirt",
-    rating: 4.6,
-    reviews: "(324 reviews)",
-    prevPrice: "$40.00",
-    newPrice: "$29.99",
-    style: "Comfort",
-    color: "gray",
-    category: "sweatshirts",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/71y0jPPHNzL._AC_UL320_.jpg",
+    "title": "Crewneck Cotton Sweatshirt",
+    "rating": 4.6,
+    "reviews": "(324 reviews)",
+    "prevPrice": "$40.00",
+    "newPrice": "$29.99",
+    "style": "Comfort",
+    "color": "gray",
+    "category": "sweatshirts",
+    "gender": "men",
+    "id": "prod_SFA7xnC3YyF0w6",
+    "price": "price_1RKfnZCkS2P2sDdJQYYJSFGG"
   },
   {
-    img: "https://c.media-amazon.com/images/I/61kRx2g7EsL._AC_UL320_.jpg",
-    title: "Fleece Pullover Hoodie",
-    rating: 4.6,
-    reviews: "(754 reviews)",
-    prevPrice: "$40.00",
-    newPrice: "$32.99",
-    style: "Athletic",
-    color: "black",
-    category: "hoodies",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/61kRx2g7EsL._AC_UL320_.jpg",
+    "title": "Fleece Pullover Hoodie",
+    "rating": 4.6,
+    "reviews": "(754 reviews)",
+    "prevPrice": "$40.00",
+    "newPrice": "$32.99",
+    "style": "Athletic",
+    "color": "black",
+    "category": "hoodies",
+    "gender": "men",
+    "id": "prod_SFA7bsfuYdbunh",
+    "price": "price_1RKfnZCkS2P2sDdJhGcAr9PZ"
   },
   {
-    img: "https://c.media-amazon.com/images/I/71oF5-0Kl8L._AC_UL320_.jpg",
-    title: "Stretch Fit Jeans",
-    rating: 4.2,
-    reviews: "(30,000 reviews)",
-    prevPrice: "$35.00",
-    newPrice: "$26.60",
-    style: "Comfort",
-    color: "denim",
-    category: "jeans",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/71oF5-0Kl8L._AC_UL320_.jpg",
+    "title": "Stretch Fit Jeans",
+    "rating": 4.2,
+    "reviews": "(30,000 reviews)",
+    "prevPrice": "$35.00",
+    "newPrice": "$26.60",
+    "style": "Comfort",
+    "color": "denim",
+    "category": "jeans",
+    "gender": "men",
+    "id": "prod_SFA7qzS6W2n0Sq",
+    "price": "price_1RKfnaCkS2P2sDdJMP2xyniP"
   },
   {
-    img: "https://c.media-amazon.com/images/I/71FZ2H3hooL._AC_UL320_.jpg",
-    title: "2-in-1 Workout Shorts",
-    rating: 4.4,
-    reviews: "(11 reviews)",
-    prevPrice: "$35.00",
-    newPrice: "$26.99",
-    style: "Athletic",
-    color: "black",
-    category: "shorts",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/71FZ2H3hooL._AC_UL320_.jpg",
+    "title": "2-in-1 Workout Shorts",
+    "rating": 4.4,
+    "reviews": "(11 reviews)",
+    "prevPrice": "$35.00",
+    "newPrice": "$26.99",
+    "style": "Athletic",
+    "color": "black",
+    "category": "shorts",
+    "gender": "men",
+    "id": "prod_SFA7lvsUDFx3Ss",
+    "price": "price_1RKfnaCkS2P2sDdJPsqoiEc4"
   },
   {
-    img: "https://c.media-amazon.com/images/I/71RPinQjeCL._AC_UL320_.jpg",
-    title: "Loose Fit Tee",
-    rating: 4.6,
-    reviews: "(153,100 reviews)",
-    prevPrice: "$30.00",
-    newPrice: "$19.99",
-    style: "Comfort",
-    color: "white",
-    category: "t-shirts",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/71RPinQjeCL._AC_UL320_.jpg",
+    "title": "Loose Fit Tee",
+    "rating": 4.6,
+    "reviews": "(153,100 reviews)",
+    "prevPrice": "$30.00",
+    "newPrice": "$19.99",
+    "style": "Comfort",
+    "color": "white",
+    "category": "t-shirts",
+    "gender": "men",
+    "id": "prod_SFA7SdCIyT8Rvp",
+    "price": "price_1RKfnbCkS2P2sDdJoaUMaKSS"
   },
   {
-    img: "https://c.media-amazon.com/images/I/619tikhRvbL._AC_UL320_.jpg",
-    title: "Linen Beach Set",
-    rating: 4.3,
-    reviews: "(3,000 reviews)",
-    prevPrice: "$60.00",
-    newPrice: "$44.99",
-    style: "Other",
-    color: "white",
-    category: "sets",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/619tikhRvbL._AC_UL320_.jpg",
+    "title": "Linen Beach Set",
+    "rating": 4.3,
+    "reviews": "(3,000 reviews)",
+    "prevPrice": "$60.00",
+    "newPrice": "$44.99",
+    "style": "Other",
+    "color": "white",
+    "category": "sets",
+    "gender": "men",
+    "id": "prod_SFA7GdOzcIDufs",
+    "price": "price_1RKfnbCkS2P2sDdJRqDuHjUD"
   },
   {
-    img: "https://c.media-amazon.com/images/I/81D+bCgn8hL._AC_UL320_.jpg",
-    title: "EcoSmart Fleece",
-    rating: 4.6,
-    reviews: "(153,500 reviews)",
-    prevPrice: "$18.00",
-    newPrice: "$9.50",
-    style: "Comfort",
-    color: "navy",
-    category: "sweatshirts",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/81D+bCgn8hL._AC_UL320_.jpg",
+    "title": "EcoSmart Fleece",
+    "rating": 4.6,
+    "reviews": "(153,500 reviews)",
+    "prevPrice": "$18.00",
+    "newPrice": "$9.50",
+    "style": "Comfort",
+    "color": "navy",
+    "category": "sweatshirts",
+    "gender": "men",
+    "id": "prod_SFA7zwrfTpssa2",
+    "price": "price_1RKfncCkS2P2sDdJwhxFoCGF"
   },
   {
-    img: "https://c.media-amazon.com/images/I/71UIENuQxXL._AC_UL320_.jpg",
-    title: "Quick-Dry Polo Pack",
-    rating: 4.4,
-    reviews: "(4,100 reviews)",
-    prevPrice: "$55.00",
-    newPrice: "$43.99",
-    style: "Athletic",
-    color: "multi",
-    category: "shirts",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/71UIENuQxXL._AC_UL320_.jpg",
+    "title": "Quick-Dry Polo Pack",
+    "rating": 4.4,
+    "reviews": "(4,100 reviews)",
+    "prevPrice": "$55.00",
+    "newPrice": "$43.99",
+    "style": "Athletic",
+    "color": "multi",
+    "category": "shirts",
+    "gender": "men",
+    "id": "prod_SFA7XBOkugIB1x",
+    "price": "price_1RKfndCkS2P2sDdJmvXyXvia"
   },
   {
-    img: "https://c.media-amazon.com/images/I/71zEMu-ZwoL._AC_UL320_.jpg",
-    title: "Waffle Tracksuit Set",
-    rating: 4.0,
-    reviews: "(19 reviews)",
-    prevPrice: "$35.00",
-    newPrice: "$25.99",
-    style: "Other",
-    color: "gray",
-    category: "sets",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/71zEMu-ZwoL._AC_UL320_.jpg",
+    "title": "Waffle Tracksuit Set",
+    "rating": 4,
+    "reviews": "(19 reviews)",
+    "prevPrice": "$35.00",
+    "newPrice": "$25.99",
+    "style": "Other",
+    "color": "gray",
+    "category": "sets",
+    "gender": "men",
+    "id": "prod_SFA7kIy3u7sgCg",
+    "price": "price_1RKfndCkS2P2sDdJ9etm9MkB"
   },
   {
-    img: "https://c.media-amazon.com/images/I/61BqqBbrwpL._AC_UL320_.jpg",
-    title: "Running Tee UPF50+",
-    rating: 4.7,
-    reviews: "(27 reviews)",
-    prevPrice: "$12.99",
-    newPrice: "$10.99",
-    style: "Athletic",
-    color: "white",
-    category: "t-shirts",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/61BqqBbrwpL._AC_UL320_.jpg",
+    "title": "Running Tee UPF50+",
+    "rating": 4.7,
+    "reviews": "(27 reviews)",
+    "prevPrice": "$12.99",
+    "newPrice": "$10.99",
+    "style": "Athletic",
+    "color": "white",
+    "category": "t-shirts",
+    "gender": "men",
+    "id": "prod_SFA7hYzzCIIx4v",
+    "price": "price_1RKfneCkS2P2sDdJVLWFP12u"
   },
   {
-    img: "https://c.media-amazon.com/images/I/81HsZOdpbJL._AC_UL320_.jpg",
-    title: "Henley Tee Classic",
-    rating: 4.4,
-    reviews: "(10,300 reviews)",
-    prevPrice: "$30.99",
-    newPrice: "$19.78",
-    style: "Comfort",
-    color: "black",
-    category: "t-shirts",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/81HsZOdpbJL._AC_UL320_.jpg",
+    "title": "Henley Tee Classic",
+    "rating": 4.4,
+    "reviews": "(10,300 reviews)",
+    "prevPrice": "$30.99",
+    "newPrice": "$19.78",
+    "style": "Comfort",
+    "color": "black",
+    "category": "t-shirts",
+    "gender": "men",
+    "id": "prod_SFA79SCe8GV2R6",
+    "price": "price_1RKfneCkS2P2sDdJdGnxgQeQ"
   },
   {
-    img: "https://c.media-amazon.com/images/I/813X3sta1sL._AC_UL320_.jpg",
-    title: "Solid Knit Hoodie",
-    rating: 4.6,
-    reviews: "(5,200 reviews)",
-    prevPrice: "$34.99",
-    newPrice: "$30.79",
-    style: "Comfort",
-    color: "gray",
-    category: "hoodies",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/813X3sta1sL._AC_UL320_.jpg",
+    "title": "Solid Knit Hoodie",
+    "rating": 4.6,
+    "reviews": "(5,200 reviews)",
+    "prevPrice": "$34.99",
+    "newPrice": "$30.79",
+    "style": "Comfort",
+    "color": "gray",
+    "category": "hoodies",
+    "gender": "men",
+    "id": "prod_SFA7sWlGBvwRen",
+    "price": "price_1RKfnfCkS2P2sDdJ0AgohTEm"
   },
   {
-    img: "https://c.media-amazon.com/images/I/71O7gCAToYL._AC_UL320_.jpg",
-    title: "Short Sleeve Beach Shirt",
-    rating: 4.5,
-    reviews: "(40 reviews)",
-    prevPrice: "$35.00",
-    newPrice: "$24.99",
-    style: "Other",
-    color: "white",
-    category: "shirts",
-    gender: "men"
+    "img": "https://c.media-amazon.com/images/I/71O7gCAToYL._AC_UL320_.jpg",
+    "title": "Short Sleeve Beach Shirt",
+    "rating": 4.5,
+    "reviews": "(40 reviews)",
+    "prevPrice": "$35.00",
+    "newPrice": "$24.99",
+    "style": "Other",
+    "color": "white",
+    "category": "shirts",
+    "gender": "men",
+    "id": "prod_SFA75qpmAjeclF",
+    "price": "price_1RKfngCkS2P2sDdJd4b1uNBW"
   },
   {
-    img: "https://c.media-amazon.com/images/I/51F7S8AVafL._AC_UL320_.jpg",
-    title: "V-Neck Linen Blouse",
-    rating: 1.7,
-    reviews: "(40 reviews)",
-    prevPrice: "$30.00",
-    newPrice: "$22.99",
-    style: "Casual",
-    color: "white",
-    category: "tops",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/51F7S8AVafL._AC_UL320_.jpg",
+    "title": "V-Neck Linen Blouse",
+    "rating": 1.7,
+    "reviews": "(40 reviews)",
+    "prevPrice": "$30.00",
+    "newPrice": "$22.99",
+    "style": "Casual",
+    "color": "white",
+    "category": "tops",
+    "gender": "women",
+    "id": "prod_SFA7DmoPmPyKZq",
+    "price": "price_1RKfngCkS2P2sDdJAhJxr9g9"
   },
   {
-    img: "https://c.media-amazon.com/images/I/61WfO5R3KSL._AC_UL320_.jpg",
-    title: "Boho Floral Linen Blouse",
-    rating: 2.2,
-    reviews: "(35 reviews)",
-    prevPrice: "$35.00",
-    newPrice: "$28.99",
-    style: "Boho",
-    color: "floral",
-    category: "tops",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/61WfO5R3KSL._AC_UL320_.jpg",
+    "title": "Boho Floral Linen Blouse",
+    "rating": 2.2,
+    "reviews": "(35 reviews)",
+    "prevPrice": "$35.00",
+    "newPrice": "$28.99",
+    "style": "Boho",
+    "color": "floral",
+    "category": "tops",
+    "gender": "women",
+    "id": "prod_SFA7Ei5Ww0rTAy",
+    "price": "price_1RKfnhCkS2P2sDdJGmxoxA1s"
   },
   {
-    img: "https://c.media-amazon.com/images/I/51qc1w84MhL._AC_UL320_.jpg",
-    title: "Floral Crewneck Shirt",
-    rating: 4.2,
-    reviews: "(20 reviews)",
-    prevPrice: "$30.00",
-    newPrice: "$25.98",
-    style: "Casual",
-    color: "multi",
-    category: "tops",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/51qc1w84MhL._AC_UL320_.jpg",
+    "title": "Floral Crewneck Shirt",
+    "rating": 4.2,
+    "reviews": "(20 reviews)",
+    "prevPrice": "$30.00",
+    "newPrice": "$25.98",
+    "style": "Casual",
+    "color": "multi",
+    "category": "tops",
+    "gender": "women",
+    "id": "prod_SFA7f1ADrMUsGG",
+    "price": "price_1RKfnhCkS2P2sDdJA0qo94sd"
   },
   {
-    img: "https://c.media-amazon.com/images/I/61CcTPBfpiL._AC_UL320_.jpg",
-    title: "Short Sleeve Tunic",
-    rating: 3.4,
-    reviews: "(9 reviews)",
-    prevPrice: "$30.00",
-    newPrice: "$25.99",
-    style: "Relaxed",
-    color: "solid",
-    category: "tops",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/61CcTPBfpiL._AC_UL320_.jpg",
+    "title": "Short Sleeve Tunic",
+    "rating": 3.4,
+    "reviews": "(9 reviews)",
+    "prevPrice": "$30.00",
+    "newPrice": "$25.99",
+    "style": "Relaxed",
+    "color": "solid",
+    "category": "tops",
+    "gender": "women",
+    "id": "prod_SFA7DGKjooorLd",
+    "price": "price_1RKfniCkS2P2sDdJuLbxSsIi"
   },
   {
-    img: "https://c.media-amazon.com/images/I/51HPYzIklzL._AC_UL320_.jpg",
-    title: "Wide-Leg Lounge Set",
-    rating: 4.5,
-    reviews: "(28 reviews)",
-    prevPrice: "$35.00",
-    newPrice: "$29.99",
-    style: "Lounge",
-    color: "neutral",
-    category: "sets",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/51HPYzIklzL._AC_UL320_.jpg",
+    "title": "Wide-Leg Lounge Set",
+    "rating": 4.5,
+    "reviews": "(28 reviews)",
+    "prevPrice": "$35.00",
+    "newPrice": "$29.99",
+    "style": "Lounge",
+    "color": "neutral",
+    "category": "sets",
+    "gender": "women",
+    "id": "prod_SFA7JplExpQNT2",
+    "price": "price_1RKfniCkS2P2sDdJjbMuwf3P"
   },
   {
-    img: "https://c.media-amazon.com/images/I/61qJlwGq8UL._AC_UL320_.jpg",
-    title: "Mock Neck Travel Set",
-    rating: 4.3,
-    reviews: "(2,600 reviews)",
-    prevPrice: "$45.00",
-    newPrice: "$34.99",
-    style: "Lounge",
-    color: "gray",
-    category: "sets",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/61qJlwGq8UL._AC_UL320_.jpg",
+    "title": "Mock Neck Travel Set",
+    "rating": 4.3,
+    "reviews": "(2,600 reviews)",
+    "prevPrice": "$45.00",
+    "newPrice": "$34.99",
+    "style": "Lounge",
+    "color": "gray",
+    "category": "sets",
+    "gender": "women",
+    "id": "prod_SFA79sYijT7nPi",
+    "price": "price_1RKfnjCkS2P2sDdJVRaCnqeY"
   },
   {
-    img: "https://c.media-amazon.com/images/I/713HlhuVeKL._AC_UL320_.jpg",
-    title: "Button T-Shirt Tee",
-    rating: 4.3,
-    reviews: "(52 reviews)",
-    prevPrice: "$24.00",
-    newPrice: "$18.99",
-    style: "Cute",
-    color: "pastel",
-    category: "tops",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/713HlhuVeKL._AC_UL320_.jpg",
+    "title": "Button T-Shirt Tee",
+    "rating": 4.3,
+    "reviews": "(52 reviews)",
+    "prevPrice": "$24.00",
+    "newPrice": "$18.99",
+    "style": "Cute",
+    "color": "pastel",
+    "category": "tops",
+    "gender": "women",
+    "id": "prod_SFA8Wpvd4fVsw1",
+    "price": "price_1RKfnkCkS2P2sDdJclnZv8CB"
   },
   {
-    img: "https://c.media-amazon.com/images/I/71f-yxtdjqL._AC_UL320_.jpg",
-    title: "Knit Tank Vest",
-    rating: 4.4,
-    reviews: "(238 reviews)",
-    prevPrice: "$29.98",
-    newPrice: "$19.98",
-    style: "Trendy",
-    color: "cream",
-    category: "tops",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/71f-yxtdjqL._AC_UL320_.jpg",
+    "title": "Knit Tank Vest",
+    "rating": 4.4,
+    "reviews": "(238 reviews)",
+    "prevPrice": "$29.98",
+    "newPrice": "$19.98",
+    "style": "Trendy",
+    "color": "cream",
+    "category": "tops",
+    "gender": "women",
+    "id": "prod_SFA8d0lgfJvORt",
+    "price": "price_1RKfnkCkS2P2sDdJdofrjtoU"
   },
   {
-    img: "https://c.media-amazon.com/images/I/51gDfvc+eJL._AC_UL320_.jpg",
-    title: "Jogger Lounge Pants",
-    rating: 4.3,
-    reviews: "(25,200 reviews)",
-    prevPrice: "$34.99",
-    newPrice: "$28.49",
-    style: "Athletic",
-    color: "black",
-    category: "pants",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/51gDfvc+eJL._AC_UL320_.jpg",
+    "title": "Jogger Lounge Pants",
+    "rating": 4.3,
+    "reviews": "(25,200 reviews)",
+    "prevPrice": "$34.99",
+    "newPrice": "$28.49",
+    "style": "Athletic",
+    "color": "black",
+    "category": "pants",
+    "gender": "women",
+    "id": "prod_SFA8eXRbz3F1CO",
+    "price": "price_1RKfnlCkS2P2sDdJSGiNlX3B"
   },
   {
-    img: "https://c.media-amazon.com/images/I/51pgj61zt2L._AC_UL320_.jpg",
-    title: "Half-Zip Sweatsuit",
-    rating: 4.2,
-    reviews: "(2,400 reviews)",
-    prevPrice: "$55.00",
-    newPrice: "$47.99",
-    style: "Lounge",
-    color: "neutral",
-    category: "sets",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/51pgj61zt2L._AC_UL320_.jpg",
+    "title": "Half-Zip Sweatsuit",
+    "rating": 4.2,
+    "reviews": "(2,400 reviews)",
+    "prevPrice": "$55.00",
+    "newPrice": "$47.99",
+    "style": "Lounge",
+    "color": "neutral",
+    "category": "sets",
+    "gender": "women",
+    "id": "prod_SFA8NDJF5hvuXr",
+    "price": "price_1RKfnlCkS2P2sDdJqEFFepto"
   },
   {
-    img: "https://c.media-amazon.com/images/I/91OlSrOsY7L._AC_UL320_.jpg",
-    title: "Plaid Boxer Shorts",
-    rating: 4.4,
-    reviews: "(285 reviews)",
-    prevPrice: "$14.99",
-    newPrice: "$8.99",
-    style: "Sleepwear",
-    color: "plaid",
-    category: "shorts",
-    gender: "women"
+    "img": "https://c.media-amazon.com/images/I/91OlSrOsY7L._AC_UL320_.jpg",
+    "title": "Plaid Boxer Shorts",
+    "rating": 4.4,
+    "reviews": "(285 reviews)",
+    "prevPrice": "$14.99",
+    "newPrice": "$8.99",
+    "style": "Sleepwear",
+    "color": "plaid",
+    "category": "shorts",
+    "gender": "women",
+    "id": "prod_SFA87yjg3WYEYH",
+    "price": "price_1RKfnmCkS2P2sDdJJ61E6x3Z"
   },
   {
     "img": "https://m.media-amazon.com/images/I/61gQVDClZRL._AC_SX569_.jpg",
@@ -298,8 +346,8 @@ export const data = [
     "color": "blue",
     "category": "shirts",
     "gender": "men",
-    "id": "prod_SCZN1ez0BA9NkF",
-    "price": "price_1RIAF3CkS2P2sDdJ9fjqkCAM"
+    "id": "prod_SFA8wOTDO03x6Y",
+    "price": "price_1RKfnnCkS2P2sDdJFgyNG9E4"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71cLAqOr0tL._AC_SX679_.jpg",
@@ -312,8 +360,8 @@ export const data = [
     "color": "black",
     "category": "jeans",
     "gender": "women",
-    "id": "prod_SCZNvaLkvZBEN7",
-    "price": "price_1RIAF3CkS2P2sDdJ4MkLkDgb"
+    "id": "prod_SFA8ZNDQMU3boM",
+    "price": "price_1RKfnnCkS2P2sDdJWvkvc2bj"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71wp-f9m0-L._AC_SY741_.jpg",
@@ -326,8 +374,8 @@ export const data = [
     "color": "gray",
     "category": "hoodies",
     "gender": "unisex",
-    "id": "prod_SCZNt8FrQO4otH",
-    "price": "price_1RIAF4CkS2P2sDdJdrFmhhDN"
+    "id": "prod_SFA8vNwIQNOXLT",
+    "price": "price_1RKfnoCkS2P2sDdJXf3oGgkd"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71BHSXSzqeL._AC_SY741_.jpg",
@@ -340,8 +388,8 @@ export const data = [
     "color": "khaki",
     "category": "pants",
     "gender": "men",
-    "id": "prod_SCZNyvppN9rNhn",
-    "price": "price_1RIAF4CkS2P2sDdJDlzn1jjs"
+    "id": "prod_SFA8r7Grva7sdM",
+    "price": "price_1RKfnoCkS2P2sDdJpJF735vT"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71QXvsxofpL._AC_UL320_.jpg",
@@ -354,8 +402,8 @@ export const data = [
     "color": "red",
     "category": "dresses",
     "gender": "women",
-    "id": "prod_SCZNDjRoPsSHUf",
-    "price": "price_1RIAF5CkS2P2sDdJRnHbtYBb"
+    "id": "prod_SFA8cO4QJAJyQn",
+    "price": "price_1RKfnpCkS2P2sDdJ88LNLEZC"
   },
   {
     "img": "https://m.media-amazon.com/images/I/81Y6r7df7OL._AC_SX569_.jpg",
@@ -368,8 +416,8 @@ export const data = [
     "color": "white",
     "category": "shirts",
     "gender": "men",
-    "id": "prod_SCZNfH1q9twRqg",
-    "price": "price_1RIAF6CkS2P2sDdJTxA8d5xW"
+    "id": "prod_SFA837qzJh8XTi",
+    "price": "price_1RKfnpCkS2P2sDdJLryQ8swH"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71htqyXvfSL._AC_SX679_.jpg",
@@ -382,8 +430,8 @@ export const data = [
     "color": "blue",
     "category": "jeans",
     "gender": "men",
-    "id": "prod_SCZNrTX7zge6XS",
-    "price": "price_1RIAF6CkS2P2sDdJ8GrB5qF3"
+    "id": "prod_SFA8H92uw4Muns",
+    "price": "price_1RKfnqCkS2P2sDdJMAbsG0Ok"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71rmcjnJiqL._AC_SX569_.jpg",
@@ -396,8 +444,8 @@ export const data = [
     "color": "black",
     "category": "hoodies",
     "gender": "women",
-    "id": "prod_SCZNq00qlxRtDs",
-    "price": "price_1RIAF7CkS2P2sDdJekpRQqF5"
+    "id": "prod_SFA8HfSjnKNEDm",
+    "price": "price_1RKfnrCkS2P2sDdJdV8i8ICf"
   },
   {
     "img": "https://m.media-amazon.com/images/I/61gamoidnBL._AC_SY741_.jpg",
@@ -410,8 +458,8 @@ export const data = [
     "color": "gray",
     "category": "pants",
     "gender": "unisex",
-    "id": "prod_SCZNjnFMJMa4qK",
-    "price": "price_1RIAF7CkS2P2sDdJGeFMsvYR"
+    "id": "prod_SFA84b32mn6nNS",
+    "price": "price_1RKfnrCkS2P2sDdJPivioQeq"
   },
   {
     "img": "https://m.media-amazon.com/images/I/51gpWxyUseL._AC_SX679_.jpg",
@@ -424,8 +472,8 @@ export const data = [
     "color": "navy",
     "category": "dresses",
     "gender": "women",
-    "id": "prod_SCZNFWWtsj3XmE",
-    "price": "price_1RIAF8CkS2P2sDdJEs6iuNp8"
+    "id": "prod_SFA8jS91tmhTV9",
+    "price": "price_1RKfnsCkS2P2sDdJBPRLyFAe"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71n4aYYXM-L._AC_SY741_.jpg",
@@ -438,8 +486,8 @@ export const data = [
     "color": "black",
     "category": "pants",
     "gender": "men",
-    "id": "prod_SCZNG77qIjKvFw",
-    "price": "price_1RIAF8CkS2P2sDdJCim8Fb25"
+    "id": "prod_SFA8DdNJC2fd3u",
+    "price": "price_1RKfnsCkS2P2sDdJ6agAP6KE"
   },
   {
     "img": "https://m.media-amazon.com/images/I/611DCpUuhfL._AC_SL1500_.jpg",
@@ -452,8 +500,8 @@ export const data = [
     "color": "gray",
     "category": "hoodies",
     "gender": "unisex",
-    "id": "prod_SCZNS5uCc5qNAP",
-    "price": "price_1RIAF9CkS2P2sDdJ0yq06rbj"
+    "id": "prod_SFA89kHiXBPlPl",
+    "price": "price_1RKfntCkS2P2sDdJJpL9SjmD"
   },
   {
     "img": "https://m.media-amazon.com/images/I/61oW09i5MAL._AC_SX679_.jpg",
@@ -466,8 +514,8 @@ export const data = [
     "color": "yellow",
     "category": "dresses",
     "gender": "women",
-    "id": "prod_SCZNOtW6XNMnE9",
-    "price": "price_1RIAF9CkS2P2sDdJZXdjdi4e"
+    "id": "prod_SFA8BXZEttGMt4",
+    "price": "price_1RKfnuCkS2P2sDdJpqfg9fpU"
   },
   {
     "img": "https://m.media-amazon.com/images/I/91tc0Gl1eBL._AC_SX679_.jpg",
@@ -480,8 +528,8 @@ export const data = [
     "color": "red",
     "category": "shirts",
     "gender": "men",
-    "id": "prod_SCZNDaGwwn8kUk",
-    "price": "price_1RIAFACkS2P2sDdJW5XOMPaJ"
+    "id": "prod_SFA8oFFUQspFZ3",
+    "price": "price_1RKfnuCkS2P2sDdJmMVT28fV"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71+riO7d0NL._AC_SX679_.jpg",
@@ -494,8 +542,8 @@ export const data = [
     "color": "black",
     "category": "jeans",
     "gender": "women",
-    "id": "prod_SCZNSHiQn4NDzj",
-    "price": "price_1RIAFBCkS2P2sDdJ47Z4tfZ2"
+    "id": "prod_SFA8Pk6H4zc7qv",
+    "price": "price_1RKfnvCkS2P2sDdJDZTG4aZJ"
   },
   {
     "img": "https://m.media-amazon.com/images/I/81kAhEYvQwL._AC_UL320_.jpg",
@@ -508,8 +556,8 @@ export const data = [
     "color": "green",
     "category": "shirts",
     "gender": "men",
-    "id": "prod_SCZNjKWXqW1G2N",
-    "price": "price_1RIAFBCkS2P2sDdJ6DCRxteP"
+    "id": "prod_SFA8cWB8uPHQHd",
+    "price": "price_1RKfnvCkS2P2sDdJDWtGb68K"
   },
   {
     "img": "https://m.media-amazon.com/images/I/81QDD1ULPzL._AC_UL320_.jpg",
@@ -522,8 +570,8 @@ export const data = [
     "color": "floral",
     "category": "skirts",
     "gender": "women",
-    "id": "prod_SCZNB3uYbNsYt5",
-    "price": "price_1RIAFCCkS2P2sDdJNvcIxnUi"
+    "id": "prod_SFA87Ldt8uSIpF",
+    "price": "price_1RKfnwCkS2P2sDdJ3VW0Frk9"
   },
   {
     "img": "https://m.media-amazon.com/images/I/81p-B7OS7VL._AC_UL320_.jpg",
@@ -536,8 +584,8 @@ export const data = [
     "color": "blue",
     "category": "jackets",
     "gender": "unisex",
-    "id": "prod_SCZN7n2YTloJna",
-    "price": "price_1RIAFCCkS2P2sDdJWNy4ZLTX"
+    "id": "prod_SFA8XTAw8zqeXl",
+    "price": "price_1RKfnwCkS2P2sDdJkUt9JCCW"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71MpFHOznXL._AC_UL320_.jpg",
@@ -550,8 +598,8 @@ export const data = [
     "color": "navy",
     "category": "blazers",
     "gender": "men",
-    "id": "prod_SCZNPZPRI4rx6N",
-    "price": "price_1RIAFDCkS2P2sDdJkcm0Ts5s"
+    "id": "prod_SFA86t2Mv1VPU4",
+    "price": "price_1RKfnxCkS2P2sDdJ2fzRhTWh"
   },
   {
     "img": "https://m.media-amazon.com/images/I/61IqZD8hYDL._AC_UL320_.jpg",
@@ -564,8 +612,8 @@ export const data = [
     "color": "black",
     "category": "leggings",
     "gender": "women",
-    "id": "prod_SCZNLhkUHBTMD6",
-    "price": "price_1RIAFDCkS2P2sDdJGpj49hbq"
+    "id": "prod_SFA80mcwF1KP7V",
+    "price": "price_1RKfnyCkS2P2sDdJEIjhoXvT"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71IbGJbFcnL._AC_UL320_.jpg",
@@ -578,8 +626,8 @@ export const data = [
     "color": "charcoal",
     "category": "sweaters",
     "gender": "men",
-    "id": "prod_SCZOKa4Qe6GkFU",
-    "price": "price_1RIAFECkS2P2sDdJkUvJWrap"
+    "id": "prod_SFA8Dt9kfQiC2f",
+    "price": "price_1RKfnyCkS2P2sDdJX0AWdrmQ"
   },
   {
     "img": "https://m.media-amazon.com/images/I/815VJpmh7PL._AC_UL320_.jpg",
@@ -592,8 +640,8 @@ export const data = [
     "color": "beige",
     "category": "cardigans",
     "gender": "women",
-    "id": "prod_SCZOMY1KuVWubx",
-    "price": "price_1RIAFFCkS2P2sDdJa6D5i3kf"
+    "id": "prod_SFA8YphXAPj13h",
+    "price": "price_1RKfnzCkS2P2sDdJP5VYdiEP"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71CFN6Cf9CL._AC_UL320_.jpg",
@@ -606,8 +654,8 @@ export const data = [
     "color": "white",
     "category": "t-shirts",
     "gender": "unisex",
-    "id": "prod_SCZOTz0spvkyI3",
-    "price": "price_1RIAFFCkS2P2sDdJSvpeMv7r"
+    "id": "prod_SFA8rnBHT2KjCv",
+    "price": "price_1RKfnzCkS2P2sDdJgdnkZxJj"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71CxHBIhkiL._AC_UL320_.jpg",
@@ -620,8 +668,8 @@ export const data = [
     "color": "black",
     "category": "jackets",
     "gender": "men",
-    "id": "prod_SCZO8TuNRqcw6N",
-    "price": "price_1RIAFGCkS2P2sDdJf75aQr1E"
+    "id": "prod_SFA8grrnZqizQy",
+    "price": "price_1RKfo0CkS2P2sDdJa945POFX"
   },
   {
     "img": "https://m.media-amazon.com/images/I/71c1emXTEXL._AC_UL320_.jpg",
@@ -634,10 +682,8 @@ export const data = [
     "color": "pink",
     "category": "tops",
     "gender": "women",
-    "id": "prod_SCZOTEtiwHxZI8",
-    "price": "price_1RIAFGCkS2P2sDdJJOndLr1A"
+    "id": "prod_SFA8iNIWOYWe2a",
+    "price": "price_1RKfo1CkS2P2sDdJov3TbfIT"
   }
 ];
-
-// TODO have newPrice set from stripe data and not stored here.
 export default data;
