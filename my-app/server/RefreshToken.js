@@ -2,7 +2,6 @@ import crypto from 'crypto'
 import {getDb} from './dbInterface.js' 
 
 export class RefreshToken {
-    //TODO add revoke function, ...
     token = null;
     user_id = null;
     created_at = null;
@@ -118,7 +117,6 @@ export class RefreshToken {
             const user_agent = req.headers['user-agent']
             const is_revoked = "false";
             const old_token = req.cookies.refreshToken || null;
-            // TODO Set up some testing for this
             // if (old_token !== null) {
             //     RefreshToken.get(old_token).revoke();
             // }

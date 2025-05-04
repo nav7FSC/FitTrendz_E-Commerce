@@ -10,10 +10,6 @@ import api from "../services/axiosInstance";
 import { useAuth } from "../components/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-// TODO add protectedRoute from react router so people can't access restricted pages
-// TODO implement log out button so the JWT cookie is deleted
-// TODO add error messages on invalid login
-
 export default function SignInPage() {
   return (
     <GoogleOAuthProvider clientId="278251322388-ao785r87jmeesbsuloqimmg8il6ctrj9.apps.googleusercontent.com">

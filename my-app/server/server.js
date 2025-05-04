@@ -17,7 +17,6 @@ const app = express();
 const db = getDb();
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
 const stripe = Stripe(process.env.STRIPE_SECRET);
-// TODO make tokens expire later
 
 app.use(express.json());
 app.use(cors({
@@ -52,7 +51,7 @@ app.post('/api/auth/login', async (req, res) => {
         httpOnly: true,
         secure: false, // TODO set true when HTTPS is enabled
         sameSite: 'lax', // change when backend delivers the front? Maybe not if react is hosted elsewhere
-        maxAge:  60 * 60 * 1000 // 1 hour until browser removes it
+        maxAge:  60 * 60 * 1000 * 48// 48 hours until browser removes it
     });
     console.log(`cookie header set: ${res.getHeader('Set-Cookie')}`)
     console.log(`Token: ${refreshToken}`)
@@ -77,13 +76,11 @@ export async function buildAcessJWT(user, secret) {
 
     // private claims 
     const name = user.name
-    //const picture = user.picture TODO when pictures are implemented add back
     const role = user.role
 
 
     const payload = {
         name: name,
-        //picture: picture,
         role: role
     }
 
@@ -210,7 +207,7 @@ app.post('/api/auth/update', requireAuth, async (req, res) => {
 })
 
 app.post('/api/auth/register', async (req, res) => {
-    const { first_name, last_name, email, password } = req.body; // TODO add phone number and address to regular registration or only on purchase?
+    const { first_name, last_name, email, password } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 10);
     try {
         const insert = db.prepare(`INSERT INTO users (
