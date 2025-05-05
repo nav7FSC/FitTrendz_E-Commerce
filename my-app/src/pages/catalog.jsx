@@ -6,8 +6,8 @@ import Products from '../products/products';
 import Recommended from '../Recommended/Recommended';
 import Sidebar from '../Sidebar/Sidebar';
 import Card from "../components/card";
-import data from '../db/data'; // assuming you're using local data.js
-import SpinWheel from '../components/SpinWheel'; // Make sure you import it!
+import data from '../db/data'; 
+import SpinWheel from '../components/SpinWheel'; 
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);
@@ -100,18 +100,32 @@ export default function Catalog() {
   const result = filteredData(products, selectedCategory, query);
 
   return (
-    <div>
-      <Sidebar
-        handleChange={handleChange}
-        query={query}
-        handleInputChange={handleInputChange}
-      />
-      <Recommended handleClick={handleClick} />
-      <Products result={result} />
-      <SpinWheel show={showWheel} onClose={() => {
-        setShowWheel(false);
-        setHasSpun(true);
-      }} />
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      
+      <div style={{ flex: 1 }}>
+        <Sidebar
+          handleChange={handleChange}
+          query={query}
+          handleInputChange={handleInputChange}
+        />
+        <Recommended handleClick={handleClick} />
+        {result.length > 0 ? (
+          <Products result={result} />
+        ) : (
+          <div style={{ minHeight: '300px', textAlign: 'center', padding: '80px 0' }}>
+            <h2>No results found</h2>
+            <p>Try adjusting your search or filters.</p>
+          </div>
+        )}
+        <SpinWheel
+          show={showWheel}
+          onClose={() => {
+            setShowWheel(false);
+            setHasSpun(true);
+          }}
+        />
+      </div>
+      
     </div>
   );
 }
