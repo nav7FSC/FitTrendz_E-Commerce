@@ -97,12 +97,7 @@ export default function ProductDetails() {
 
   const handleWishlist = () => {
     setWishlisted(true);
-    addToWishlist({
-      ...product,
-      id: product.title,
-      price: parseFloat(product.newPrice.replace("$", "")),
-      img: product.img,
-    });
+    addToWishlist(product);
     alert(`❤️ ${product.title} added to wishlist!`);
   };
 

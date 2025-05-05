@@ -1,5 +1,5 @@
 import express from 'express';
-import {getUserByEmail, getAllProducts, getDb} from './dbInterface.js';
+import {getAllProducts, getDb} from './dbInterface.js';
 import bcrypt from 'bcrypt';
 import cors from 'cors';
 import cookieParser from 'cookie-parser'
@@ -7,6 +7,7 @@ import {SignJWT, jwtVerify} from 'jose'
 import dotenv from 'dotenv'
 import crypto from 'crypto'
 import {RefreshToken} from './RefreshToken.js'
+import {User} from './User.js'
 import Stripe from 'stripe'
 
 import nodemailer from 'nodemailer';
@@ -16,7 +17,6 @@ const app = express();
 const db = getDb();
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
 const stripe = Stripe(process.env.STRIPE_SECRET);
-// TODO make tokens expire later
 
 app.use(express.json());
 app.use(cors({
@@ -29,7 +29,7 @@ app.use(cookieParser())
 app.post('/api/auth/login', async (req, res) => {
     const { email, password } = req.body;
 
-    const user = getUserByEmail(email);
+    const user = User.getUserByEmail(email);
 
     if (!user) {
         return res.status(401).json({ error: "Invalid email or password" });
@@ -51,7 +51,7 @@ app.post('/api/auth/login', async (req, res) => {
         httpOnly: true,
         secure: false, // TODO set true when HTTPS is enabled
         sameSite: 'lax', // change when backend delivers the front? Maybe not if react is hosted elsewhere
-        maxAge:  60 * 60 * 1000 // 1 hour until browser removes it
+        maxAge:  60 * 60 * 1000 * 48// 48 hours until browser removes it
     });
     console.log(`cookie header set: ${res.getHeader('Set-Cookie')}`)
     console.log(`Token: ${refreshToken}`)
@@ -76,13 +76,11 @@ export async function buildAcessJWT(user, secret) {
 
     // private claims 
     const name = user.name
-    //const picture = user.picture TODO when pictures are implemented add back
     const role = user.role
 
 
     const payload = {
         name: name,
-        //picture: picture,
         role: role
     }
 
@@ -134,7 +132,60 @@ app.post('/api/auth/logout', async (req, res) => {
     return res.status(200).json({message:"Logged out"})
 })
 
-// TODO update to add profile picture
+// have to check if google approves and the client needs to send with credentials to see if they have an existing refresh token
+// if they have a refresh token it can be used to issue a new access token and the old refresh must be invalidated and new one issued
+// if they don't then they are issued a refresh token and access token
+
+//[0] {
+// [0]   sub: '102640207396443614514',
+// [0]   name: 'Jack Borah',
+// [0]   given_name: 'Jack',
+// [0]   family_name: 'Borah',
+// [0]   picture: 'https://lh3.googleusercontent.com/a/ACg8ocKIcOxp6ZBhV_e2x_3YhdNW5RzcbNCajp6OvbBl355ghoDK5Q=s96-c',
+// [0]   email: 'borahjack@gmail.com',
+// [0]   email_verified: true
+// [0] }
+app.post('/api/auth/google-login', async (req, res) => {
+  console.log(req.body);
+  const goog_response = req.body
+  // if not verified
+  if (!goog_response["email_verified"]) {
+    return res.status(401).json({message:"Not Verified"})
+  }
+  // add or get user
+  const user = User.getUserByEmail(goog_response["email"]);
+  if (!user) {
+    user = new User(
+      first_name = given_name,
+      last_name = family_name,
+      email = email
+    ).insert()
+  }
+
+  return await handleTokens(user, JWT_SECRET, req, res)
+})
+
+async function handleTokens(user, JWT_SECRET, req, res) {
+  const accessToken = await buildAcessJWT(user, JWT_SECRET)
+  console.log("JWT: ", accessToken)
+  const refreshToken = RefreshToken.buildRefreshToken(user, req);
+  RefreshToken.invlidateOldToken(refreshToken.replaced_by_token);
+
+  res.cookie('refreshToken', refreshToken.token, {
+      httpOnly: true,
+      secure: false, // TODO set true when HTTPS is enabled
+      sameSite: 'lax', // change when backend delivers the front? Maybe not if react is hosted elsewhere
+      maxAge:  60 * 60 * 1000 // 1 hour until browser removes it
+  });
+  console.log(`cookie header set: ${res.getHeader('Set-Cookie')}`)
+  console.log(`Token: ${refreshToken}`)
+
+  res.json({message: 'Login Successful', accessToken: accessToken});
+  return res;
+}
+
+// Need to add logic to issue access token when it expires but a valid refresh token exists
+
 app.post('/api/auth/update', requireAuth, async (req, res) => {
     const { password } = req.body
     // console.log(req)
@@ -156,7 +207,7 @@ app.post('/api/auth/update', requireAuth, async (req, res) => {
 })
 
 app.post('/api/auth/register', async (req, res) => {
-    const { first_name, last_name, email, password } = req.body; // TODO add phone number and address to regular registration or only on purchase?
+    const { first_name, last_name, email, password } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 10);
     try {
         const insert = db.prepare(`INSERT INTO users (
@@ -226,7 +277,7 @@ app.get('/api/product/getAll', async (req, res) => {
 app.post('/api/auth/forgot-password', async (req, res) => {
     try {
       const { email } = req.body;
-      const user = getUserByEmail(email);
+      const user = User.getUserByEmail(email);
       if (!user) return res.status(404).json({ error: 'No user with that email.' });
   
       // 6‑digit code
@@ -275,7 +326,7 @@ app.post('/api/auth/forgot-password', async (req, res) => {
   app.post('/api/auth/reset-password', async (req, res) => {
     try {
       const { email, code, newPassword } = req.body;
-      const user = getUserByEmail(email);
+      const user = User.getUserByEmail(email);
       if (!user) return res.status(404).json({ error: 'User not found.' });
 
       db.prepare(`
@@ -314,7 +365,7 @@ app.post('/api/auth/forgot-password', async (req, res) => {
 app.post('/api/auth/forgot-password', async (req, res) => {
     try {
       const { email } = req.body;
-      const user = getUserByEmail(email);
+      const user = User.getUserByEmail(email);
       if (!user) return res.status(404).json({ error: 'No user with that email.' });
   
       // 6‑digit code
@@ -363,7 +414,7 @@ app.post('/api/auth/forgot-password', async (req, res) => {
   app.post('/api/auth/reset-password', async (req, res) => {
     try {
       const { email, code, newPassword } = req.body;
-      const user = getUserByEmail(email);
+      const user = User.getUserByEmail(email);
       if (!user) return res.status(404).json({ error: 'User not found.' });
 
       db.prepare(`

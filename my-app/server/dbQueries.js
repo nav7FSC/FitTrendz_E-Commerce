@@ -11,7 +11,7 @@ const create_users_table = db.prepare(`CREATE TABLE IF NOT EXISTS users (
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
     email TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL,
+    password TEXT,
     phone_number TEXT,
     address TEXT,
     role TEXT NOT NULL,
@@ -155,6 +155,14 @@ function add_columns() {
     add_column_stmt2.run()
 }
 
+function make_password_nullable() {
+    const drop_password = db.prepare(`ALTER TABLE users DROP COLUMN password`);
+    drop_password.run()
+
+    const add_password = db.prepare(`ALTER TABLE users ADD COLUMN password`);
+    add_password.run()
+}
+
 const create_password_resets_table = db.prepare(`
     CREATE TABLE IF NOT EXISTS password_resets (
       id            INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -165,7 +173,7 @@ const create_password_resets_table = db.prepare(`
     )`);
   create_password_resets_table.run();
 
-
+make_password_nullable()
 //delete_token("67cdc073f3b9b70a488b9e2d593de80b7358640249318fb0f63ad3bf3189b56c896094957e14cb21214346939c65d7cb59b0496aafaa5c192f2be42258943c66")
 
 
