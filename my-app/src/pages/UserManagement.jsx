@@ -233,12 +233,12 @@ export default function UserManagementPage() {
               />
               {errors.password && <p style={styles.error}>{errors.password}</p>}
   
-              <label style={styles.label}>Profile Picture</label>
+              {/* <label style={styles.label}>Profile Picture</label>
               <input
                 type="file"
                 onChange={handleFileChange}
                 style={styles.input}
-              />
+              /> */}
   
               <button
                 type="submit"
