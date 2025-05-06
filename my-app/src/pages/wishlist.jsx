@@ -20,50 +20,57 @@ export default function Wishlist() {
   };
 
   return (
-    <>
-      <div className="wishlist-container">
-        <h2>My Wishlist</h2>
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      
 
-        {wishlistItems.length > 0 ? (
-          <div className="wishlist-items">
-            {wishlistItems.map((item) => (
-              <div key={item.id} className="wishlist-item">
-                <img src={item.img} alt={item.title} className="wishlist-img" />
-                <div className="wishlist-details">
-                  <h3>{item.title}</h3>
+      <main style={{ flex: 1, padding: "40px 20px" }}>
+        <div className="wishlist-container">
+          <h2>My Wishlist</h2>
+
+          {wishlistItems.length > 0 ? (
+            <div className="wishlist-items">
+              {wishlistItems.map((item) => (
+                <div key={item.id} className="wishlist-item">
+                  <img src={item.img} alt={item.title} className="wishlist-img" />
+                  <div className="wishlist-details">
+                    <h3>{item.title}</h3>
                     <p>Size: {item.size}</p>
                     <p>{item.newPrice}</p>
-                  <div className="wishlist-buttons">
-                    <button
-                      className="wishlist-move-btn"
-                      onClick={() => handleMoveToCart(item)}
-                    >
-                      Move to Cart
-                    </button>
-                    <button
-                      className="wishlist-remove-btn"
-                      onClick={() => handleRemove(item.id)}
-                    >
-                      Remove
-                    </button>
+                    <div className="wishlist-buttons">
+                      <button
+                        className="wishlist-move-btn"
+                        onClick={() => handleMoveToCart(item)}
+                      >
+                        Move to Cart
+                      </button>
+                      <button
+                        className="wishlist-remove-btn"
+                        onClick={() => handleRemove(item.id)}
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>
-            Your wishlist is empty. <a href="/catalog">Continue shopping</a>
-          </p>
-        )}
+              ))}
+            </div>
+          ) : (
+            <p style={{ paddingTop: "20px" }}>
+              Your wishlist is empty. <a href="/catalog">Continue shopping</a>
+            </p>
+          )}
 
-        <button
-          className="continue-shopping-btn"
-          onClick={() => navigate("/catalog")}
-        >
-          Continue Shopping
-        </button>
-      </div>
-    </>
+          <button
+            className="continue-shopping-btn"
+            onClick={() => navigate("/catalog")}
+            style={{ marginTop: "30px" }}
+          >
+            Continue Shopping
+          </button>
+        </div>
+      </main>
+
+      
+    </div>
   );
 }
