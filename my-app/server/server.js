@@ -108,6 +108,7 @@ async function requireAuth(req, res, next) {
     console.log(token)
     try {
         const user = await jwtVerify(token, JWT_SECRET);
+        console.log(`Here is the user inside of the requireAuth:`)
         console.log(user)
         req.user = user;
         next();
@@ -171,8 +172,6 @@ async function handleTokens(user, JWT_SECRET, req, res) {
   return res;
 }
 
-// Need to add logic to issue access token when it expires but a valid refresh token exists
-
 app.post('/api/auth/update', requireAuth, async (req, res) => {
     const { password } = req.body
     // console.log(req)
@@ -180,14 +179,18 @@ app.post('/api/auth/update', requireAuth, async (req, res) => {
     // console.log("Headers:", req.headers);
     // console.log("Body:", req.body);
     const user = req.user;
-    console.log(`user: ${user}`);
+    console.log("here is user inside of update: ")
+    console.log(user)
+// TODO change the update statement to do it for a single user and also add fields
+// to update address and phone number
+//TODO also make sure reset password works
     if (!user) {
-        return res.status(401).json({ error: "Invalid email or password" });
+        return res.status(401).json({ error: "Invalid user" });
     }
     const hashedPassword = bcrypt.hashSync(password, 10);
-    const updatePassword = db.prepare(`UPDATE users SET password = ?`)
+    const updatePassword = db.prepare(`UPDATE users SET password = ? where id = ?`)
     try {
-        updatePassword.run(hashedPassword)
+        updatePassword.run(hashedPassword, user["payload"]["sub"])
     } catch (error) {
         res.status(400).json({error: "Update password failed."})
     }
@@ -377,12 +380,19 @@ app.post('/api/auth/forgot-password', async (req, res) => {
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT),
+        secure: false,
         auth: {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS
         }
       });
-  
+      transporter.verify((error, success) => {
+        if (error) {
+          console.error('SMTP Error:', error);
+        } else {
+          console.log('SMTP is ready to send emails');
+        }
+      });
       await transporter.sendMail({
         from: `"FitTrendz Support" <${process.env.SMTP_USER}>`,
         to: user.email,

@@ -101,7 +101,7 @@ export default function UserManagementPage() {
     // if (selectedFile) {
     //     formData.append("profilePicture", selectedFile);
     // }
-    console.log(Object.fromEntries(formData.entries()));
+    console.log(`Here is the form entries${Object.fromEntries(formData.entries())}`);
     await api
       .post(
         "http://localhost:3000/api/auth/update",
@@ -110,7 +110,7 @@ export default function UserManagementPage() {
           password: userData.password,
         },
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json",  withCredentials: true },
         }
       )
       .then(() => setSuccess("Profile updated successfully!"))
