@@ -8,8 +8,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import api from "../services/axiosInstance";
 
-//TODO remove the 2 strange sucess messages and replace with something better
-
 export default function SignUpPage() {
   return (
     <GoogleOAuthProvider clientId="278251322388-ao785r87jmeesbsuloqimmg8il6ctrj9.apps.googleusercontent.com">

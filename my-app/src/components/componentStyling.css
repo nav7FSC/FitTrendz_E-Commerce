@@ -13,7 +13,20 @@
 }
 
 
+.video {
+    width: 95vw;
+    height: 360px;              /* Nice thin banner height */
+    object-fit: cover;          /* Fills the space, no black bars */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: block;
+}
 
+
+
+
+
+  
 
 
 .container {
@@ -53,13 +66,18 @@ ul li:hover {
     justify-content:left;
     flex-wrap: wrap;
 }
-.slider{
+.slider {
     position: relative;
-    height: 4%;
+    margin-top: 80px;           /* Space from navbar if needed */
+    width: 100vw;
+    max-width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center;    /* Center horizontally */
 }
+
+
+
+
 .img {
     max-width: 100%;
     height: auto;

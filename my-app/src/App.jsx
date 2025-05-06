@@ -19,8 +19,24 @@ import Footer from "./components/footer";
 import OutfitBuilder from "./pages/OutfitBuilder";
 import ResetPassword from './pages/resetpassword';
 import OrderHistory from './pages/OrderHistory';
+import { useEffect } from "react";
+import api from "./services/axiosInstance";
+import { useAuth } from './components/AuthContext';
+
 
 function App() {
+  const { setAccessToken } = useAuth();
+  useEffect(() => {
+    api.get("/auth/refresh", { withCredentials: true })
+      .then(res => {
+        setAccessToken(res.data.accessToken);
+        console.log(res.data.accessToken)
+      })
+      .catch(err => {
+        // User is not logged in or refresh failed
+      });
+  }, []);
+  
   return (
     <div>
       <Navbar />

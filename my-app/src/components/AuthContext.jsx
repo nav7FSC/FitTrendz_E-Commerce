@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
       setAccessTokenGlobal(accessToken);
+      console.log(`current access token ${accessToken}`)
     }, [accessToken]);
 
     const login = async (credentials) => {

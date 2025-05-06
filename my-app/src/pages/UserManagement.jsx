@@ -180,107 +180,87 @@ export default function UserManagementPage() {
   };
 
   return (
-    <div>
-      <div style={styles.container}>
-        <h2>
-          {isAuthenticated ? "Manage Your Account" : "Confirm Your Identity"}
-        </h2>
-
-        {/* Step 1: Identity Confirmation */}
-        {!isAuthenticated ? (
-          <form style={styles.form} onSubmit={handleConfirmSubmit}>
-            {/* <label style={styles.label}>Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={confirmData.email}
-                            onChange={handleChange}
-                            style={{
-                                ...styles.input,
-                                ...(errors.email ? styles.inputError : errors.email === "" ? styles.inputSuccess : {}),
-                            }}
-                        /> */}
-            {/* {errors.email && <p style={styles.error}>{errors.email}</p>} */}
-
-            <label style={styles.label}>Password</label>
-            <input
-              type="password"
-              name="password"
-              value={confirmData.password}
-              onChange={handleChange}
-              style={{
-                ...styles.input,
-                ...(errors.password
-                  ? styles.inputError
-                  : errors.password === ""
-                  ? styles.inputSuccess
-                  : {}),
-              }}
-            />
-            {errors.password && <p style={styles.error}>{errors.password}</p>}
-
-            <button type="submit" style={styles.button}>
-              Confirm Identity
-            </button>
-          </form>
-        ) : (
-          /* Step 2: Edit Profile (after identity confirmation) */
-          <form style={styles.form} onSubmit={handleSubmit}>
-            {/* <label style={styles.label}>Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={userData.email}
-                            onChange={handleChange}
-                            style={{
-                                ...styles.input,
-                                ...(errors.email ? styles.inputError : errors.email === "" ? styles.inputSuccess : {}),
-                            }}
-                        />
-                        {errors.email && <p style={styles.error}>{errors.email}</p>} */}
-
-            <label style={styles.label}>New Password (Optional)</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter new password"
-              value={userData.password}
-              onChange={handleChange}
-              style={{
-                ...styles.input,
-                ...(errors.password
-                  ? styles.inputError
-                  : errors.password === ""
-                  ? styles.inputSuccess
-                  : {}),
-              }}
-            />
-            {errors.password && <p style={styles.error}>{errors.password}</p>}
-
-            <label style={styles.label}>Profile Picture</label>
-            <input
-              type="file"
-              onChange={handleFileChange}
-              style={styles.input}
-            />
-
-            <button
-              type="submit"
-              style={{
-                ...styles.button,
-                ...(Object.values(errors).some((error) => error)
-                  ? styles.buttonDisabled
-                  : {}),
-              }}
-              disabled={Object.values(errors).some((error) => error)}
-            >
-              Update Profile
-            </button>
-          </form>
-        )}
-
-        {success && <p style={styles.success}>{success}</p>}
-      </div>
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      
+      
+      <main style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", padding: "40px 20px" }}>
+        <div style={styles.container}>
+          <h2>
+            {isAuthenticated ? "Manage Your Account" : "Confirm Your Identity"}
+          </h2>
+  
+          {/* Step 1: Identity Confirmation */}
+          {!isAuthenticated ? (
+            <form style={styles.form} onSubmit={handleConfirmSubmit}>
+              <label style={styles.label}>Password</label>
+              <input
+                type="password"
+                name="password"
+                value={confirmData.password}
+                onChange={handleChange}
+                style={{
+                  ...styles.input,
+                  ...(errors.password
+                    ? styles.inputError
+                    : errors.password === ""
+                    ? styles.inputSuccess
+                    : {}),
+                }}
+              />
+              {errors.password && <p style={styles.error}>{errors.password}</p>}
+  
+              <button type="submit" style={styles.button}>
+                Confirm Identity
+              </button>
+            </form>
+          ) : (
+            <form style={styles.form} onSubmit={handleSubmit}>
+              <label style={styles.label}>New Password (Optional)</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter new password"
+                value={userData.password}
+                onChange={handleChange}
+                style={{
+                  ...styles.input,
+                  ...(errors.password
+                    ? styles.inputError
+                    : errors.password === ""
+                    ? styles.inputSuccess
+                    : {}),
+                }}
+              />
+              {errors.password && <p style={styles.error}>{errors.password}</p>}
+  
+              {/* <label style={styles.label}>Profile Picture</label>
+              <input
+                type="file"
+                onChange={handleFileChange}
+                style={styles.input}
+              /> */}
+  
+              <button
+                type="submit"
+                style={{
+                  ...styles.button,
+                  ...(Object.values(errors).some((error) => error)
+                    ? styles.buttonDisabled
+                    : {}),
+                }}
+                disabled={Object.values(errors).some((error) => error)}
+              >
+                Update Profile
+              </button>
+            </form>
+          )}
+  
+          {success && <p style={styles.success}>{success}</p>}
+        </div>
+      </main>
+  
+      
     </div>
   );
+  
 }
