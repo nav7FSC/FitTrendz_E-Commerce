@@ -1,7 +1,6 @@
 import './componentStyling.css'
 import React from 'react';
-
-
+import { Link } from "react-router-dom"
 
 export default function footer(){
 
@@ -21,9 +20,11 @@ export default function footer(){
                 <div className='col'>
                     <h4>Fit Trendz</h4>
                 <ul>
+                <Link to="/">
                     <li>Home</li>
-                    <li>About</li>
-                    <li>Shop Now</li>
+                </Link>
+                <Link to="/about"><li>About</li></Link>
+                <Link to="/catalog?gender=men"><li>Shop Now</li></Link>
                 </ul>
                 </div>
 
@@ -31,11 +32,10 @@ export default function footer(){
                 <div className='col'>
                 <h4>Contact</h4>
                 <ul>
-                    <li>Email</li>
-                    <li>LinkedIn</li>
-                    <li>Instagram</li>
-                    <li>Twitter</li>
-
+                    <li>fit.trendz1@gmail.com</li>
+                    <Link to="https://www.instagram.com/fit.trendz1/"><li>Instagram</li></Link>
+                    <Link to="https://x.com/fittrendz1"><li>Twitter</li></Link>
+                    <Link to="https://github.com/nav7FSC/FitTrendz_E-Commerce"><li>Github</li></Link>
                 </ul>
                 </div>
 
