@@ -21,10 +21,10 @@ export default function footer(){
                     <h4>Fit Trendz</h4>
                 <ul>
                 <Link to="/">
-                    <li>Home</li>
+                    <li class="social">Home</li>
                 </Link>
-                <Link to="/about"><li>About</li></Link>
-                <Link to="/catalog?gender=men"><li>Shop Now</li></Link>
+                <Link to="/about"><li class="social">About</li></Link>
+                <Link to="/catalog?gender=men"><li class="social">Shop Now</li></Link>
                 </ul>
                 </div>
 
@@ -33,9 +33,9 @@ export default function footer(){
                 <h4>Contact</h4>
                 <ul>
                     <li>fit.trendz1@gmail.com</li>
-                    <Link to="https://www.instagram.com/fit.trendz1/"><li>Instagram</li></Link>
-                    <Link to="https://x.com/fittrendz1"><li>Twitter</li></Link>
-                    <Link to="https://github.com/nav7FSC/FitTrendz_E-Commerce"><li>Github</li></Link>
+                    <Link to="https://www.instagram.com/fit.trendz1/"><li class="social">Instagram</li></Link>
+                    <Link to="https://x.com/fittrendz1"><li class="social">Twitter</li></Link>
+                    <Link to="https://github.com/nav7FSC/FitTrendz_E-Commerce"><li class="social">Github</li></Link>
                 </ul>
                 </div>
 
