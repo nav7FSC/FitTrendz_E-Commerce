@@ -77,4 +77,9 @@ export class User {
     const db = getDb();
     return db.prepare("SELECT * FROM users WHERE email = ?").get(email);
   }
+  static getUserByToken(token) {
+    const db = getDb();
+    const token_record = db.prepare("SELECT * FROM refresh_token WHERE token = ?").get(token);
+    return db.prepare("SELECT * FROM users WHERE id = ?").get(token_record.user_id);
+  }
 }

@@ -97,7 +97,7 @@ export async function buildAcessJWT(user, secret) {
 
 //middleware
 async function requireAuth(req, res, next) {
-    console.log("require auth middleware reached")
+    console.log("require auth middleware reached");
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1]; // remove "Bearer"
     console.log(`auth token ${token}`);
@@ -132,19 +132,6 @@ app.post('/api/auth/logout', async (req, res) => {
     return res.status(200).json({message:"Logged out"})
 })
 
-// have to check if google approves and the client needs to send with credentials to see if they have an existing refresh token
-// if they have a refresh token it can be used to issue a new access token and the old refresh must be invalidated and new one issued
-// if they don't then they are issued a refresh token and access token
-
-//[0] {
-// [0]   sub: '102640207396443614514',
-// [0]   name: 'Jack Borah',
-// [0]   given_name: 'Jack',
-// [0]   family_name: 'Borah',
-// [0]   picture: 'https://lh3.googleusercontent.com/a/ACg8ocKIcOxp6ZBhV_e2x_3YhdNW5RzcbNCajp6OvbBl355ghoDK5Q=s96-c',
-// [0]   email: 'borahjack@gmail.com',
-// [0]   email_verified: true
-// [0] }
 app.post('/api/auth/google-login', async (req, res) => {
   console.log(req.body);
   const goog_response = req.body
@@ -247,16 +234,15 @@ app.post('/api/auth/register', async (req, res) => {
     }
 });
 
-//TODO Has not been tested but would be used to retrieve signed in user data
-app.get('/api/auth/me', requireAuth, async (req, res) => {
-    console.log("Request recieved")
+app.get('/api/auth/refresh', async (req, res) => {
+    console.log("Refresh request recieved");
+    const refreshToken = req.cookies.refreshToken;
+    console.log(`refresh token: ${refreshToken}`);
     try {
-        const email = req.user.email; // from the requireAuth middlware
-        const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
-        res.json({ user });
-        console.log("request authenticated")
+        const user = User.getUserByToken(refreshToken);
+        return await handleTokens(user, JWT_SECRET, req, res);
     } catch (error) {
-        console.log("no token found")
+        console.log("Getting current user info failed")
         res.status(400).json({ error: "Getting current user info failed." });
     }
 });
