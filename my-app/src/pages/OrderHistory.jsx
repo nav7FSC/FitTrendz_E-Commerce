@@ -15,7 +15,7 @@ export default function OrderHistory() {
     }
 
     // Simulated data toggle
-    const SIMULATE_ORDERS = false;
+    const SIMULATE_ORDERS = true;
 
     const allOrders = SIMULATE_ORDERS
       ? [{ id: 1, date: new Date('2025-03-15'), item: 'Sweater' }]
