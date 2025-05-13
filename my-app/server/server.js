@@ -108,6 +108,7 @@ async function requireAuth(req, res, next) {
     console.log(token)
     try {
         const user = await jwtVerify(token, JWT_SECRET);
+        console.log(`Here is the user inside of the requireAuth:`)
         console.log(user)
         req.user = user;
         next();
@@ -171,25 +172,35 @@ async function handleTokens(user, JWT_SECRET, req, res) {
   return res;
 }
 
-// Need to add logic to issue access token when it expires but a valid refresh token exists
-
 app.post('/api/auth/update', requireAuth, async (req, res) => {
-    const { password } = req.body
+    const { password, address, phoneNumber } = req.body
+    console.log(`pass from frontend: ${password}`)
+    console.log(`address from frontend: ${address}`)
+    console.log(`phoneNumber from frontend: ${phoneNumber}`)
+
     // console.log(req)
     // console.log(req.body)
     // console.log("Headers:", req.headers);
     // console.log("Body:", req.body);
     const user = req.user;
-    console.log(`user: ${user}`);
+    console.log("here is user inside of update: ")
+    console.log(user)
+// TODO change the update  add fields to update address and phone number
     if (!user) {
-        return res.status(401).json({ error: "Invalid email or password" });
+        return res.status(401).json({ error: "Invalid user" });
     }
     const hashedPassword = bcrypt.hashSync(password, 10);
-    const updatePassword = db.prepare(`UPDATE users SET password = ?`)
+    const updatePassword = db.prepare(`UPDATE users SET password = ? where id = ?`);
+    const updateAddress = db.prepare(`UPDATE users SET address = ? where id = ?`);
+    const updatePhoneNumber = db.prepare(`UPDATE users SET phone_number = ? where id = ?`);
     try {
-        updatePassword.run(hashedPassword)
+      if (password) {updatePassword.run(hashedPassword, user["payload"]["sub"])}
+      if (address) {updateAddress.run(address, user["payload"]["sub"])}
+      if (phoneNumber) {updatePhoneNumber.run(phoneNumber, user["payload"]["sub"])}
+
+        res.status(200).json({ success: true, message: "Profile updated successfully!" })
     } catch (error) {
-        res.status(400).json({error: "Update password failed."})
+        res.status(400).json({error: "Update failed."})
     }
 })
 
@@ -377,12 +388,19 @@ app.post('/api/auth/forgot-password', async (req, res) => {
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT),
+        secure: false,
         auth: {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS
         }
       });
-  
+      transporter.verify((error, success) => {
+        if (error) {
+          console.error('SMTP Error:', error);
+        } else {
+          console.log('SMTP is ready to send emails');
+        }
+      });
       await transporter.sendMail({
         from: `"FitTrendz Support" <${process.env.SMTP_USER}>`,
         to: user.email,
@@ -450,6 +468,9 @@ app.post('/create-checkout-session', async (req, res) => {
         mode: 'payment',
         success_url: 'http://localhost:5173?success=true',
         cancel_url: 'http://localhost:5173?canceled=true',
+        billing_address_collection: 'required', 
+        phone_number_collection: { enabled: true }, 
+  
     });
     
     res.json({url: session.url});

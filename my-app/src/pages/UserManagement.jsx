@@ -10,9 +10,10 @@ import { Link, Navigate, useLocation } from "react-router-dom";
 export default function UserManagementPage() {
   const { accessToken } = useAuth();
   const [userData, setUserData] = useState({
-    // email: "",
     password: "",
     profilePicture: "",
+    address: "",
+    phoneNumber: "",
   });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(null);
@@ -56,7 +57,13 @@ export default function UserManagementPage() {
         error =
           "Password must contain at least one uppercase letter and one number";
     }
-
+    if (name === "phoneNumber") {
+      if (!value) {
+        error = "";
+      } else if (!/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/.test(value)) {
+        error = "Invalid phone number format (e.g. 123-456-7890)";
+      }
+    }
     setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
@@ -98,19 +105,23 @@ export default function UserManagementPage() {
     const formData = new FormData();
     // formData.append("email", userData.email);
     formData.append("password", userData.password);
+    formData.append("address", userData.address);
+    formData.append("phoneNumber", userData.phoneNumber);
     // if (selectedFile) {
     //     formData.append("profilePicture", selectedFile);
     // }
-    console.log(Object.fromEntries(formData.entries()));
+    console.log(`Here is the form entries${Object.fromEntries(formData.entries())}`);
     await api
       .post(
         "http://localhost:3000/api/auth/update",
         {
           // email: userData.email,
           password: userData.password,
+          address: userData.address,
+          phoneNumber: userData.phoneNumber,
         },
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json",  withCredentials: true },
         }
       )
       .then(() => setSuccess("Profile updated successfully!"))
@@ -232,7 +243,42 @@ export default function UserManagementPage() {
                 }}
               />
               {errors.password && <p style={styles.error}>{errors.password}</p>}
-  
+
+              <label style={styles.label}>New Address (Optional)</label>
+              <input
+                type="text"
+                name="address"
+                placeholder="Enter new address"
+                value={userData.address}
+                onChange={handleChange}
+                style={{
+                  ...styles.input,
+                  ...(errors.address
+                    ? styles.inputError
+                    : errors.address === ""
+                    ? styles.inputSuccess
+                    : {}),
+                }}
+              />
+              {errors.address && <p style={styles.error}>{errors.address}</p>}
+
+              <label style={styles.label}>New Phone Number (Optional)</label>
+              <input
+                type="text"
+                name="phoneNumber"
+                placeholder="Enter new phone number"
+                value={userData.phoneNumber}
+                onChange={handleChange}
+                style={{
+                  ...styles.input,
+                  ...(errors.phoneNumber
+                    ? styles.inputError
+                    : errors.phoneNumber === ""
+                    ? styles.inputSuccess
+                    : {}),
+                }}
+              />
+              {errors.phoneNumber && <p style={styles.error}>{errors.phoneNumber}</p>}  
               {/* <label style={styles.label}>Profile Picture</label>
               <input
                 type="file"
